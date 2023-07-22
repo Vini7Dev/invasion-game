@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireGun : MonoBehaviour
 {
     public int maxBullets = 10;
-    public float timeToShot = 0.2f, timeToReload = 1;
+    public float timeToShot = 0.5f, timeToReload = 1;
     public Transform bulletSpawn;
     public GameObject bulletObject;
 
