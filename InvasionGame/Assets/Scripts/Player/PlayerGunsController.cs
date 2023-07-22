@@ -14,6 +14,11 @@ public class PlayerGunsController : MonoBehaviour
         GetPlayerGunsObjects();
     }
 
+    void Update()
+    {
+        
+    }
+
     void GetPlayerGunsObjects()
     {
         gunsCount = transform.childCount;
@@ -26,7 +31,7 @@ public class PlayerGunsController : MonoBehaviour
         }
     }
 
-    void SwitchCurrentGun(int newCurrentGunIndex)
+    public void SwitchCurrentGun(int newCurrentGunIndex)
     {
         for (int i = 0; i < gunsCount; i++)
         {
