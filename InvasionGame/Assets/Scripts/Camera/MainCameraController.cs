@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainCameraController : MonoBehaviour
 {
+    public bool followPlayer = false;
     public float cameraTopDistance = 25;
     public float cameraFollowSpeed = 5;
 
@@ -16,7 +17,10 @@ public class MainCameraController : MonoBehaviour
 
     void Update()
     {
-        FollowPlayer();
+        if (followPlayer)
+        {
+            FollowPlayer();
+        }
     }
 
     void FollowPlayer()
