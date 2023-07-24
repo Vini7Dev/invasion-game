@@ -16,4 +16,11 @@ public class BulletMovement : MonoBehaviour
     {
         transform.Translate(forwardDirection * bulletSpeed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "Scenary")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
