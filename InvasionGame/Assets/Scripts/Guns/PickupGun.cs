@@ -29,7 +29,7 @@ public class PickupGun : MonoBehaviour
             return;
         }
 
-        player.GetComponent<PlayerGunsController>()
+        player.GetComponent<GunsController>()
             .SwitchCurrentGun(gunIndex);
 
         Destroy(gameObject);

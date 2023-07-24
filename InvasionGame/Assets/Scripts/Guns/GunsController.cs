@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerGunsController : MonoBehaviour
+public class GunsController : MonoBehaviour
 {
     public GameObject playerGunsWrapper;
 
