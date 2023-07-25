@@ -538,6 +538,7 @@ MonoBehaviour:
   maxBullets: 7
   timeToShot: 0.75
   timeToReload: 1.5
+  friendlyBullet: 0
   bulletSpawn: {fileID: 410520563}
   bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
 --- !u!23 &221785585
@@ -1072,6 +1073,7 @@ MonoBehaviour:
   maxBullets: 7
   timeToShot: 0.75
   timeToReload: 1.5
+  friendlyBullet: 1
   bulletSpawn: {fileID: 945508168}
   bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
 --- !u!23 &548995571
@@ -2230,6 +2232,7 @@ GameObject:
   - component: {fileID: 834912060}
   - component: {fileID: 834912065}
   - component: {fileID: 834912064}
+  - component: {fileID: 834912067}
   - component: {fileID: 834912063}
   - component: {fileID: 834912066}
   m_Layer: 0
@@ -2385,6 +2388,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGunsWrapper: {fileID: 959533489}
+--- !u!114 &834912067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834912058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6ec8cb22094964f830a1352482f005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 100
 --- !u!1 &856150294
 GameObject:
   m_ObjectHideFlags: 0
@@ -5158,6 +5174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerDistance: 10
   minPlayerDistance: 5
+  life: 100
+  playerTransform: {fileID: 0}
 --- !u!1 &1633913347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5503,6 +5521,7 @@ MonoBehaviour:
   maxBullets: 10
   timeToShot: 0.5
   timeToReload: 1
+  friendlyBullet: 1
   bulletSpawn: {fileID: 749685536}
   bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
 --- !u!1 &1684800812
@@ -6288,6 +6307,7 @@ MonoBehaviour:
   maxBullets: 10
   timeToShot: 0.5
   timeToReload: 1
+  friendlyBullet: 0
   bulletSpawn: {fileID: 1578641562}
   bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
 --- !u!23 &2024393595

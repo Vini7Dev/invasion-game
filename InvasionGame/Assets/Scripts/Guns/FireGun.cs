@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FireGun : MonoBehaviour
 {
-    public int maxBullets = 10;
+    public bool friendlyBullet = false;
+    public int maxBullets = 10, minDamage = 10, maxDamage = 25;
     public float timeToShot = 0.5f, timeToReload = 1;
     public Transform bulletSpawn;
     public GameObject bulletObject;
@@ -37,7 +38,13 @@ public class FireGun : MonoBehaviour
                 {
                     if (Input.GetButton("Fire1"))
                     {
-                        Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
+                        GameObject bullet = Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
+                        bullet.GetComponent<BulletMovement>().DefineProps(
+                            friendlyBullet,
+                            minDamage,
+                            maxDamage
+                        );
+
                         bullets -= 1;
                         shotTimer = 0;
                     }
@@ -60,7 +67,12 @@ public class FireGun : MonoBehaviour
         {
             if (shotTimer >= timeToShot)
             {
-                Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
+                GameObject bullet = Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
+                bullet.GetComponent<BulletMovement>().DefineProps(
+                    friendlyBullet,
+                    minDamage,
+                    maxDamage
+                );
                 bullets -= 1;
                 shotTimer = 0;
             }
