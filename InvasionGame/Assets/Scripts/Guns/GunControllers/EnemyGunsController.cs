@@ -23,7 +23,10 @@ public class EnemyGunsController : GunsController
 
     void Update()
     {
-        FireGunAutoShot();
+        if (enemyController.playerIsAlive)
+        {
+            FireGunAutoShot();
+        }
     }
 
     bool HasCurrentFireGun()

@@ -27,8 +27,6 @@ public class BulletMovement : MonoBehaviour
         {
             int damageToApply = Random.Range(minDamage, maxDamage + 1);
 
-            Debug.Log("friendlyBullet: " + friendlyBullet + " damageToApply: " + damageToApply);
-
             if (friendlyBullet && other.tag == "Enemy")
             {
                 Destroy(gameObject);   

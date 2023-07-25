@@ -12,11 +12,26 @@ public enum PlayerDistanceAction
 public class EnemyController : MonoBehaviour
 {
     public float maxPlayerDistance = 10, minPlayerDistance = 5;
-    public int life = 100;
     public Transform playerTransform;
+    public bool playerIsAlive;
 
-    void Start() {
+    int life = 100;
+
+    void Start()
+    {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    void Update()
+    {
+        VerifyIfPlayerIsAlive();
+    }
+
+    void VerifyIfPlayerIsAlive()
+    {
+        playerIsAlive = playerTransform.gameObject
+            .GetComponent<PlayerController>()
+            .IsAlive();
     }
 
     public void HaveHitADamage(int damageReceived)

@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     {
         PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
 
-        if (playerDistanceAction == PlayerDistanceAction.stopped)
+        if (!enemyController.playerIsAlive || playerDistanceAction == PlayerDistanceAction.stopped)
         {
             return;
         }
