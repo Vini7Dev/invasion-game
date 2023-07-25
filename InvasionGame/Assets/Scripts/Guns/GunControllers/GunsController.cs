@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunsController : MonoBehaviour
 {
-    public GameObject playerGunsWrapper;
+    public GameObject gunsWrapper;
 
     int gunsCount;
     GameObject[] gunObjects;
@@ -23,7 +23,7 @@ public class GunsController : MonoBehaviour
 
         for (int i = 0; i < gunsCount; i++)
         {
-            gunObjects[i] = playerGunsWrapper.transform.GetChild(i).gameObject;
+            gunObjects[i] = gunsWrapper.transform.GetChild(i).gameObject;
         }
     }
 

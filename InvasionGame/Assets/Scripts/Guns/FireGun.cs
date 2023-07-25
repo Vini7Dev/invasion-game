@@ -5,12 +5,10 @@ using UnityEngine;
 public class FireGun : MonoBehaviour
 {
     public bool friendlyBullet = false;
-    public int maxBullets = 10, minDamage = 10, maxDamage = 25;
+    public int bullets, maxBullets = 10, minDamage = 10, maxDamage = 25;
     public float timeToShot = 0.5f, timeToReload = 1;
     public Transform bulletSpawn;
     public GameObject bulletObject;
-
-    int bullets;
     bool autoShot = false;
     float shotTimer, reloadTimer;
 
