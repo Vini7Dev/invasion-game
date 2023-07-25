@@ -4,41 +4,45 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float maxPlayerDistance = 10,
-        minPlayerDistance = 5,
-        walkSpeed = 5,
-        lookSpeed = 5;
+    public float walkSpeed = 5, lookSpeed = 5;
 
+    EnemyController enemyController;
     CharacterController characterController;
-    Transform playerTransform;
     Vector3 lookDirection;
 
     void Start()
     {
+        enemyController = GetComponent<EnemyController>();
         characterController = GetComponent<CharacterController>();
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         lookDirection = transform.position;
     }
 
     float GetPlayerDistance()
     {
-        return Vector3.Distance(transform.position, playerTransform.position);
+        return Vector3.Distance(
+            transform.position,
+            enemyController.playerTransform.position
+        );
     }
 
     void Update()
     {
-        if (GetPlayerDistance() <= maxPlayerDistance)
-        {
-            LookToPlayer();
+        PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
 
-            if (GetPlayerDistance() > minPlayerDistance)
-            {
-                WalkToPlayer();
-            }
-            else
-            {
-                MoveAwaiFromPlayer();
-            }
+        if (playerDistanceAction == PlayerDistanceAction.stopped)
+        {
+            return;
+        }
+
+        LookToPlayer();
+
+        if (playerDistanceAction == PlayerDistanceAction.advancing)
+        {
+            WalkToPlayer();
+        }
+        else
+        {
+            MoveAwaiFromPlayer();
         }
     }
 
@@ -46,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
     {
         lookDirection = Vector3.Lerp(
             lookDirection,
-            playerTransform.position,
+            enemyController.playerTransform.position,
             Time.deltaTime * lookSpeed
         );
 

@@ -10,6 +10,7 @@ public class FireGun : MonoBehaviour
     public GameObject bulletObject;
 
     int bullets;
+    bool autoShot = false;
     float shotTimer, reloadTimer;
 
     void Start()
@@ -19,32 +20,54 @@ public class FireGun : MonoBehaviour
 
     void Update()
     {
-        if (bullets > 0)
-        {
-            Shot();
-        }
-        else
-        {
-            Reload();
-        }
+        Shot();
     }
 
     public void Shot()
     {
-        if (shotTimer >= timeToShot)
+        if(!autoShot)
         {
-            if (Input.GetButton("Fire1"))
+            if (bullets <= 0)
             {
-                Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
-            
-                bullets -= 1;
-                
-                shotTimer = 0;
+                Reload();
             }
+            else
+            {
+                if (shotTimer >= timeToShot)
+                {
+                    if (Input.GetButton("Fire1"))
+                    {
+                        Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
+                        bullets -= 1;
+                        shotTimer = 0;
+                    }
+                }
+                else
+                {
+                    shotTimer += Time.deltaTime;
+                }
+            }
+        }
+    }
+
+    public void AutoShot()
+    {
+        if (bullets <= 0)
+        {
+            Reload();
         }
         else
         {
-            shotTimer += Time.deltaTime;
+            if (shotTimer >= timeToShot)
+            {
+                Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
+                bullets -= 1;
+                shotTimer = 0;
+            }
+            else
+            {
+                shotTimer += Time.deltaTime;
+            }
         }
     }
 
@@ -59,5 +82,10 @@ public class FireGun : MonoBehaviour
             bullets = maxBullets;
             reloadTimer = 0;
         }
+    }
+
+    public void UpdateAutoShot(bool newAutoShot)
+    {
+        autoShot = newAutoShot;
     }
 }

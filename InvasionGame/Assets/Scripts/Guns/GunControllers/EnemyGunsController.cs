@@ -6,12 +6,19 @@ public class EnemyGunsController : GunsController
 {
     public int enemyGunIndex = 0;
 
-    float autoShotTimer = 0;
-    
+    EnemyController enemyController;
+
     void Start()
     {
+        enemyController = GetComponent<EnemyController>();
+
         GetGunObjects();
         SwitchCurrentGun(enemyGunIndex);
+
+        if (HasCurrentFireGun())
+        {
+            currentFireGun.UpdateAutoShot(true);
+        }
     }
 
     void Update()
@@ -19,21 +26,20 @@ public class EnemyGunsController : GunsController
         FireGunAutoShot();
     }
 
+    bool HasCurrentFireGun()
+    {
+        return !!currentFireGun;
+    }
+
     void FireGunAutoShot()
     {
-        if (currentFireGun)
+        PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
+
+        if (playerDistanceAction == PlayerDistanceAction.stopped || !HasCurrentFireGun())
         {
             return;
         }
 
-        if (autoShotTimer <= currentFireGun.timeToShot)
-        {
-            autoShotTimer += Time.deltaTime;
-        }
-        else
-        {
-            currentFireGun.Shot();
-            autoShotTimer = 0;
-        }
+        currentFireGun.AutoShot();
     }
 }

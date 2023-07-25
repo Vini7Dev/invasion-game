@@ -1134,7 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 554586024}
   m_Layer: 0
-  m_Name: PlayerGunsWrapper
+  m_Name: EnemyGunsWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2384,7 +2384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bebb43c9c687b4fa127ac14ebf0584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableAutoShot: 0
   playerGunsWrapper: {fileID: 959533489}
 --- !u!1 &856150294
 GameObject:
@@ -4987,8 +4986,9 @@ GameObject:
   - component: {fileID: 1628780125}
   - component: {fileID: 1628780124}
   - component: {fileID: 1628780123}
+  - component: {fileID: 1628780130}
   - component: {fileID: 1628780128}
-  - component: {fileID: 1628780122}
+  - component: {fileID: 1628780129}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -4996,20 +4996,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1628780122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628780121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26bebb43c9c687b4fa127ac14ebf0584, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enableAutoShot: 1
-  playerGunsWrapper: {fileID: 554586023}
 --- !u!54 &1628780123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5142,10 +5128,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a66fb694afa63d449c4b84bad7fae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerDistance: 10
-  minPlayerDistance: 5
   walkSpeed: 5
   lookSpeed: 5
+--- !u!114 &1628780129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628780121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 413fc1633e3863b46ab66dddd4e1fa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGunsWrapper: {fileID: 554586023}
+  enemyGunIndex: 0
+--- !u!114 &1628780130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628780121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4255baf3c3095cf44bf3c0f67d37728c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPlayerDistance: 10
+  minPlayerDistance: 5
 --- !u!1 &1633913347
 GameObject:
   m_ObjectHideFlags: 0
