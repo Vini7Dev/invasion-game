@@ -2384,6 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bebb43c9c687b4fa127ac14ebf0584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableAutoShot: 0
   playerGunsWrapper: {fileID: 959533489}
 --- !u!1 &856150294
 GameObject:
@@ -2519,7 +2520,7 @@ GameObject:
   - component: {fileID: 875749089}
   - component: {fileID: 875749088}
   m_Layer: 0
-  m_Name: __TMP_PlayerHead__
+  m_Name: __TMP_Head__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3923,7 +3924,7 @@ GameObject:
   - component: {fileID: 1387038496}
   - component: {fileID: 1387038495}
   m_Layer: 0
-  m_Name: __TMP_PlayerHead__
+  m_Name: __TMP_Head__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5007,6 +5008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26bebb43c9c687b4fa127ac14ebf0584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enableAutoShot: 1
   playerGunsWrapper: {fileID: 554586023}
 --- !u!54 &1628780123
 Rigidbody:
@@ -5142,7 +5144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPlayerDistance: 10
   minPlayerDistance: 5
-  speed: 5
+  walkSpeed: 5
+  lookSpeed: 5
 --- !u!1 &1633913347
 GameObject:
   m_ObjectHideFlags: 0

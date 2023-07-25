@@ -7,27 +7,23 @@ public class GunsController : MonoBehaviour
     public GameObject playerGunsWrapper;
 
     int gunsCount;
-    GameObject[] playerGuns;
+    GameObject[] gunObjects;
+    protected FireGun currentFireGun;
 
     void Start()
     {
-        GetPlayerGunsObjects();
+        GetGunObjects();
     }
 
-    void Update()
-    {
-        
-    }
-
-    void GetPlayerGunsObjects()
+    protected void GetGunObjects()
     {
         gunsCount = transform.childCount;
 
-        playerGuns = new GameObject[gunsCount];
+        gunObjects = new GameObject[gunsCount];
 
         for (int i = 0; i < gunsCount; i++)
         {
-            playerGuns[i] = playerGunsWrapper.transform.GetChild(i).gameObject;
+            gunObjects[i] = playerGunsWrapper.transform.GetChild(i).gameObject;
         }
     }
 
@@ -37,7 +33,14 @@ public class GunsController : MonoBehaviour
         {
             bool isCurrentGunIndex = i == newCurrentGunIndex;
 
-            playerGuns[i].SetActive(isCurrentGunIndex);
+            GameObject gunObject = gunObjects[i];
+
+            gunObject.SetActive(isCurrentGunIndex);
+
+            if (isCurrentGunIndex)
+            {
+                currentFireGun = gunObject.GetComponent<FireGun>();
+            }
         }
     }
 }

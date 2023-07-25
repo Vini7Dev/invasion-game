@@ -29,7 +29,7 @@ public class FireGun : MonoBehaviour
         }
     }
 
-    void Shot()
+    public void Shot()
     {
         if (shotTimer >= timeToShot)
         {
