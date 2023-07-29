@@ -8,7 +8,7 @@ public class FireGun : MonoBehaviour
     public int bullets, maxBullets = 10, minDamage = 10, maxDamage = 25;
     public float timeToShot = 0.5f, timeToReload = 1;
     public Transform bulletSpawn;
-    public GameObject bulletObject;
+    public GameObject bulletsContainerObject;
     bool autoShot = false;
     float shotTimer, reloadTimer;
 
@@ -36,8 +36,13 @@ public class FireGun : MonoBehaviour
                 {
                     if (Input.GetButton("Fire1"))
                     {
-                        GameObject bullet = Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
-                        bullet.GetComponent<BulletMovement>().DefineProps(
+                        GameObject bulletsContainer = Instantiate(
+                            bulletsContainerObject,
+                            bulletSpawn.position,
+                            transform.rotation
+                        );
+
+                        bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
                             friendlyBullet,
                             minDamage,
                             maxDamage
@@ -65,8 +70,13 @@ public class FireGun : MonoBehaviour
         {
             if (shotTimer >= timeToShot)
             {
-                GameObject bullet = Instantiate(bulletObject, bulletSpawn.position, transform.rotation);
-                bullet.GetComponent<BulletMovement>().DefineProps(
+                GameObject bullet = Instantiate(
+                    bulletsContainerObject,
+                    bulletSpawn.position,
+                    transform.rotation
+                );
+
+                bullet.GetComponent<BulletsContainer>().DefineBulletsProps(
                     friendlyBullet,
                     minDamage,
                     maxDamage

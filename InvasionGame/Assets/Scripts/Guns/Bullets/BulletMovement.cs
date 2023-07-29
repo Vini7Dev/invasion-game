@@ -8,11 +8,6 @@ public class BulletMovement : MonoBehaviour
     int bulletSpeed = 35, minDamage = 10, maxDamage = 25;
     Vector3 forwardDirection = Vector3.right;
 
-    void Start()
-    {
-        Destroy(gameObject, 3);
-    }
-
     void Update()
     {
         transform.Translate(forwardDirection * bulletSpeed * Time.deltaTime);

@@ -36,23 +36,16 @@ public class GunsController : MonoBehaviour
     {
         gunsCount = gunsWrapper.childCount;
 
-        if (gunsCount <= 0)
-        {
-            return;
-        }
-
         gunObjects = new GameObject[gunsCount];
 
         for (int i = 0; i < gunsCount; i++)
         {
             Transform gunTransform = gunsWrapper.GetChild(i);
 
-            if (!gunTransform)
+            if (gunTransform)
             {
-                continue;
+                gunObjects[i] = gunTransform.gameObject;
             }
-
-            gunObjects[i] = gunTransform.gameObject;
         }
     }
 

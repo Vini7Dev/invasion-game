@@ -1069,7 +1069,7 @@ MonoBehaviour:
   timeToShot: 0.75
   timeToReload: 1.5
   bulletSpawn: {fileID: 945508168}
-  bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
+  bulletsContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
 --- !u!212 &548995571
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5671,7 +5671,7 @@ MonoBehaviour:
   timeToShot: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 749685536}
-  bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
+  bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
 --- !u!212 &1664616208
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6057,7 +6057,7 @@ MonoBehaviour:
   timeToShot: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 1676967083}
-  bulletObject: {fileID: 7331028293000108218, guid: 851585e4b92adba4490cc0a392d18d4d, type: 3}
+  bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
 --- !u!212 &1791839688
 SpriteRenderer:
   m_ObjectHideFlags: 0
