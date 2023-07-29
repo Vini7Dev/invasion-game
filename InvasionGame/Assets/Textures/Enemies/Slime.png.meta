@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 49f7e97db0092dc438d60707ab7cc25a
+guid: 5fd5d86b4c127ea4396887403bb8b783
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
+      name: Slime_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 844008a7d67c05540b504aacbc3d390c
-      internalID: 2067421238
+      spriteID: 56f553da1d85d8142b8ee453a36f0dcb
+      internalID: 287483168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_1
+      name: Slime_1
       rect:
         serializedVersion: 2
         x: 16
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6642cea39db0f014691a0a5b7fd9575e
-      internalID: 466528654
+      spriteID: a58ec512dfaabfb4285bfa29ae0e65bf
+      internalID: 1305013575
       vertices: []
       indices: 
       edges: []
@@ -167,7 +167,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 31c02c85b8509a04d9b3b86e1b52df35
+    spriteID: cfb21ac87361cd94db6b542c24372cfc
     internalID: 0
     vertices: []
     indices: 
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_0: 2067421238
-      Player_1: 466528654
+      Slime_0: 287483168
+      Slime_1: 1305013575
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

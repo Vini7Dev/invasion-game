@@ -23,6 +23,8 @@ public class EnemyGunsController : GunsController
 
     void Update()
     {
+        base.Update();
+
         if (enemyController.playerIsAlive)
         {
             FireGunAutoShot();

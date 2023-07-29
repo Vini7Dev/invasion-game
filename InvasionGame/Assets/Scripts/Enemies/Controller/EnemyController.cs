@@ -11,15 +11,18 @@ public enum PlayerDistanceAction
 
 public class EnemyController : MonoBehaviour
 {
+    public bool playerIsAlive;
     public float maxPlayerDistance = 10, minPlayerDistance = 5;
     public Transform playerTransform;
-    public bool playerIsAlive;
-
+    public GameObject enemySpriteObject;
+    public Animator enemyAnimator;
+    
     int life = 100;
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyAnimator = enemySpriteObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -48,6 +51,11 @@ public class EnemyController : MonoBehaviour
 
     public PlayerDistanceAction GetPlayerDistanceAction()
     {
+        if (!playerIsAlive)
+        {
+            return PlayerDistanceAction.stopped;
+        }
+
         if (GetPlayerDistance() <= maxPlayerDistance)
         {
             if (GetPlayerDistance() > minPlayerDistance)

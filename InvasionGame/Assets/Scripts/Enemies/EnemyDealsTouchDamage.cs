@@ -9,7 +9,7 @@ public class EnemyDealsTouchDamage : MonoBehaviour
     void OnTriggerStay(Collider other) {
         if (other.tag == "Player")
         {
-
+            //
         }
     }
 
