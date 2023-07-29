@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunsController : MonoBehaviour
 {
-    public GameObject gunsWrapper;
+    public Transform gunsWrapper;
 
     int gunsCount;
     GameObject[] gunObjects;
@@ -23,7 +23,14 @@ public class GunsController : MonoBehaviour
 
         for (int i = 0; i < gunsCount; i++)
         {
-            gunObjects[i] = gunsWrapper.transform.GetChild(i).gameObject;
+            Transform gunTransform = gunsWrapper.GetChild(i);
+
+            if (!gunTransform)
+            {
+                continue;
+            }
+
+            gunObjects[i] = gunTransform.gameObject;
         }
     }
 
@@ -34,6 +41,11 @@ public class GunsController : MonoBehaviour
             bool isCurrentGunIndex = i == newCurrentGunIndex;
 
             GameObject gunObject = gunObjects[i];
+
+            if (!gunObject)
+            {
+                continue;
+            }
 
             gunObject.SetActive(isCurrentGunIndex);
 
