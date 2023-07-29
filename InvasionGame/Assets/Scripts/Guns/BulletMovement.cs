@@ -5,8 +5,8 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     bool friendlyBullet = false;
-    int bulletSpeed = 45, minDamage = 10, maxDamage = 25;
-    Vector3 forwardDirection = Vector3.forward;
+    int bulletSpeed = 35, minDamage = 10, maxDamage = 25;
+    Vector3 forwardDirection = Vector3.right;
 
     void Start()
     {

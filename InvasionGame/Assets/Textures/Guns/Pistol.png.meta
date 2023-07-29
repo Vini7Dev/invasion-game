@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 49f7e97db0092dc438d60707ab7cc25a
+guid: 4e52a3ca52492354b83173a3fd2f5cd9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,43 +123,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PikIdle_0
+      name: Pistol_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
+        width: 18
         height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.75}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 300c605e5afda4d40bda093019e7504a
-      internalID: -425659341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PikIdle_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 820baad306e69be4797e1dc1f1a24f93
-      internalID: 526028236
+      spriteID: fb852ed162e1042449ed7d8b241b50f5
+      internalID: -1506636157
       vertices: []
       indices: 
       edges: []
@@ -167,7 +146,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 31c02c85b8509a04d9b3b86e1b52df35
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -175,8 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PikIdle_0: -425659341
-      PikIdle_1: 526028236
+      Pistol_0: -1506636157
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
