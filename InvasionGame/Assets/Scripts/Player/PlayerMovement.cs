@@ -5,17 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 12;
-    public Transform playerSpriteTransform;
+    public SpriteRenderer playerSprite;
     public Transform playerGunsWrapper;
 
-    float playerScale;
     CharacterController characterController;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
-        playerScale = playerSpriteTransform.localScale.x;
     }
 
     void Update()
@@ -28,11 +25,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputsValue = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        float xSpriteDirection = Mathf.Sign(inputsValue.x) * playerScale;
-
         characterController.Move(inputsValue * speed * Time.deltaTime);
 
-        playerSpriteTransform.localScale = new Vector3(xSpriteDirection, playerScale, playerScale);
+        float xSpriteDirection = Mathf.Sign(inputsValue.x);
+
+        playerSprite.flipX = xSpriteDirection < 0;
     }
 
     void PointGunsToMouse()

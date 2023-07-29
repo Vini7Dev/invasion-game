@@ -8,11 +8,28 @@ public class GunsController : MonoBehaviour
 
     int gunsCount;
     GameObject[] gunObjects;
+
     protected FireGun currentFireGun;
 
     void Start()
     {
         GetGunObjects();
+    }
+
+    protected void Update()
+    {
+        FlipGunSpriteByRotation();
+    }
+
+    void FlipGunSpriteByRotation()
+    {
+        if (!currentFireGun) {
+            return;
+        }
+
+        SpriteRenderer currentGunSprite = currentFireGun.gameObject.GetComponent<SpriteRenderer>();
+
+        currentGunSprite.flipY = gunsWrapper.rotation.y < 0;
     }
 
     protected void GetGunObjects()
