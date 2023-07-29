@@ -18,10 +18,11 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        CheckDistanceToMove(WalkToPlayer, MoveAwaiFromPlayer);
+        CheckDistanceToMove(Stopped, WalkToPlayer, MoveAwaiFromPlayer);
     }
 
     protected void CheckDistanceToMove(
+        MovementDelegate StoppedDelegate,
         MovementDelegate WalkToPlayerDelegate,
         MovementDelegate MoveAwaiFromPlayerDelegate
     ) {
@@ -29,10 +30,8 @@ public class EnemyMovement : MonoBehaviour
 
         if (playerDistanceAction == PlayerDistanceAction.stopped)
         {
-            return;
-        }
-
-        if (playerDistanceAction == PlayerDistanceAction.advancing)
+            StoppedDelegate();
+        } else if (playerDistanceAction == PlayerDistanceAction.advancing)
         {
             WalkToPlayerDelegate();
         }
@@ -41,6 +40,8 @@ public class EnemyMovement : MonoBehaviour
             MoveAwaiFromPlayerDelegate();
         }
     }
+
+    protected void Stopped() {}
 
     protected void WalkToPlayer()
     {

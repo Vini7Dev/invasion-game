@@ -5530,7 +5530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4255baf3c3095cf44bf3c0f67d37728c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerIsAlive: 0
+  playerIsAlive: 1
   maxPlayerDistance: 10
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
@@ -5569,7 +5569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062b589a39dc0d478053ab4dca80826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 12
+  walkSpeed: 8
   timeToJump: 0.2
 --- !u!1 &1633913347
 GameObject:

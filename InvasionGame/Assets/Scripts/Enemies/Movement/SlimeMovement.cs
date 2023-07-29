@@ -15,7 +15,12 @@ public class SlimeMovement : EnemyMovement
 
     void Update()
     {
-        CheckDistanceToMove(WalkToPlayer, MoveAwaiFromPlayer);
+        CheckDistanceToMove(Stopped, WalkToPlayer, MoveAwaiFromPlayer);
+    }
+    
+    void Stopped()
+    {
+        enemyController.enemyAnimator.SetFloat("Speed", 0);
     }
 
     void WalkToPlayer()
@@ -23,19 +28,17 @@ public class SlimeMovement : EnemyMovement
         if (jumpTimer < timeToJump && movementTime == 0)
         {
             jumpTimer += Time.deltaTime;
-
-            enemyController.enemyAnimator.SetFloat("Speed", 0);
         }
         else if (movementTime < timeToJump)
         {
             movementTime += Time.deltaTime;
-
-            enemyController.enemyAnimator.SetFloat("Speed", timeToJump * 4);
 
             characterController.Move(GetDirectionAndSpeedMovement(walkSpeed));
         } else {
             jumpTimer = 0;
             movementTime = 0;
         }
+
+        enemyController.enemyAnimator.SetFloat("Speed", timeToJump * 2);
     }
 }
