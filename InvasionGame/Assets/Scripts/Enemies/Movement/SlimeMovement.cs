@@ -8,11 +8,6 @@ public class SlimeMovement : EnemyMovement
 
     float jumpTimer, movementTime;
 
-    void Start()
-    {
-        base.Start();
-    }
-
     void Update()
     {
         CheckDistanceToMove(Stopped, WalkToPlayer, MoveAwaiFromPlayer);

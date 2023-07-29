@@ -7,6 +7,7 @@ public class EnemyGunsController : GunsController
     public int enemyGunIndex = 0;
 
     EnemyController enemyController;
+    Transform playerTransform;
 
     void Start()
     {
@@ -14,20 +15,25 @@ public class EnemyGunsController : GunsController
 
         GetGunObjects();
         SwitchCurrentGun(enemyGunIndex);
-
+        
         if (HasCurrentFireGun())
         {
             currentFireGun.UpdateAutoShot(true);
         }
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
         base.Update();
 
-        if (enemyController.playerIsAlive)
+        PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
+
+        if (playerDistanceAction != PlayerDistanceAction.stopped && HasCurrentFireGun())
         {
             FireGunAutoShot();
+            PointGunsToMouse();
         }
     }
 
@@ -38,13 +44,11 @@ public class EnemyGunsController : GunsController
 
     void FireGunAutoShot()
     {
-        PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
-
-        if (playerDistanceAction == PlayerDistanceAction.stopped || !HasCurrentFireGun())
-        {
-            return;
-        }
-
         currentFireGun.AutoShot();
+    }
+
+    void PointGunsToMouse()
+    {
+        gunsWrapper.transform.LookAt(playerTransform.position);
     }
 }
