@@ -5442,6 +5442,7 @@ GameObject:
   - component: {fileID: 1628780123}
   - component: {fileID: 1628780130}
   - component: {fileID: 1628780132}
+  - component: {fileID: 1628780133}
   m_Layer: 0
   m_Name: SlimeEnemy
   m_TagString: Enemy
@@ -5496,7 +5497,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -5571,6 +5572,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 8
   timeToJump: 0.2
+--- !u!114 &1628780133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628780121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eae9b78eceef6b47b0667d80e8e0c5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minDamage: 8
+  maxDamage: 15
 --- !u!1 &1633913347
 GameObject:
   m_ObjectHideFlags: 0
