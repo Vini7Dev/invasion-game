@@ -489,6 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 181612726}
   - component: {fileID: 181612727}
+  - component: {fileID: 181612728}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -563,6 +564,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &181612728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181612725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2703b381751fb647a0f17bc4f170de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerAttack: 0
+  minDamage: 3
+  maxDamage: 10
 --- !u!1 &208361320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,12 +1697,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83023dc02c00b404e8b27c7a46c9497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyBullet: 1
+  isPlayerAttack: 1
+  minDamage: 18
+  maxDamage: 25
   bullets: 7
   maxBullets: 7
-  minDamage: 10
-  maxDamage: 25
-  timeToShot: 0.75
+  attackTime: 0.75
   timeToReload: 1.5
   bulletSpawn: {fileID: 945508168}
   bulletsContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
@@ -2828,12 +2844,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83023dc02c00b404e8b27c7a46c9497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyBullet: 0
-  bullets: 7
-  maxBullets: 7
+  isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
-  timeToShot: 0.75
+  bullets: 7
+  maxBullets: 7
+  attackTime: 0.5
   timeToReload: 1.5
   bulletSpawn: {fileID: 826456957}
   bulletsContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
@@ -7521,12 +7537,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83023dc02c00b404e8b27c7a46c9497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyBullet: 1
-  bullets: 0
-  maxBullets: 10
+  isPlayerAttack: 1
   minDamage: 10
-  maxDamage: 25
-  timeToShot: 0.5
+  maxDamage: 18
+  bullets: 10
+  maxBullets: 10
+  attackTime: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 749685536}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
@@ -7907,12 +7923,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83023dc02c00b404e8b27c7a46c9497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyBullet: 0
-  bullets: 0
-  maxBullets: 10
+  isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
-  timeToShot: 0.5
+  bullets: 0
+  maxBullets: 10
+  attackTime: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 1676967083}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
@@ -8298,12 +8314,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83023dc02c00b404e8b27c7a46c9497f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyBullet: 0
-  bullets: 0
-  maxBullets: 10
+  isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
-  timeToShot: 0.5
+  bullets: 0
+  maxBullets: 10
+  attackTime: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 237751603}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}

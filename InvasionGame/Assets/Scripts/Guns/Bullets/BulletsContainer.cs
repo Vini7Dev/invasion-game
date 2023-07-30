@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletsContainer : MonoBehaviour
 {
-    public bool friendlyBullet;
+    public bool isPlayerAttack;
     public int minDamage, maxDamage;
 
     void Start()
@@ -13,7 +13,7 @@ public class BulletsContainer : MonoBehaviour
     }
 
     public void DefineBulletsProps(
-        bool friendlyBullet,
+        bool isPlayerAttack,
         int minDamage,
         int maxDamage
     )
@@ -27,7 +27,7 @@ public class BulletsContainer : MonoBehaviour
             if (bulletTransform)
             {
                 bulletTransform.GetComponent<BulletMovement>().DefineProps(
-                    friendlyBullet,
+                    isPlayerAttack,
                     minDamage,
                     maxDamage
                 );

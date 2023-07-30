@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    bool friendlyBullet = false;
+    bool isPlayerAttack = false;
     int bulletSpeed = 35, minDamage = 10, maxDamage = 25;
     Vector3 forwardDirection = Vector3.right;
 
@@ -14,12 +14,12 @@ public class BulletMovement : MonoBehaviour
     }
 
     public void DefineProps(
-        bool setFriendlyBullet,
+        bool setIsPlayerAttack,
         int setMinDamage,
         int setMaxDamage
     )
     {
-        friendlyBullet = setFriendlyBullet;
+        isPlayerAttack = setIsPlayerAttack;
         minDamage = setMinDamage;
         maxDamage = setMaxDamage;
     }
@@ -33,12 +33,12 @@ public class BulletMovement : MonoBehaviour
         {
             int damageToApply = Random.Range(minDamage, maxDamage + 1);
 
-            if (friendlyBullet && other.tag == "Enemy")
+            if (isPlayerAttack && other.tag == "Enemy")
             {
                 Destroy(gameObject);   
                 other.GetComponent<EnemyController>().HaveHitADamage(damageToApply);
             }
-            else if (!friendlyBullet && other.tag == "Player")
+            else if (!isPlayerAttack && other.tag == "Player")
             {
                 Destroy(gameObject);  
                 other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);

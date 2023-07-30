@@ -10,6 +10,7 @@ public class GunsController : MonoBehaviour
     GameObject[] gunObjects;
 
     protected FireGun currentFireGun;
+    protected WhiteGun currentWhiteGun;
 
     void Start()
     {
@@ -23,13 +24,11 @@ public class GunsController : MonoBehaviour
 
     void FlipGunSpriteByRotation()
     {
-        if (!currentFireGun) {
-            return;
+        if (currentFireGun || currentWhiteGun) {
+            SpriteRenderer currentGunSprite = currentFireGun.GetComponent<SpriteRenderer>();
+
+            currentGunSprite.flipY = gunsWrapper.rotation.y < 0;
         }
-
-        SpriteRenderer currentGunSprite = currentFireGun.GetComponent<SpriteRenderer>();
-
-        currentGunSprite.flipY = gunsWrapper.rotation.y < 0;
     }
 
     protected void GetGunObjects()
@@ -64,9 +63,18 @@ public class GunsController : MonoBehaviour
 
             gunObject.SetActive(isCurrentGunIndex);
 
-            if (isCurrentGunIndex)
+            if (!isCurrentGunIndex)
+            {
+                continue;
+            }
+
+            if (gunObject.GetComponent<Weapon>().IsFiregun())
             {
                 currentFireGun = gunObject.GetComponent<FireGun>();
+            }
+            else
+            {
+                currentWhiteGun = gunObject.GetComponent<WhiteGun>();
             }
         }
     }

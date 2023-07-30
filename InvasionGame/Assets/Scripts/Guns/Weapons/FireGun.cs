@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireGun : MonoBehaviour
+public class FireGun : Weapon
 {
-    public bool friendlyBullet = false;
-    public int bullets, maxBullets = 10, minDamage = 10, maxDamage = 25;
-    public float timeToShot = 0.5f, timeToReload = 1;
+    public int bullets, maxBullets = 10;
+    public float attackTime = 0.5f, timeToReload = 1;
     public Transform bulletSpawn;
     public GameObject bulletsContainerObject;
+
     bool autoShot = false;
     float shotTimer, reloadTimer;
 
     void Start()
     {
+        isFiregun = true;
         bullets = maxBullets;
     }
 
@@ -32,7 +33,7 @@ public class FireGun : MonoBehaviour
             }
             else
             {
-                if (shotTimer >= timeToShot)
+                if (shotTimer >= attackTime)
                 {
                     if (Input.GetButton("Fire1"))
                     {
@@ -43,7 +44,7 @@ public class FireGun : MonoBehaviour
                         );
 
                         bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
-                            friendlyBullet,
+                            isPlayerAttack,
                             minDamage,
                             maxDamage
                         );
@@ -68,7 +69,7 @@ public class FireGun : MonoBehaviour
         }
         else
         {
-            if (shotTimer >= timeToShot)
+            if (shotTimer >= attackTime)
             {
                 GameObject bullet = Instantiate(
                     bulletsContainerObject,
@@ -77,7 +78,7 @@ public class FireGun : MonoBehaviour
                 );
 
                 bullet.GetComponent<BulletsContainer>().DefineBulletsProps(
-                    friendlyBullet,
+                    isPlayerAttack,
                     minDamage,
                     maxDamage
                 );

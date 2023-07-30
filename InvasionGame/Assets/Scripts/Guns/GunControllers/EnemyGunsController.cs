@@ -16,7 +16,7 @@ public class EnemyGunsController : GunsController
         GetGunObjects();
         SwitchCurrentGun(enemyGunIndex);
         
-        if (HasCurrentFireGun())
+        if (currentFireGun)
         {
             currentFireGun.UpdateAutoShot(true);
         }
@@ -30,21 +30,19 @@ public class EnemyGunsController : GunsController
 
         PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
 
-        if (playerDistanceAction != PlayerDistanceAction.stopped && HasCurrentFireGun())
+        if (playerDistanceAction != PlayerDistanceAction.stopped)
         {
-            FireGunAutoShot();
             PointGunsToMouse();
+            FireGunAutoShot();
         }
-    }
-
-    bool HasCurrentFireGun()
-    {
-        return !!currentFireGun;
     }
 
     void FireGunAutoShot()
     {
-        currentFireGun.AutoShot();
+        if (currentFireGun)
+        {
+            currentFireGun.AutoShot();
+        }
     }
 
     void PointGunsToMouse()
