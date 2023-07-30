@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public int floorNumber;
+    public bool hasFloorKey;
+
     public Color floorColor;
     public Color wallColor;
-
     public Material floorMaterial;
     public Material wallMaterial;
 
@@ -21,6 +23,15 @@ public class LevelController : MonoBehaviour
         totalOfFloorEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
         floorKey = GameObject.FindGameObjectWithTag("FloorKey");
         floorKey.SetActive(false);
+
+        BuildFloor();
+    }
+
+    void BuildFloor()
+    {
+        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        Transform playerSpawnTransform = GameObject.Find("PlayerSpawn").transform;
+        playerTransform.position = playerSpawnTransform.position;
     }
 
     public void AddOneOfKilledEnemy()
