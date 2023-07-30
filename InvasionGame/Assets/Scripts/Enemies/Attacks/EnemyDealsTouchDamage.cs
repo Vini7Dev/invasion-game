@@ -4,36 +4,27 @@ using UnityEngine;
 
 public class EnemyDealsTouchDamage : MonoBehaviour
 {
-
     public int minDamage, maxDamage;
     
-    float damageDalay = 0.5f, damageDelayTimer;
+    float damageDalay = 0.5f;
+    bool causedDamage;
 
-    void Start()
+    IEnumerator DamageDelay()
     {
-        damageDelayTimer = damageDalay;
+        causedDamage = true;
+        yield return new WaitForSeconds(damageDalay);  
+        causedDamage = false;
     }
 
     void OnTriggerStay(Collider other) {
-        if (other.tag == "Player")
+        if (other.tag != "Player" || causedDamage)
         {
-            if (damageDelayTimer < damageDalay)
-            {
-                damageDelayTimer += Time.deltaTime;
-            }
-            else
-            {
-                damageDelayTimer = 0;
-                int damageToApply = Random.Range(minDamage, maxDamage + 1);
-                other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
-            }
+            return;
         }
-    }
 
-    void OnTriggerExit(Collider other) {
-        if (other.tag == "Player")
-        {
-            damageDelayTimer = damageDalay;
-        }
+        StartCoroutine(DamageDelay());
+
+        int damageToApply = Random.Range(minDamage, maxDamage + 1);
+        other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
     }
 }
