@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 1104101891}
-  enemyGunIndex: 0
+  gunName: Pistol
 --- !u!114 &359734862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,12 +1297,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 75
   maxPlayerDistance: 15
   minPlayerDistance: 7
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1557243657}
   enemyAnimator: {fileID: 1557243658}
-  life: 75
 --- !u!54 &359734864
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4635,12 +4635,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 30
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1984934095}
   enemyAnimator: {fileID: 1984934096}
-  life: 30
 --- !u!54 &992392820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4802,7 +4802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 1967244248}
-  enemyGunIndex: 0
+  gunName: Shotgun
 --- !u!114 &1008647413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4829,12 +4829,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 75
   maxPlayerDistance: 15
   minPlayerDistance: 7
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1014042792}
   enemyAnimator: {fileID: 1014042793}
-  life: 75
 --- !u!54 &1008647415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5050,7 +5050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunIndex: 1
+  gunName: Pistol
 --- !u!65 &1012483782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5606,12 +5606,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 30
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 208361320}
   enemyAnimator: {fileID: 208361321}
-  life: 30
 --- !u!54 &1359221696
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6595,7 +6595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunIndex: 2
+  gunName: Shotgun
 --- !u!65 &1567382198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7147,12 +7147,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 30
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 227330237}
   enemyAnimator: {fileID: 227330239}
-  life: 30
 --- !u!65 &1628780131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8621,12 +8621,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 30
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 60196633}
   enemyAnimator: {fileID: 60196634}
-  life: 30
 --- !u!54 &1992177055
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8998,12 +8998,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
+  life: 75
   maxPlayerDistance: 15
   minPlayerDistance: 7
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1500853090}
   enemyAnimator: {fileID: 1500853091}
-  life: 75
 --- !u!54 &2046482521
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9121,7 +9121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 948817598}
-  enemyGunIndex: 0
+  gunName: Pistol
 --- !u!1 &2092187598
 GameObject:
   m_ObjectHideFlags: 0

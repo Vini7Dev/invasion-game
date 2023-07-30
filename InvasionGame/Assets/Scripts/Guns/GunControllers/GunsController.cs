@@ -48,22 +48,22 @@ public class GunsController : MonoBehaviour
         }
     }
 
-    public void SwitchCurrentGun(int newCurrentGunIndex)
+    public void SwitchCurrentGun(string gunName)
     {
         for (int i = 0; i < gunsCount; i++)
         {
-            bool isCurrentGunIndex = i == newCurrentGunIndex;
-
             GameObject gunObject = gunObjects[i];
+
+            bool isGunToSetAsCurrent = gunObject.name == gunName;
 
             if (!gunObject)
             {
                 continue;
             }
 
-            gunObject.SetActive(isCurrentGunIndex);
+            gunObject.SetActive(isGunToSetAsCurrent);
 
-            if (!isCurrentGunIndex)
+            if (!isGunToSetAsCurrent)
             {
                 continue;
             }
