@@ -12,12 +12,13 @@ public enum PlayerDistanceAction
 public class EnemyController : MonoBehaviour
 {
     public bool playerIsAlive;
+    public int life = 100;
     public float maxPlayerDistance = 10, minPlayerDistance = 5;
     public Transform playerTransform;
     public GameObject enemySpriteObject;
     public Animator enemyAnimator;
-    
-    public int life = 100;
+
+    float damageTimer, damageTime = 0.2f;
 
     void Start()
     {
@@ -28,6 +29,15 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         VerifyIfPlayerIsAlive();
+        ReloadDamageTimer();
+    }
+
+    void ReloadDamageTimer()
+    {
+        if (damageTimer <= damageTime)
+        {
+            damageTimer += Time.deltaTime;
+        }
     }
 
     void VerifyIfPlayerIsAlive()
@@ -39,6 +49,12 @@ public class EnemyController : MonoBehaviour
 
     public void HaveHitADamage(int damageReceived)
     {
+        if (damageTimer < damageTime)
+        {
+            return;
+        }
+
+        damageTimer = 0;
         life -= damageReceived;
 
         if (life > 0)

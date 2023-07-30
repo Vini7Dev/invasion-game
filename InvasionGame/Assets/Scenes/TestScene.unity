@@ -489,9 +489,11 @@ GameObject:
   m_Component:
   - component: {fileID: 181612726}
   - component: {fileID: 181612727}
+  - component: {fileID: 181612730}
+  - component: {fileID: 181612729}
   - component: {fileID: 181612728}
   m_Layer: 0
-  m_Name: Knife
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -506,7 +508,7 @@ Transform:
   m_GameObject: {fileID: 181612725}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 1.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -576,9 +578,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2703b381751fb647a0f17bc4f170de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerAttack: 0
+  isPlayerAttack: 1
   minDamage: 3
   maxDamage: 10
+  attackTime: 0.5
+--- !u!65 &181612729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181612725}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16, y: 0.35, z: 0.1}
+  m_Center: {x: 0, y: 0.35, z: -0.05}
+--- !u!95 &181612730
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181612725}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e28c0a56f830415439189f3897d6d52e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &208361320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,9 +1745,9 @@ MonoBehaviour:
   isPlayerAttack: 1
   minDamage: 18
   maxDamage: 25
+  attackTime: 0.75
   bullets: 7
   maxBullets: 7
-  attackTime: 0.75
   timeToReload: 1.5
   bulletSpawn: {fileID: 945508168}
   bulletsContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
@@ -2847,9 +2892,9 @@ MonoBehaviour:
   isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
+  attackTime: 0.5
   bullets: 7
   maxBullets: 7
-  attackTime: 0.5
   timeToReload: 1.5
   bulletSpawn: {fileID: 826456957}
   bulletsContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
@@ -5005,7 +5050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunIndex: 0
+  gunIndex: 1
 --- !u!65 &1012483782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6550,7 +6595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunIndex: 1
+  gunIndex: 2
 --- !u!65 &1567382198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7540,9 +7585,9 @@ MonoBehaviour:
   isPlayerAttack: 1
   minDamage: 10
   maxDamage: 18
+  attackTime: 0.5
   bullets: 10
   maxBullets: 10
-  attackTime: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 749685536}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
@@ -7926,9 +7971,9 @@ MonoBehaviour:
   isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
+  attackTime: 0.5
   bullets: 0
   maxBullets: 10
-  attackTime: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 1676967083}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
@@ -8317,9 +8362,9 @@ MonoBehaviour:
   isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
+  attackTime: 0.5
   bullets: 0
   maxBullets: 10
-  attackTime: 0.5
   timeToReload: 1
   bulletSpawn: {fileID: 237751603}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}

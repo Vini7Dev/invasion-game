@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireGun : Weapon
 {
     public int bullets, maxBullets = 10;
-    public float attackTime = 0.5f, timeToReload = 1;
+    public float timeToReload = 1;
     public Transform bulletSpawn;
     public GameObject bulletsContainerObject;
 
@@ -14,6 +14,8 @@ public class FireGun : Weapon
 
     void Start()
     {
+        base.Start();
+
         isFiregun = true;
         bullets = maxBullets;
     }
@@ -25,38 +27,40 @@ public class FireGun : Weapon
 
     public void Shot()
     {
-        if(!autoShot)
+        if(autoShot)
         {
-            if (bullets <= 0)
+            return;
+        }
+
+        if (bullets <= 0)
+        {
+            Reload();
+        }
+        else
+        {
+            if (shotTimer >= attackTime)
             {
-                Reload();
+                if (Input.GetButton("Fire1"))
+                {
+                    GameObject bulletsContainer = Instantiate(
+                        bulletsContainerObject,
+                        bulletSpawn.position,
+                        transform.rotation
+                    );
+
+                    bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
+                        isPlayerAttack,
+                        minDamage,
+                        maxDamage
+                    );
+
+                    bullets -= 1;
+                    shotTimer = 0;
+                }
             }
             else
             {
-                if (shotTimer >= attackTime)
-                {
-                    if (Input.GetButton("Fire1"))
-                    {
-                        GameObject bulletsContainer = Instantiate(
-                            bulletsContainerObject,
-                            bulletSpawn.position,
-                            transform.rotation
-                        );
-
-                        bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
-                            isPlayerAttack,
-                            minDamage,
-                            maxDamage
-                        );
-
-                        bullets -= 1;
-                        shotTimer = 0;
-                    }
-                }
-                else
-                {
-                    shotTimer += Time.deltaTime;
-                }
+                shotTimer += Time.deltaTime;
             }
         }
     }
