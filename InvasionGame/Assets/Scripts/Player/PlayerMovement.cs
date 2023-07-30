@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 12;
+    public float walkSpeed = 12;
     public SpriteRenderer playerSprite;
     public Transform playerGunsWrapper;
 
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputsValue = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        characterController.Move(inputsValue * speed * Time.deltaTime);
+        characterController.Move(inputsValue * walkSpeed * Time.deltaTime);
 
         float xSpriteDirection = Mathf.Sign(inputsValue.x);
 
