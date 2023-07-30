@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
-  life: 30
+  life: 15
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 0}

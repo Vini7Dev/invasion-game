@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorKey : MonoBehaviour
+public class EndDorController : MonoBehaviour
 {
-    float rotationSpeed = 250;
     LevelController levelController;
 
     void Start()
@@ -13,18 +12,15 @@ public class FloorKey : MonoBehaviour
         levelController = levelControllerObject.GetComponent<LevelController>();
     }
 
-    void Update()
-    {
-        transform.Rotate(Vector3.left, Time.deltaTime * rotationSpeed);
-    }
-
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag != "Player")
+        if (other.tag != "Player")
         {
             return;
         }
 
-        levelController.hasFloorKey = true;
-        GameObject.FindGameObjectWithTag("FloorKey").SetActive(false);
+        if (levelController.hasFloorKey)
+        {
+            levelController.FinishFloor();
+        }
     }
 }

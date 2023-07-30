@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TransitionController : MonoBehaviour
 {
-    public bool close;
+    public bool open;
 
     float transitionSpeed = 10;
     Color transitionColor;
@@ -19,13 +19,13 @@ public class TransitionController : MonoBehaviour
 
     void Update()
     {
-        if (close)
+        if (open)
         {
-            CloseTransition();
+            OpenTransition();
         }
         else
         {
-            OpenTransition();
+            CloseTransition();
         }
     }
 

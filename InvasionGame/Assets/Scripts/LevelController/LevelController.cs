@@ -7,6 +7,8 @@ public class LevelController : MonoBehaviour
     public int floorNumber;
     public bool hasFloorKey;
 
+    public TransitionController transitionController;
+
     public Color floorColor;
     public Color wallColor;
     public Material floorMaterial;
@@ -32,6 +34,13 @@ public class LevelController : MonoBehaviour
         Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         Transform playerSpawnTransform = GameObject.Find("PlayerSpawn").transform;
         playerTransform.position = playerSpawnTransform.position;
+        
+        transitionController.open = true;
+    }
+
+    public void FinishFloor()
+    {
+        transitionController.open = false;
     }
 
     public void AddOneOfKilledEnemy()
