@@ -9,13 +9,6 @@ public class EnemyDealsTouchDamage : MonoBehaviour
     float damageDalay = 0.5f;
     bool causedDamage;
 
-    IEnumerator DamageDelay()
-    {
-        causedDamage = true;
-        yield return new WaitForSeconds(damageDalay);  
-        causedDamage = false;
-    }
-
     void OnTriggerStay(Collider other) {
         if (other.tag != "Player" || causedDamage)
         {
@@ -26,5 +19,12 @@ public class EnemyDealsTouchDamage : MonoBehaviour
 
         int damageToApply = Random.Range(minDamage, maxDamage + 1);
         other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
+    }
+
+    IEnumerator DamageDelay()
+    {
+        causedDamage = true;
+        yield return new WaitForSeconds(damageDalay);  
+        causedDamage = false;
     }
 }

@@ -29,17 +29,6 @@ public class PlayerController : MonoBehaviour
         liveBarSlider.value = life;
     }
 
-    IEnumerator DamageTimer()
-    {
-        onDamage = true;
-        playerSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
-
-        yield return new WaitForSeconds(damageTime);
-
-        playerSprite.color = new Color(1f, 1f, 1f, 1f);
-        onDamage = false;
-    }
-
     public void HaveHitADamage(int damageReceived)
     {
         if (onDamage)
@@ -57,5 +46,16 @@ public class PlayerController : MonoBehaviour
     public bool IsAlive()
     {
         return life > 0;
+    }
+
+    IEnumerator DamageTimer()
+    {
+        onDamage = true;
+        playerSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+
+        yield return new WaitForSeconds(damageTime);
+
+        playerSprite.color = new Color(1f, 1f, 1f, 1f);
+        onDamage = false;
     }
 }
