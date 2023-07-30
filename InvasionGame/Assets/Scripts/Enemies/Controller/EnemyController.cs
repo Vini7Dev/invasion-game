@@ -19,11 +19,14 @@ public class EnemyController : MonoBehaviour
     public Animator enemyAnimator;
 
     float damageTimer, damageTime = 0.2f;
+    SpriteRenderer enemySprite;
 
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         enemyAnimator = enemySpriteObject.GetComponent<Animator>();
+        enemySprite = enemySpriteObject.GetComponent<SpriteRenderer>();
+        damageTimer = damageTime;
     }
 
     void Update()
@@ -36,7 +39,12 @@ public class EnemyController : MonoBehaviour
     {
         if (damageTimer <= damageTime)
         {
+            enemySprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
             damageTimer += Time.deltaTime;
+        }
+        else
+        {
+            enemySprite.color = new Color(1f, 1f, 1f, 1f);
         }
     }
 

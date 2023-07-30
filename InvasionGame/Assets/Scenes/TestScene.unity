@@ -3519,6 +3519,7 @@ MonoBehaviour:
   life: 100
   liveBarSlider: {fileID: 1634720720}
   liveBarSliderFillArea: {fileID: 1006575327}
+  playerSpriteObject: {fileID: 634178387}
 --- !u!114 &834912068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7148,7 +7149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
-  life: 30
+  life: 1000
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
@@ -8985,7 +8986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2046482520
 MonoBehaviour:
   m_ObjectHideFlags: 0
