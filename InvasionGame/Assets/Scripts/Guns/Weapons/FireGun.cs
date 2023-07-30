@@ -12,11 +12,9 @@ public class FireGun : Weapon
     bool autoShot = false;
     float shotTimer, reloadTimer;
 
-    void Start()
+    void Awake()
     {
-        base.Start();
-
-        isFiregun = true;
+        base.isFiregun = true;
         bullets = maxBullets;
     }
 

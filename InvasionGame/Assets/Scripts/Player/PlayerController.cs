@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public int life = 100;
     public Slider liveBarSlider;
     public GameObject liveBarSliderFillArea;
-
-    int life = 100;
 
     void Update()
     {

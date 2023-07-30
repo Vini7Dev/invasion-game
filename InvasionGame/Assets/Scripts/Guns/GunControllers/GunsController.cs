@@ -17,20 +17,6 @@ public class GunsController : MonoBehaviour
         GetGunObjects();
     }
 
-    protected void Update()
-    {
-        FlipGunSpriteByRotation();
-    }
-
-    void FlipGunSpriteByRotation()
-    {
-        if (currentFireGun || currentWhiteGun) {
-            SpriteRenderer currentGunSprite = currentFireGun.GetComponent<SpriteRenderer>();
-
-            currentGunSprite.flipY = gunsWrapper.rotation.y < 0;
-        }
-    }
-
     protected void GetGunObjects()
     {
         gunsCount = gunsWrapper.childCount;

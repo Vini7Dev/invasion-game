@@ -57,16 +57,12 @@ public class EnemyController : MonoBehaviour
         damageTimer = 0;
         life -= damageReceived;
 
-        if (life > 0)
+        if (life <= 0)
         {
-            return;
+            GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+            gameController.GetComponent<LevelController>().AddOneOfKilledEnemy();
+            gameObject.SetActive(false);
         }
-
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        
-        gameController.GetComponent<LevelController>().AddOneOfKilledEnemy();
-
-        gameObject.SetActive(false);
     }
 
     public float GetPlayerDistance()

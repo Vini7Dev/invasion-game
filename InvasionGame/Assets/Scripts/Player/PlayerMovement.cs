@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Transform playerGunsWrapper;
 
+    float repulsionTime = 0.1f;
     CharacterController characterController;
 
     void Start()

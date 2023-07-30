@@ -24,12 +24,8 @@ public class EnemyDealsTouchDamage : MonoBehaviour
             else
             {
                 damageDelayTimer = 0;
-
                 int damageToApply = Random.Range(minDamage, maxDamage + 1);
-                
-                PlayerController playerController = other.GetComponent<PlayerController>();
-
-                playerController.HaveHitADamage(damageToApply);
+                other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
             }
         }
     }

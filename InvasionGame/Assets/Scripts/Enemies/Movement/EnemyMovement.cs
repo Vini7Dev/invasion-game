@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float walkSpeed = 5;
+    public float defaultWalkSpeed = 5;
 
+    float repulsionTime = 0.2f;
+
+    protected float walkSpeed;
     protected EnemyController enemyController;
     protected CharacterController characterController;
     protected delegate void MovementDelegate();
@@ -14,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyController = GetComponent<EnemyController>();
         characterController = GetComponent<CharacterController>();
+        walkSpeed = defaultWalkSpeed;
     }
 
     void Update()
@@ -68,5 +72,22 @@ public class EnemyMovement : MonoBehaviour
         moveDirection.Normalize();
 
         return moveDirection * Time.deltaTime * speed;
+    }
+
+    public void ApplyRepulsion()
+    {
+        if (enemyController.life > 0)
+        {
+            StartCoroutine(ApplyRepulsionCoroutine());
+        }
+    }
+
+    IEnumerator ApplyRepulsionCoroutine()
+    {
+        walkSpeed = 0;
+
+        yield return new WaitForSeconds(repulsionTime);
+
+        walkSpeed = defaultWalkSpeed;
     }
 }

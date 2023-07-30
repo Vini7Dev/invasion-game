@@ -26,8 +26,6 @@ public class EnemyGunsController : GunsController
 
     void Update()
     {
-        base.Update();
-
         PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
 
         if (playerDistanceAction != PlayerDistanceAction.stopped)

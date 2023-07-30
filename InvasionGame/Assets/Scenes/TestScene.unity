@@ -1283,7 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a66fb694afa63d449c4b84bad7fae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  defaultWalkSpeed: 5
 --- !u!114 &359734863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3448,7 +3448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195f09a66576e284c919e0a36c0abb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  walkSpeed: 12
   playerSprite: {fileID: 634178389}
   playerGunsWrapper: {fileID: 959533490}
 --- !u!54 &834912064
@@ -3516,6 +3516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6ec8cb22094964f830a1352482f005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 100
   liveBarSlider: {fileID: 1634720720}
   liveBarSliderFillArea: {fileID: 1006575327}
 --- !u!114 &834912068
@@ -4620,7 +4621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062b589a39dc0d478053ab4dca80826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  defaultWalkSpeed: 5
   timeToJump: 0.2
 --- !u!114 &992392819
 MonoBehaviour:
@@ -4815,7 +4816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a66fb694afa63d449c4b84bad7fae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  defaultWalkSpeed: 5
 --- !u!114 &1008647414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5564,7 +5565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1359221693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5591,7 +5592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062b589a39dc0d478053ab4dca80826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  defaultWalkSpeed: 5
   timeToJump: 0.2
 --- !u!114 &1359221695
 MonoBehaviour:
@@ -5606,7 +5607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
-  life: 800
+  life: 30
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
@@ -7064,7 +7065,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &1628780123
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7186,7 +7187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062b589a39dc0d478053ab4dca80826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  defaultWalkSpeed: 5
   timeToJump: 0.2
 --- !u!114 &1628780133
 MonoBehaviour:
@@ -8606,7 +8607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c062b589a39dc0d478053ab4dca80826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
+  defaultWalkSpeed: 5
   timeToJump: 0.2
 --- !u!114 &1992177054
 MonoBehaviour:
@@ -8984,7 +8985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2046482520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9107,7 +9108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a66fb694afa63d449c4b84bad7fae04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  defaultWalkSpeed: 5
 --- !u!114 &2046482526
 MonoBehaviour:
   m_ObjectHideFlags: 0

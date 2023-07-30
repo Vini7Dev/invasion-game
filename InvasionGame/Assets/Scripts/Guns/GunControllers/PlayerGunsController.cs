@@ -9,8 +9,6 @@ public class PlayerGunsController : GunsController
 
     void Update()
     {
-        base.Update();
-
         UpdateBulletsInfo();
     }
 
