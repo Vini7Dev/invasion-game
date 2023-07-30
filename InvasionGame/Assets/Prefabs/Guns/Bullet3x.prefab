@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7dc2aae1eefa14da30a58cd77fa59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTextParticleObject: {fileID: 4367413939702150335, guid: 4cbd9e04abaeba8419d72e73295d752f, type: 3}
 --- !u!1 &4809336329610100370
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7dc2aae1eefa14da30a58cd77fa59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTextParticleObject: {fileID: 4367413939702150335, guid: 4cbd9e04abaeba8419d72e73295d752f, type: 3}
 --- !u!1 &8488438428578210918
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,3 +490,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7dc2aae1eefa14da30a58cd77fa59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageTextParticleObject: {fileID: 4367413939702150335, guid: 4cbd9e04abaeba8419d72e73295d752f, type: 3}
