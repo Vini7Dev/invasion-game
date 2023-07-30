@@ -18,7 +18,8 @@ public class EnemyController : MonoBehaviour
     public GameObject enemySpriteObject;
     public Animator enemyAnimator;
 
-    float damageTimer, damageTime = 0.2f;
+    float damageTime = 0.2f;
+    bool onDamage;
     SpriteRenderer enemySprite;
 
     void Start()
@@ -26,26 +27,11 @@ public class EnemyController : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         enemyAnimator = enemySpriteObject.GetComponent<Animator>();
         enemySprite = enemySpriteObject.GetComponent<SpriteRenderer>();
-        damageTimer = damageTime;
     }
 
     void Update()
     {
         VerifyIfPlayerIsAlive();
-        ReloadDamageTimer();
-    }
-
-    void ReloadDamageTimer()
-    {
-        if (damageTimer <= damageTime)
-        {
-            enemySprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
-            damageTimer += Time.deltaTime;
-        }
-        else
-        {
-            enemySprite.color = new Color(1f, 1f, 1f, 1f);
-        }
     }
 
     void VerifyIfPlayerIsAlive()
@@ -55,15 +41,25 @@ public class EnemyController : MonoBehaviour
             .IsAlive();
     }
 
+    IEnumerator DamageTimer()
+    {
+        onDamage = true;
+        enemySprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+
+        yield return new WaitForSeconds(damageTime);
+
+        enemySprite.color = new Color(1f, 1f, 1f, 1f);
+        onDamage = false;
+    }
+
     public void HaveHitADamage(int damageReceived)
     {
-        if (damageTimer < damageTime)
+        if (onDamage)
         {
             return;
         }
-
-        damageTimer = 0;
         life -= damageReceived;
+        StartCoroutine(DamageTimer());
 
         if (life <= 0)
         {

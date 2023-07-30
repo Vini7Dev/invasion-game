@@ -10,19 +10,18 @@ public class PlayerController : MonoBehaviour
     public GameObject liveBarSliderFillArea;
     public GameObject playerSpriteObject;
 
-    float damageTimer, damageTime = 0.2f;
+    float damageTime = 0.2f;
+    bool onDamage;
     SpriteRenderer playerSprite;
 
     void Start()
     {
         playerSprite = playerSpriteObject.GetComponent<SpriteRenderer>();
-        damageTimer = damageTime;
     }
 
     void Update()
     {
         UpdateLifeBar();
-        ReloadDamageTimer();
     }
 
     void UpdateLifeBar()
@@ -30,28 +29,26 @@ public class PlayerController : MonoBehaviour
         liveBarSlider.value = life;
     }
 
-    void ReloadDamageTimer()
+    IEnumerator DamageTimer()
     {
-        if (damageTimer <= damageTime)
-        {
-            playerSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
-            damageTimer += Time.deltaTime;
-        }
-        else
-        {
-            playerSprite.color = new Color(1f, 1f, 1f, 1f);
-        }
+        onDamage = true;
+        playerSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+
+        yield return new WaitForSeconds(damageTime);
+
+        playerSprite.color = new Color(1f, 1f, 1f, 1f);
+        onDamage = false;
     }
 
     public void HaveHitADamage(int damageReceived)
     {
-        if (damageTimer < damageTime)
+        if (onDamage)
         {
             return;
         }
-        
-        damageTimer = 0;
+
         life -= damageReceived;
+        StartCoroutine(DamageTimer());
 
         gameObject.SetActive(life > 0);
         liveBarSliderFillArea.SetActive(life > 0);
