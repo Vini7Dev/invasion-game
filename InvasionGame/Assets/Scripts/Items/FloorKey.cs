@@ -10,4 +10,13 @@ public class FloorKey : MonoBehaviour
     {
         transform.Rotate(Vector3.left, Time.deltaTime * rotationSpeed);
     }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag != "Player")
+        {
+            return;
+        }
+
+        GameObject.FindGameObjectWithTag("FloorKey").SetActive(false);
+    }
 }

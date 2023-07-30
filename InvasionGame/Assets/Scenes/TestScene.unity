@@ -1157,6 +1157,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1557243657}
   enemyAnimator: {fileID: 1557243658}
+  life: 75
 --- !u!54 &359734864
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1274,8 +1275,8 @@ Transform:
   m_GameObject: {fileID: 364258418}
   serializedVersion: 2
   m_LocalRotation: {x: -0.50008726, y: 0.50008726, z: 0.49991274, w: 0.49991274}
-  m_LocalPosition: {x: -0.070000015, y: 0.00001162688, z: 0.063333325}
-  m_LocalScale: {x: 3.3333337, y: 3.333334, z: 3.3333337}
+  m_LocalPosition: {x: 0, y: 0.000022100307, z: 0.063333325}
+  m_LocalScale: {x: 3.3333342, y: 3.333334, z: 3.3333342}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1934132686}
@@ -3060,6 +3061,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 814632509}
+  - component: {fileID: 814632510}
+  - component: {fileID: 814632511}
   - component: {fileID: 814632508}
   m_Layer: 0
   m_Name: FloorKeyRotate
@@ -3089,13 +3092,61 @@ Transform:
   m_GameObject: {fileID: 814632507}
   serializedVersion: 2
   m_LocalRotation: {x: 0.49991274, y: 0.50008726, z: 0.49991274, w: 0.50008726}
-  m_LocalPosition: {x: -0.070000015, y: 0, z: 0.029999997}
+  m_LocalPosition: {x: 0, y: 0.000010479387, z: 0.029999997}
   m_LocalScale: {x: 0.033333335, y: 0.033333335, z: 0.033333335}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1011630124}
   m_Father: {fileID: 1934132686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &814632510
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814632507}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 110
+  m_CollisionDetection: 0
+--- !u!65 &814632511
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814632507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 1.3}
+  m_Center: {x: 0, y: 0, z: -0.1}
 --- !u!1 &817984830
 GameObject:
   m_ObjectHideFlags: 0
@@ -4443,6 +4494,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1984934095}
   enemyAnimator: {fileID: 1984934096}
+  life: 30
 --- !u!54 &992392820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4636,6 +4688,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1014042792}
   enemyAnimator: {fileID: 1014042793}
+  life: 75
 --- !u!54 &1008647415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4736,6 +4789,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 814632509}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100.00003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -4753,11 +4818,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.18301274
+      value: -0.18301272
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.18301274
+      value: 0.18301272
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e389183950e506048b359674118849f3, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5400,6 +5465,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 208361320}
   enemyAnimator: {fileID: 208361321}
+  life: 30
 --- !u!54 &1359221696
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6940,6 +7006,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 227330237}
   enemyAnimator: {fileID: 227330239}
+  life: 30
 --- !u!65 &1628780131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8091,13 +8158,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934132685}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.1, y: -0.000010481374, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 364258419}
   - {fileID: 814632509}
+  - {fileID: 364258419}
   m_Father: {fileID: 918880659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963980891
@@ -8413,6 +8480,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 60196633}
   enemyAnimator: {fileID: 60196634}
+  life: 30
 --- !u!54 &1992177055
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8770,7 +8838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2046482520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8789,6 +8857,7 @@ MonoBehaviour:
   playerTransform: {fileID: 834912062}
   enemySpriteObject: {fileID: 1500853090}
   enemyAnimator: {fileID: 1500853091}
+  life: 75
 --- !u!54 &2046482521
 Rigidbody:
   m_ObjectHideFlags: 0

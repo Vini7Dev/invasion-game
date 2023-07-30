@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
     public GameObject enemySpriteObject;
     public Animator enemyAnimator;
     
-    int life = 100;
+    public int life = 100;
 
     void Start()
     {
