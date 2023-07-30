@@ -7,6 +7,7 @@ public class SlimeMovement : EnemyMovement
     public float timeToJump = 0.1f;
 
     float jumpTimer, movementTime;
+    bool jump, stopped = true;
 
     void Update()
     {
@@ -20,20 +21,34 @@ public class SlimeMovement : EnemyMovement
 
     void WalkToPlayer()
     {
-        if (jumpTimer < timeToJump && movementTime == 0)
+        if (!jump && stopped)
         {
-            jumpTimer += Time.deltaTime;
+            StartCoroutine(JumpDelay());
         }
-        else if (movementTime < timeToJump)
+        else if (jump && !stopped)
         {
-            movementTime += Time.deltaTime;
-
             characterController.Move(GetDirectionAndSpeedMovement(walkSpeed));
-        } else {
-            jumpTimer = 0;
-            movementTime = 0;
+            StartCoroutine(StoppedDelay());
         }
 
         enemyController.enemyAnimator.SetFloat("Speed", timeToJump * 2);
+    }
+
+    IEnumerator JumpDelay()
+    {
+        jump = false;
+        stopped = true;
+        yield return new WaitForSeconds(timeToJump);
+        jump = true;
+        stopped = false;
+    }
+
+    IEnumerator StoppedDelay()
+    {
+        stopped = false;
+        jump = true;
+        yield return new WaitForSeconds(timeToJump);
+        stopped = true;
+        jump = false;
     }
 }
