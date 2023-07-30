@@ -4,47 +4,35 @@ using UnityEngine;
 
 public class WhiteGun : Weapon
 {
-	float attackTimer, attackAnimationTimer, attackAnimationTime = 0.1f;
+    bool inDelayAttack, inAnimation;
+	float attackAnimationTime = 0.1f;
 
     void Update()
     {
         Attack();
-        AttackAnimationTimer();
     }
 
     void Attack()
     {
-        if (attackTimer >= attackTime)
+        if (inDelayAttack)
         {
-            if (Input.GetButton("Fire1"))
+            return;
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            if (!inAnimation)
             {
-                attackAnimationTimer = 0;
-                attackTimer = 0;
-
-				weaponAnimator.SetTrigger("Attack");
+                weaponAnimator.SetTrigger("Attack");
             }
-        }
-        else
-        {
-            attackTimer += Time.deltaTime;
-        }
-    }
 
-    void AttackAnimationTimer()
-    {
-        if (attackAnimationTimer < attackAnimationTime)
-        {
-            attackAnimationTimer += Time.deltaTime;
+            StartCoroutine(AttackTime());
+            StartCoroutine(AnimationTime());
         }
-    }
-
-    bool AttackAnimationRunning()
-    {
-        return attackAnimationTimer < attackAnimationTime;
     }
 
 	void OnTriggerEnter(Collider other) {
-		if (!AttackAnimationRunning())
+		if (!inAnimation)
 		{
 			return;
 		}
@@ -60,5 +48,19 @@ public class WhiteGun : Weapon
 		{
 			other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
 		}
+    }
+
+    IEnumerator AttackTime()
+    {
+        inDelayAttack = true;
+        yield return new WaitForSeconds(attackTime);
+        inDelayAttack = false;
+    }
+
+    IEnumerator AnimationTime()
+    {
+        inAnimation = true;
+        yield return new WaitForSeconds(attackAnimationTime);
+        inAnimation = false;
     }
 }
