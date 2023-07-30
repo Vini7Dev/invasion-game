@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    public GameObject damageTextParticleObject;
-
     bool friendlyBullet = false;
     int bulletSpeed = 35, minDamage = 10, maxDamage = 25;
     Vector3 forwardDirection = Vector3.right;
@@ -39,36 +37,12 @@ public class BulletMovement : MonoBehaviour
             {
                 Destroy(gameObject);   
                 other.GetComponent<EnemyController>().HaveHitADamage(damageToApply);
-
-                CreateDamageTextParticle(damageToApply, 0);
             }
             else if (!friendlyBullet && other.tag == "Player")
             {
                 Destroy(gameObject);  
                 other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
-
-                CreateDamageTextParticle(damageToApply, 1);
             }
         }
-    }
-
-    void CreateDamageTextParticle(
-        int damageValue,
-        int damageColorIndex
-    ) {
-        Quaternion damageTextParticleRotation = Quaternion.Euler(
-            new Vector3(90, 0, 0)
-        );
-
-        GameObject damageTextParticle = Instantiate(
-            damageTextParticleObject,
-            transform.position,
-            damageTextParticleRotation
-        );
-
-        damageTextParticle.GetComponent<DamageTextParticle>().SetupDamageText(
-            damageValue,
-            damageColorIndex
-        );
     }
 }
