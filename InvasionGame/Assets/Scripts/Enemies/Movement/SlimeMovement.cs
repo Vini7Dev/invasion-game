@@ -6,7 +6,6 @@ public class SlimeMovement : EnemyMovement
 {
     public float timeToJump = 0.1f;
 
-    float jumpTimer, movementTime;
     bool jump, stopped = true;
 
     void Update()

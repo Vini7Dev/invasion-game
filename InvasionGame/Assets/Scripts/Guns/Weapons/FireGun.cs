@@ -9,8 +9,7 @@ public class FireGun : Weapon
     public Transform bulletSpawn;
     public GameObject bulletsContainerObject;
 
-    bool autoShot = false;
-    float shotTimer, reloadTimer;
+    bool autoShot = false, reloading, inDelayShot;
 
     void Awake()
     {
@@ -36,29 +35,28 @@ public class FireGun : Weapon
         }
         else
         {
-            if (shotTimer >= attackTime)
+            if (inDelayShot)
             {
-                if (Input.GetButton("Fire1"))
-                {
-                    GameObject bulletsContainer = Instantiate(
-                        bulletsContainerObject,
-                        bulletSpawn.position,
-                        transform.rotation
-                    );
-
-                    bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
-                        isPlayerAttack,
-                        minDamage,
-                        maxDamage
-                    );
-
-                    bullets -= 1;
-                    shotTimer = 0;
-                }
+                return;
             }
-            else
+
+            if (Input.GetButton("Fire1"))
             {
-                shotTimer += Time.deltaTime;
+                StartCoroutine(ShotTime());
+
+                GameObject bulletsContainer = Instantiate(
+                    bulletsContainerObject,
+                    bulletSpawn.position,
+                    transform.rotation
+                );
+
+                bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
+                    isPlayerAttack,
+                    minDamage,
+                    maxDamage
+                );
+
+                bullets -= 1;
             }
         }
     }
@@ -71,44 +69,57 @@ public class FireGun : Weapon
         }
         else
         {
-            if (shotTimer >= attackTime)
+            if (inDelayShot)
             {
-                GameObject bullet = Instantiate(
-                    bulletsContainerObject,
-                    bulletSpawn.position,
-                    transform.rotation
-                );
+                return;
+            }
 
-                bullet.GetComponent<BulletsContainer>().DefineBulletsProps(
-                    isPlayerAttack,
-                    minDamage,
-                    maxDamage
-                );
-                bullets -= 1;
-                shotTimer = 0;
-            }
-            else
-            {
-                shotTimer += Time.deltaTime;
-            }
+            StartCoroutine(ShotTime());
+
+            GameObject bullet = Instantiate(
+                bulletsContainerObject,
+                bulletSpawn.position,
+                transform.rotation
+            );
+
+            bullet.GetComponent<BulletsContainer>().DefineBulletsProps(
+                isPlayerAttack,
+                minDamage,
+                maxDamage
+            );
+
+            bullets -= 1;
         }
     }
 
     void Reload()
     {
-        if (reloadTimer < timeToReload)
+        if (!reloading)
         {
-            reloadTimer += Time.deltaTime;
+            StartCoroutine(ReloadTime());
         }
         else
         {
             bullets = maxBullets;
-            reloadTimer = 0;
         }
     }
 
     public void UpdateAutoShot(bool newAutoShot)
     {
         autoShot = newAutoShot;
+    }
+
+    IEnumerator ReloadTime()
+    {
+        reloading = true;
+        yield return new WaitForSeconds(timeToReload);
+        reloading = false;
+    }
+
+    IEnumerator ShotTime()
+    {
+        inDelayShot = true;
+        yield return new WaitForSeconds(attackTime);
+        inDelayShot = false;
     }
 }
