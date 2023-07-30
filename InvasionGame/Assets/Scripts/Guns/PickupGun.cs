@@ -10,16 +10,9 @@ public class PickupGun : MonoBehaviour
     float timeToMakeAvailable = 0.5f;
     GameObject player;
 
-    void Update()
+    void Start()
     {
-        if (!availableToCollect && timeToMakeAvailable > 0)
-        {
-            timeToMakeAvailable -= Time.deltaTime;
-        }
-        else
-        {
-            availableToCollect = true;
-        }
+        StartCoroutine(AvailableToCollectTime());
     }
 
     void CollectGun()
@@ -42,5 +35,12 @@ public class PickupGun : MonoBehaviour
 
         player = other.gameObject;
         CollectGun();
+    }
+
+    IEnumerator AvailableToCollectTime()
+    {
+        availableToCollect = false;
+        yield return new WaitForSeconds(timeToMakeAvailable);
+        availableToCollect = true;
     }
 }
