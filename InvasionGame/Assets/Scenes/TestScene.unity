@@ -1270,7 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 1104101891}
-  gunName: Pistol
+  weaponName: 1
 --- !u!114 &359734862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,7 +4804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 1967244248}
-  gunName: Shotgun
+  weaponName: 2
 --- !u!114 &1008647413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5052,7 +5052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunName: Pistol
+  weaponName: 1
 --- !u!65 &1012483782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6597,7 +6597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunName: Shotgun
+  weaponName: 2
 --- !u!65 &1567382198
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7149,7 +7149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
-  life: 1000
+  life: 30
   maxPlayerDistance: 15
   minPlayerDistance: 0
   playerTransform: {fileID: 834912062}
@@ -8986,7 +8986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2046482520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9123,7 +9123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 948817598}
-  gunName: Pistol
+  weaponName: 1
 --- !u!1 &2092187598
 GameObject:
   m_ObjectHideFlags: 0

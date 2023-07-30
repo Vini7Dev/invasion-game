@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGunsController : GunsController
 {
-    public string gunName = "Sword";
+    public WeaponName weaponName = WeaponName.Sword;
 
     EnemyController enemyController;
     Transform playerTransform;
@@ -14,7 +14,7 @@ public class EnemyGunsController : GunsController
         enemyController = GetComponent<EnemyController>();
 
         GetGunObjects();
-        SwitchCurrentGun(gunName);
+        SwitchCurrentGun(weaponName);
         
         if (currentFireGun)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickupGun : MonoBehaviour
 {
-    public string gunName = "Sword";
+    public WeaponName weaponName = WeaponName.Sword;
 
     bool availableToCollect = false;
     float timeToMakeAvailable = 0.5f;
@@ -29,8 +29,7 @@ public class PickupGun : MonoBehaviour
             return;
         }
 
-        player.GetComponent<GunsController>()
-            .SwitchCurrentGun(gunName);
+        player.GetComponent<GunsController>().SwitchCurrentGun(weaponName);
 
         Destroy(gameObject);
     }

@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponName
+{
+    Sword,
+    Pistol,
+    Shotgun
+}
+
 public class GunsController : MonoBehaviour
 {
     public Transform gunsWrapper;
@@ -34,13 +41,13 @@ public class GunsController : MonoBehaviour
         }
     }
 
-    public void SwitchCurrentGun(string gunName)
+    public void SwitchCurrentGun(WeaponName gunName)
     {
         for (int i = 0; i < gunsCount; i++)
         {
             GameObject gunObject = gunObjects[i];
 
-            bool isGunToSetAsCurrent = gunObject.name == gunName;
+            bool isGunToSetAsCurrent = gunObject.name == gunName.ToString();
 
             if (!gunObject)
             {
