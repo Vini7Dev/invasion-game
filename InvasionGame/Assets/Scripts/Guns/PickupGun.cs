@@ -13,6 +13,12 @@ public class PickupGun : MonoBehaviour
     void Start()
     {
         StartCoroutine(AvailableToCollectTime());
+
+        transform.position = new Vector3(
+            transform.position.x,
+            0.14f,
+            transform.position.z
+        );
     }
 
     void CollectGun()
