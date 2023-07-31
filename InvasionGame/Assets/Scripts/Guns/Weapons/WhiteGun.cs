@@ -48,6 +48,10 @@ public class WhiteGun : Weapon
 		{
 			other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
 		}
+        else if (other.tag == "ItemBox")
+        {
+            other.GetComponent<ItemBox>().HaveHitADamage(damageToApply * 100);
+        }
     }
 
     IEnumerator AttackTime()

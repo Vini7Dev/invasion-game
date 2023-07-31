@@ -35,15 +35,20 @@ public class BulletMovement : MonoBehaviour
 
             if (isPlayerAttack && other.tag == "Enemy")
             {
-                Destroy(gameObject);   
+                Destroy(gameObject);
                 other.GetComponent<EnemyController>().HaveHitADamage(damageToApply);
                 other.GetComponent<EnemyMovement>().ApplyRepulsion();
             }
             else if (!isPlayerAttack && other.tag == "Player")
             {
-                Destroy(gameObject);  
+                Destroy(gameObject);
                 other.GetComponent<PlayerController>().HaveHitADamage(damageToApply);
 			}
+            else if (other.tag == "ItemBox")
+            {
+                Destroy(gameObject);
+                other.GetComponent<ItemBox>().HaveHitADamage(damageToApply);
+            }
         }
     }
 }
