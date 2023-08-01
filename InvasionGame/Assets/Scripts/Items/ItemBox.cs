@@ -22,6 +22,8 @@ public class ItemBox : MonoBehaviour
         {
             int dropChance = Random.Range(0, 101);
 
+            Debug.Log(dropChance);
+
             if (dropChance <= itemsConfig[i].probability)
             {
                 Instantiate(
