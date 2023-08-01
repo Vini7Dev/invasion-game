@@ -74,6 +74,13 @@ public class LevelController : MonoBehaviour
 
         Transform playerSpawnTransform = GameObject.Find("PlayerSpawn").transform;
 
+        Transform mainCameraTransform = Camera.main.gameObject.transform;
+        mainCameraTransform.position = new Vector3(
+            playerSpawnTransform.position.x,
+            mainCameraTransform.position.y,
+            playerSpawnTransform.position.z
+        );
+
         playerObject.transform.position = playerSpawnTransform.position;
         playerObject.SetActive(true);
     }
@@ -84,12 +91,9 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(startLevelDelay);
         
         ResetFloor();
-
-        yield return new WaitForSeconds(startLevelDelay);
-
         BuildFloor();
 
-        yield return new WaitForSeconds(startLevelDelay);
+        yield return new WaitForSeconds(startLevelDelay / 2);
 
         transitionController.open = true;
     }
