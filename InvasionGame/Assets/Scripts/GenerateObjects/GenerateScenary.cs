@@ -36,11 +36,13 @@ public class GenerateScenary : MonoBehaviour
             Vector3 instantiatePosition = GetInstantiatePosition(scenaryToInstantiate.instantiateDirection);
             Quaternion instantiateRotation = GetInstantiateRotation(scenaryToInstantiate.instantiateDirection);
 
-            Instantiate(
+            GameObject instanciatedScenaray = Instantiate(
                 scenaryToInstantiate.scenaryToInstantiate,
                 transform.position + instantiatePosition,
                 transform.rotation * instantiateRotation
             );
+
+            instanciatedScenaray.transform.parent = transform.parent;
         }
 
         Destroy(gameObject);

@@ -14,33 +14,19 @@ public class LevelController : MonoBehaviour
     public Material floorMaterial;
     public Material wallMaterial;
 
+    public GameObject[] floorLevels;
+
     int totalOfFloorEnemies, totalOfKilledEnemies = 0;
-    GameObject floorKey;
+    float startLevelDelay = 0.2f;
+    GameObject playerObject, floorKey;
 
     void Start()
     {
         floorMaterial.color = floorColor;
         wallMaterial.color = wallColor;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
 
-        totalOfFloorEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        floorKey = GameObject.FindGameObjectWithTag("FloorKey");
-        floorKey.SetActive(false);
-
-        BuildFloor();
-    }
-
-    void BuildFloor()
-    {
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        Transform playerSpawnTransform = GameObject.Find("PlayerSpawn").transform;
-        playerTransform.position = playerSpawnTransform.position;
-        
-        transitionController.open = true;
-    }
-
-    public void FinishFloor()
-    {
-        transitionController.open = false;
+        StartCoroutine(StartNextLevel());
     }
 
     public void AddOneOfKilledEnemy()
@@ -51,5 +37,60 @@ public class LevelController : MonoBehaviour
         {
             floorKey.SetActive(true);
         }
+    }
+
+    public void FinishFloor()
+    {
+        StartCoroutine(StartNextLevel());
+    }
+
+    void ResetFloor()
+    {
+        floorNumber+= 1;
+        hasFloorKey = false;
+
+        playerObject.SetActive(false);
+
+        GameObject[] scenaryObjects = GameObject.FindGameObjectsWithTag("Scenary");
+
+        for (int i = 0; i < scenaryObjects.Length; i++)
+        {
+            Destroy(scenaryObjects[i]);
+        }
+    }
+
+    void BuildFloor()
+    {
+        Instantiate(
+            floorLevels[0],
+            Vector3.zero,
+            Quaternion.identity
+        );
+
+        totalOfFloorEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        floorKey = GameObject.FindGameObjectWithTag("FloorKey");
+        floorKey.SetActive(false);
+
+        Transform playerSpawnTransform = GameObject.Find("PlayerSpawn").transform;
+
+        playerObject.transform.position = playerSpawnTransform.position;
+        playerObject.SetActive(true);
+    }
+
+    IEnumerator StartNextLevel()
+    {
+        transitionController.open = false;
+        yield return new WaitForSeconds(startLevelDelay);
+        
+        ResetFloor();
+
+        yield return new WaitForSeconds(startLevelDelay);
+
+        BuildFloor();
+
+        yield return new WaitForSeconds(startLevelDelay);
+
+        transitionController.open = true;
     }
 }

@@ -22,15 +22,16 @@ public class ItemBox : MonoBehaviour
         {
             int dropChance = Random.Range(0, 101);
 
-            Debug.Log(dropChance);
-
             if (dropChance <= itemsConfig[i].probability)
             {
-                Instantiate(
+                GameObject instanciatedItem = Instantiate(
                     itemsConfig[i].itemObject, 
                     transform.position,
                     itemsConfig[i].itemObject.transform.rotation
                 );
+
+                instanciatedItem.transform.parent = transform.parent;
+
                 Destroy(gameObject);
             }
         }
