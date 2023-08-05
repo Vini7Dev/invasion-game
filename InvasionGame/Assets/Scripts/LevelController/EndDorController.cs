@@ -18,7 +18,7 @@ public class EndDorController : MonoBehaviour
             return;
         }
 
-        if (levelController.hasFloorKey)
+        if (levelController && levelController.hasFloorKey)
         {
             levelController.FinishFloor();
         }

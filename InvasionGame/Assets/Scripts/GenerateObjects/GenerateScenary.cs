@@ -33,8 +33,12 @@ public class GenerateScenary : MonoBehaviour
         for (int i = 0; i < scenaryObjectsToInstantiate.Length; i++)
         {
             ScenaryObject scenaryToInstantiate = scenaryObjectsToInstantiate[i];
-            Vector3 instantiatePosition = GetInstantiatePosition(scenaryToInstantiate.instantiateDirection);
-            Quaternion instantiateRotation = GetInstantiateRotation(scenaryToInstantiate.instantiateDirection);
+            Vector3 instantiatePosition = GetInstantiatePosition(
+                scenaryToInstantiate.instantiateDirection
+            );
+            Quaternion instantiateRotation = GetInstantiateRotation(
+                scenaryToInstantiate.instantiateDirection
+            );
 
             GameObject instanciatedScenaray = Instantiate(
                 scenaryToInstantiate.scenaryToInstantiate,
