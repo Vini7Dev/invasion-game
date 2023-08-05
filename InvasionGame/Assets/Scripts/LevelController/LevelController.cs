@@ -47,6 +47,7 @@ public class LevelController : MonoBehaviour
     void ResetFloor()
     {
         floorNumber+= 1;
+        totalOfKilledEnemies = 0;
         hasFloorKey = false;
 
         playerObject.SetActive(false);

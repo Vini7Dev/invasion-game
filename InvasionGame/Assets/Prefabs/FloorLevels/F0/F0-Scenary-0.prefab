@@ -2897,7 +2897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2149776881508114683}
   m_Layer: 0
-  m_Name: F0-Scenary
+  m_Name: F0-Scenary-0
   m_TagString: Scenary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
