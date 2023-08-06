@@ -159,5 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec1f6959d7bb1e47ae7bf6b42f92fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxLife: 30
+  boxLife: 1
   itemsConfig: []
