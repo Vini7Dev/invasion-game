@@ -98,10 +98,6 @@ public class FireGun : Weapon
         {
             StartCoroutine(ReloadTime());
         }
-        else
-        {
-            bullets = maxBullets;
-        }
     }
 
     public void UpdateAutoShot(bool newAutoShot)
@@ -113,6 +109,7 @@ public class FireGun : Weapon
     {
         reloading = true;
         yield return new WaitForSeconds(timeToReload);
+        bullets = maxBullets;
         reloading = false;
     }
 
