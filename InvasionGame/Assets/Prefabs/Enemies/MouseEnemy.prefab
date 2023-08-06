@@ -164,10 +164,10 @@ MonoBehaviour:
   isPlayerAttack: 0
   minDamage: 10
   maxDamage: 25
-  attackTime: 0.5
+  attackTime: 0.8
   bullets: 0
   maxBullets: 10
-  timeToReload: 1
+  timeToReload: 2
   bulletSpawn: {fileID: 2451735798536760618}
   bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
 --- !u!1 &5037020152523021533
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIsAlive: 1
-  life: 75
+  life: 50
   maxPlayerDistance: 15
   minPlayerDistance: 7
   playerTransform: {fileID: 0}

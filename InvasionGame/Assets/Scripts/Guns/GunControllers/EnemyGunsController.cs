@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyGunsController : GunsController
 {
     public WeaponName weaponName = WeaponName.Sword;
+    
+    float pointGunToPlayerSpeed = 5f;
 
     EnemyController enemyController;
     Transform playerTransform;
@@ -30,7 +32,7 @@ public class EnemyGunsController : GunsController
 
         if (playerDistanceAction != PlayerDistanceAction.stopped)
         {
-            PointGunsToMouse();
+            PointGunToPlayer();
             FireGunAutoShot();
         }
     }
@@ -43,8 +45,16 @@ public class EnemyGunsController : GunsController
         }
     }
 
-    void PointGunsToMouse()
+    void PointGunToPlayer()
     {
-        gunsWrapper.transform.LookAt(playerTransform.position);
+        var lookToPlayerRotation = Quaternion.LookRotation(
+            playerTransform.position - gunsWrapper.transform.position
+        );
+
+        gunsWrapper.transform.rotation = Quaternion.Slerp(
+            gunsWrapper.transform.rotation,
+            lookToPlayerRotation,
+            Time.deltaTime * pointGunToPlayerSpeed
+        );
     }
 }
