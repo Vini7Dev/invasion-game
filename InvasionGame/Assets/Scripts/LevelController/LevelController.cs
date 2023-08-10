@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public int floorNumber;
+    int floorNumber = -1;
     public bool hasFloorKey;
 
     public TransitionController transitionController;
@@ -46,9 +46,14 @@ public class LevelController : MonoBehaviour
 
     void ResetFloor()
     {
-        floorNumber+= 1;
         totalOfKilledEnemies = 0;
         hasFloorKey = false;
+        floorNumber+= 1;
+
+        if (floorNumber >= floorLevels.Length)
+        {
+            floorNumber = 0;
+        }
 
         playerObject.SetActive(false);
 
@@ -63,7 +68,7 @@ public class LevelController : MonoBehaviour
     void BuildFloor()
     {
         Instantiate(
-            floorLevels[0],
+            floorLevels[floorNumber],
             Vector3.zero,
             Quaternion.identity
         );

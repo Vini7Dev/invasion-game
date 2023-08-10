@@ -995,6 +995,7 @@ MonoBehaviour:
   floorMaterial: {fileID: 2100000, guid: 9f4a60b0895fc9448ac4e0b511fc309d, type: 2}
   wallMaterial: {fileID: 2100000, guid: ce6dc6d1ec808e34da8eb6a6cfb6b62c, type: 2}
   floorLevels:
+  - {fileID: 7722870620011317078, guid: 1a3dddb99f6f55148bb5d7999ad088c2, type: 3}
   - {fileID: 600466586266486789, guid: 2527e59a34559144cb5e9f9d41e61d90, type: 3}
 --- !u!1 &804700326
 GameObject:
