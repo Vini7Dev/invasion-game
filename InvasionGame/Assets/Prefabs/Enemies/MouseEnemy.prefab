@@ -168,8 +168,9 @@ MonoBehaviour:
   bullets: 0
   maxBullets: 10
   timeToReload: 2
+  shotButton: 0
   bulletSpawn: {fileID: 2451735798536760618}
-  bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
+  projectileContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
 --- !u!1 &5037020152523021533
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,4 +435,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 8792050590483222052}
+  secondaryGunsWrapper: {fileID: 0}
   weaponName: 1

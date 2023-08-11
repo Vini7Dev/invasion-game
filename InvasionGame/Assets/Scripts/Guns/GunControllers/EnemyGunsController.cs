@@ -16,6 +16,7 @@ public class EnemyGunsController : GunsController
         enemyController = GetComponent<EnemyController>();
 
         GetGunObjects();
+        GetSecondaryGunObjects();
         SwitchCurrentGun(weaponName);
         
         if (currentFireGun)

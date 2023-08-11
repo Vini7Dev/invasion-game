@@ -9,19 +9,28 @@ public enum WeaponName
     Shotgun
 }
 
+public enum SecondaryWeaponName
+{
+    Boomerang
+}
+
 public class GunsController : MonoBehaviour
 {
     public Transform gunsWrapper;
+    public Transform secondaryGunsWrapper;
 
     int gunsCount;
     GameObject[] gunObjects;
+    GameObject[] secondaryGunObjects;
 
     protected FireGun currentFireGun;
     protected WhiteGun currentWhiteGun;
+    protected FireGun currentSecondaryFireGun;
 
     void Start()
     {
         GetGunObjects();
+        GetSecondaryGunObjects();
     }
 
     protected void GetGunObjects()
@@ -33,6 +42,23 @@ public class GunsController : MonoBehaviour
         for (int i = 0; i < gunsCount; i++)
         {
             Transform gunTransform = gunsWrapper.GetChild(i);
+
+            if (gunTransform)
+            {
+                gunObjects[i] = gunTransform.gameObject;
+            }
+        }
+    }
+
+    protected void GetSecondaryGunObjects()
+    {
+        gunsCount = secondaryGunsWrapper.childCount;
+
+        gunObjects = new GameObject[gunsCount];
+
+        for (int i = 0; i < gunsCount; i++)
+        {
+            Transform gunTransform = secondaryGunsWrapper.GetChild(i);
 
             if (gunTransform)
             {
@@ -69,6 +95,30 @@ public class GunsController : MonoBehaviour
             {
                 currentWhiteGun = gunObject.GetComponent<WhiteGun>();
             }
+        }
+    }
+
+    public void SwitchSecondaryGun(SecondaryWeaponName gunName)
+    {
+        for (int i = 0; i < gunsCount; i++)
+        {
+            GameObject gunObject = secondaryGunObjects[i];
+
+            bool isGunToSetAsCurrent = gunObject.name == gunName.ToString();
+
+            if (!gunObject)
+            {
+                continue;
+            }
+
+            gunObject.SetActive(isGunToSetAsCurrent);
+
+            if (!isGunToSetAsCurrent)
+            {
+                continue;
+            }
+
+            currentSecondaryFireGun = gunObject.GetComponent<FireGun>();
         }
     }
 }

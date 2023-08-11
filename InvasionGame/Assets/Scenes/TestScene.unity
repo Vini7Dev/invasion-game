@@ -547,8 +547,9 @@ MonoBehaviour:
   bullets: 7
   maxBullets: 7
   timeToReload: 1.5
+  shotButton: 0
   bulletSpawn: {fileID: 945508168}
-  bulletsContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
+  projectileContainerObject: {fileID: 4809336329610100370, guid: 0daf9c9620174ac49822473c2cb89365, type: 3}
 --- !u!212 &548995571
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1216,6 +1217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunsWrapper: {fileID: 959533490}
+  secondaryGunsWrapper: {fileID: 1040232661}
   bulletsInfoHud: {fileID: 865714588}
 --- !u!1 &865714586
 GameObject:
@@ -1667,7 +1669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040232661}
   m_Layer: 0
-  m_Name: PlayerBoomerangPosition
+  m_Name: PlayerSecondaryGunsWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1682,7 +1684,7 @@ Transform:
   m_GameObject: {fileID: 1040232660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -0.8, z: -0.263}
+  m_LocalPosition: {x: -0.7, y: -0.5, z: -0.263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1699,6 +1701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163015875}
   - component: {fileID: 1163015876}
+  - component: {fileID: 1163015877}
   m_Layer: 0
   m_Name: Boomerang
   m_TagString: Untagged
@@ -1773,6 +1776,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1163015877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163015874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0495da3a09e0c44a6ea9124459bee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerAttack: 1
+  minDamage: 10
+  maxDamage: 15
+  attackTime: 0.2
+  bullets: 0
+  maxBullets: 1
+  timeToReload: -1
+  shotButton: 1
+  bulletSpawn: {fileID: 1163015875}
+  projectileContainerObject: {fileID: 6321686148146812048, guid: 915bdcb2d00765b468a383c7c7872a43, type: 3}
+  gunsWrapperTransform: {fileID: 959533490}
 --- !u!1 &1471417254
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,8 +2085,9 @@ MonoBehaviour:
   bullets: 10
   maxBullets: 10
   timeToReload: 1
+  shotButton: 0
   bulletSpawn: {fileID: 749685536}
-  bulletsContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
+  projectileContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
 --- !u!212 &1664616208
 SpriteRenderer:
   m_ObjectHideFlags: 0

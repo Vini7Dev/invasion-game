@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ShotButton
+{
+    Fire1,
+    Fire2
+}
+
 public class FireGun : Weapon
 {
     public int bullets, maxBullets = 10;
     public float timeToReload = 1;
+    public ShotButton shotButton = ShotButton.Fire1;
     public Transform bulletSpawn;
-    public GameObject bulletsContainerObject;
+    public GameObject projectileContainerObject;
 
-    bool autoShot = false, reloading, inDelayShot;
+    protected bool autoShot = false, isSecondaryGun = false, reloading, inDelayShot;
+    protected Quaternion projectileRotation;
 
-    void Awake()
+    protected void Awake()
     {
         base.isFiregun = true;
         bullets = maxBullets;
     }
 
-    void Update()
+    protected void Update()
     {
         Shot();
     }
@@ -40,21 +48,11 @@ public class FireGun : Weapon
                 return;
             }
 
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButton(shotButton.ToString()))
             {
                 StartCoroutine(ShotTime());
 
-                GameObject bulletsContainer = Instantiate(
-                    bulletsContainerObject,
-                    bulletSpawn.position,
-                    transform.rotation
-                );
-
-                bulletsContainer.GetComponent<BulletsContainer>().DefineBulletsProps(
-                    isPlayerAttack,
-                    minDamage,
-                    maxDamage
-                );
+                InstantiateProjectile();
 
                 bullets -= 1;
             }
@@ -76,17 +74,7 @@ public class FireGun : Weapon
 
             StartCoroutine(ShotTime());
 
-            GameObject bullet = Instantiate(
-                bulletsContainerObject,
-                bulletSpawn.position,
-                transform.rotation
-            );
-
-            bullet.GetComponent<BulletsContainer>().DefineBulletsProps(
-                isPlayerAttack,
-                minDamage,
-                maxDamage
-            );
+            InstantiateProjectile();
 
             bullets -= 1;
         }
@@ -94,7 +82,7 @@ public class FireGun : Weapon
 
     void Reload()
     {
-        if (!reloading)
+        if (!reloading && timeToReload >= 0)
         {
             StartCoroutine(ReloadTime());
         }
@@ -103,6 +91,21 @@ public class FireGun : Weapon
     public void UpdateAutoShot(bool newAutoShot)
     {
         autoShot = newAutoShot;
+    }
+
+    public void InstantiateProjectile()
+    {
+        GameObject projectileContainer = Instantiate(
+            projectileContainerObject,
+            bulletSpawn.position,
+            !isSecondaryGun ? transform.rotation : projectileRotation
+        );
+
+        projectileContainer.GetComponent<ProjectileContainer>().DefineProjectileProps(
+            isPlayerAttack,
+            minDamage,
+            maxDamage
+        );
     }
 
     IEnumerator ReloadTime()

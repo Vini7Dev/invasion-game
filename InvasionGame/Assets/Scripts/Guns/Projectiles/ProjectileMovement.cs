@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMovement : MonoBehaviour
+public class ProjectileMovement : MonoBehaviour
 {
-    bool isPlayerAttack = false;
-    int bulletSpeed = 35, minDamage = 10, maxDamage = 25;
-    Vector3 forwardDirection = Vector3.right;
-
-    void Update()
-    {
-        transform.Translate(forwardDirection * bulletSpeed * Time.deltaTime);
-    }
+    protected bool isPlayerAttack = false;
+    protected int projectileSpeed = 35, minDamage = 10, maxDamage = 25;
 
     public void DefineProps(
         bool setIsPlayerAttack,
