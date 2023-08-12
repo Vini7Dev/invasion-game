@@ -16,8 +16,7 @@ public class FireGun : Weapon
     public Transform bulletSpawn;
     public GameObject projectileContainerObject;
 
-    protected bool autoShot = false, isSecondaryGun = false, reloading, inDelayShot;
-    protected Quaternion projectileRotation;
+    protected bool autoShot = false, reloading, inDelayShot;
 
     protected void Awake()
     {
@@ -98,7 +97,7 @@ public class FireGun : Weapon
         GameObject projectileContainer = Instantiate(
             projectileContainerObject,
             bulletSpawn.position,
-            !isSecondaryGun ? transform.rotation : projectileRotation
+            transform.rotation
         );
 
         projectileContainer.GetComponent<ProjectileContainer>().DefineProjectileProps(

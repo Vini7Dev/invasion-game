@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BoomerangMovement : ProjectileMovement
 {
-    Transform spriteTransform;
+    public Transform boomerangTransform;
+
     Vector3 moveDirection;
     Quaternion reflectRotation;
 
     void Start()
     {
-        projectileSpeed = 5;
-        spriteTransform = transform;
-        moveDirection = transform.forward;
+        projectileSpeed = 8;
+        PointToMouse();
     }
 
     void Update()
@@ -21,21 +21,42 @@ public class BoomerangMovement : ProjectileMovement
         RotateAnimation();
     }
 
+    void PointToMouse()
+    {
+        Vector3 mousePositionScreen = Input.mousePosition;
+        mousePositionScreen.z = Camera.main.transform.position.y;
+
+        Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(
+            mousePositionScreen
+        );
+        Vector3 mousePositionIn2D = new Vector3(
+            mousePositionWorld.x,
+            0,
+            mousePositionWorld.z
+        );
+        Vector3 selfPositionWithoutY = new Vector3(
+            transform.position.x,
+            0,
+            transform.position.z
+        );
+
+        moveDirection = (mousePositionIn2D - selfPositionWithoutY).normalized;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
     void MoveByDirection()
     {
-        transform.localPosition += moveDirection * projectileSpeed * Time.deltaTime;
+        transform.position += moveDirection * projectileSpeed * Time.deltaTime;
     }
 
     void RotateAnimation()
     {
-        spriteTransform.Rotate(Vector3.forward * 500 * Time.deltaTime);
+        boomerangTransform.Rotate(Vector3.forward * 500 * Time.deltaTime);
     }
 
     void Bounce(Vector3 collisionNormal)
     {
         moveDirection = Vector3.Reflect(moveDirection, collisionNormal);
-        reflectRotation = Quaternion.FromToRotation(moveDirection, collisionNormal);
-        transform.rotation = reflectRotation * transform.rotation;
     }
 
     void OnCollisionEnter(Collision collision) {
