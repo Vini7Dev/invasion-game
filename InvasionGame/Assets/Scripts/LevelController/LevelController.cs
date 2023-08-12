@@ -57,12 +57,8 @@ public class LevelController : MonoBehaviour
 
         playerObject.SetActive(false);
 
-        GameObject[] scenaryObjects = GameObject.FindGameObjectsWithTag("Scenary");
-
-        for (int i = 0; i < scenaryObjects.Length; i++)
-        {
-            Destroy(scenaryObjects[i]);
-        }
+        DestroyObjectsWithTag("Scenary");
+        DestroyObjectsWithTag("ProjectileContainer");
     }
 
     void BuildFloor()
@@ -89,6 +85,15 @@ public class LevelController : MonoBehaviour
 
         playerObject.transform.position = playerSpawnTransform.position;
         playerObject.SetActive(true);
+    }
+
+    void DestroyObjectsWithTag(string tag)
+    {
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject obj in objectsWithTag)
+        {
+            Destroy(obj);
+        }
     }
 
     IEnumerator StartNextLevel()

@@ -35,6 +35,11 @@ public class GunsController : MonoBehaviour
 
     protected void GetGunObjects()
     {
+        if (!gunsWrapper)
+        {
+            return;
+        }
+
         gunsCount = gunsWrapper.childCount;
 
         gunObjects = new GameObject[gunsCount];
@@ -52,6 +57,11 @@ public class GunsController : MonoBehaviour
 
     protected void GetSecondaryGunObjects()
     {
+        if (!secondaryGunsWrapper)
+        {
+            return;
+        }
+
         gunsCount = secondaryGunsWrapper.childCount;
 
         gunObjects = new GameObject[gunsCount];

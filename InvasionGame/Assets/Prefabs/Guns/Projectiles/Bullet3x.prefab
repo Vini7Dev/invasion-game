@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7dc2aae1eefa14da30a58cd77fa59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTextParticleObject: {fileID: 4367413939702150335, guid: 4cbd9e04abaeba8419d72e73295d752f, type: 3}
 --- !u!1 &4809336329610100370
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,10 +155,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4517018473585147635}
-  - component: {fileID: 979417896263101331}
+  - component: {fileID: 4869373687331881936}
   m_Layer: 0
   m_Name: Bullet3x
-  m_TagString: Untagged
+  m_TagString: ProjectileContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +181,7 @@ Transform:
   - {fileID: 6825535426371211561}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &979417896263101331
+--- !u!114 &4869373687331881936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,10 +190,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4809336329610100370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6f8d3ef3d359734e817bebedbd500d8, type: 3}
+  m_Script: {fileID: 11500000, guid: d7fbeab90abef5948a7b3b311dfbd787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friendlyBullet: 0
+  disableAutoDestroy: 0
+  isPlayerAttack: 0
   minDamage: 0
   maxDamage: 0
 --- !u!1 &5195335329263537762
@@ -343,7 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7dc2aae1eefa14da30a58cd77fa59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTextParticleObject: {fileID: 4367413939702150335, guid: 4cbd9e04abaeba8419d72e73295d752f, type: 3}
 --- !u!1 &8488438428578210918
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,4 +489,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b7dc2aae1eefa14da30a58cd77fa59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTextParticleObject: {fileID: 4367413939702150335, guid: 4cbd9e04abaeba8419d72e73295d752f, type: 3}

@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public float defaultWalkSpeed = 5;
 
-    float repulsionTime = 0.2f;
+    float repulsionTime = 0.2f, fixedYPosition = 1;
 
     protected float walkSpeed;
     protected EnemyController enemyController;
@@ -43,6 +43,12 @@ public class EnemyMovement : MonoBehaviour
         {
             MoveAwaiFromPlayerDelegate();
         }
+
+        transform.position = new Vector3(
+            transform.position.x,
+            fixedYPosition,
+            transform.position.z
+        );
     }
 
     protected void Stopped() {}

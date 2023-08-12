@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Transform playerGunsWrapper;
 
-    float repulsionTime = 0.1f;
+    float repulsionTime = 0.1f, fixedYPosition = 1;
     CharacterController characterController;
 
     void Start()
@@ -27,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 inputsValue = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         characterController.Move(inputsValue * walkSpeed * Time.deltaTime);
+        transform.position = new Vector3(
+            transform.position.x,
+            fixedYPosition,
+            transform.position.z
+        );
 
         float xSpriteDirection = Mathf.Sign(inputsValue.x);
 

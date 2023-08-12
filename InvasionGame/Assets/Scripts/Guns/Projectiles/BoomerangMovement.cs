@@ -11,7 +11,7 @@ public class BoomerangMovement : ProjectileMovement
 
     void Start()
     {
-        projectileSpeed = 8;
+        projectileSpeed = 14;
         PointToMouse();
     }
 
