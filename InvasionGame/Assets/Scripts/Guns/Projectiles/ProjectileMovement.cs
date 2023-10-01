@@ -5,7 +5,8 @@ using UnityEngine;
 public class ProjectileMovement : MonoBehaviour
 {
     protected bool isPlayerAttack = false;
-    protected int projectileSpeed = 35, minDamage = 10, maxDamage = 25;
+    protected int minDamage = 10, maxDamage = 25;
+    protected float projectileSpeed = 35;
 
     public void DefineProps(
         bool setIsPlayerAttack,

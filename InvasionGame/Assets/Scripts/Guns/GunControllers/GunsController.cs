@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum WeaponName
 {
+    NULL,
     Sword,
     Pistol,
     Shotgun
@@ -11,6 +12,7 @@ public enum WeaponName
 
 public enum SecondaryWeaponName
 {
+    NULL,
     Boomerang
 }
 
@@ -19,18 +21,19 @@ public class GunsController : MonoBehaviour
     public Transform gunsWrapper;
     public Transform secondaryGunsWrapper;
 
-    int gunsCount;
+    int gunsCount, secondaryGunsCount;
     GameObject[] gunObjects;
     GameObject[] secondaryGunObjects;
 
     protected FireGun currentFireGun;
     protected WhiteGun currentWhiteGun;
-    protected FireGun currentSecondaryFireGun;
+    protected SecondaryGun currentSecondaryFireGun;
 
     void Start()
     {
         GetGunObjects();
         GetSecondaryGunObjects();
+        SwitchCurrentGun(WeaponName.Sword);
     }
 
     protected void GetGunObjects()
@@ -62,17 +65,17 @@ public class GunsController : MonoBehaviour
             return;
         }
 
-        gunsCount = secondaryGunsWrapper.childCount;
+        secondaryGunsCount = secondaryGunsWrapper.childCount;
 
-        gunObjects = new GameObject[gunsCount];
+        secondaryGunObjects = new GameObject[secondaryGunsCount];
 
-        for (int i = 0; i < gunsCount; i++)
+        for (int i = 0; i < secondaryGunsCount; i++)
         {
             Transform gunTransform = secondaryGunsWrapper.GetChild(i);
 
             if (gunTransform)
             {
-                gunObjects[i] = gunTransform.gameObject;
+                secondaryGunObjects[i] = gunTransform.gameObject;
             }
         }
     }
@@ -83,12 +86,12 @@ public class GunsController : MonoBehaviour
         {
             GameObject gunObject = gunObjects[i];
 
-            bool isGunToSetAsCurrent = gunObject.name == gunName.ToString();
-
             if (!gunObject)
             {
                 continue;
             }
+
+            bool isGunToSetAsCurrent = gunObject.name == gunName.ToString();
 
             gunObject.SetActive(isGunToSetAsCurrent);
 
@@ -110,25 +113,63 @@ public class GunsController : MonoBehaviour
 
     public void SwitchSecondaryGun(SecondaryWeaponName gunName)
     {
-        for (int i = 0; i < gunsCount; i++)
+        for (int i = 0; i < secondaryGunsCount; i++)
         {
-            GameObject gunObject = secondaryGunObjects[i];
+            GameObject secondaryGunObject = secondaryGunObjects[i];
 
-            bool isGunToSetAsCurrent = gunObject.name == gunName.ToString();
+            bool isGunToSetAsCurrent = secondaryGunObject.name == gunName.ToString();
 
-            if (!gunObject)
+            if (!secondaryGunObject)
             {
                 continue;
             }
 
-            gunObject.SetActive(isGunToSetAsCurrent);
+            secondaryGunObject.SetActive(isGunToSetAsCurrent);
 
             if (!isGunToSetAsCurrent)
             {
                 continue;
             }
 
-            currentSecondaryFireGun = gunObject.GetComponent<FireGun>();
+            currentSecondaryFireGun = secondaryGunObject.GetComponent<SecondaryGun>();
+        }
+    }
+
+    public string GetCurrentWihteGunName()
+    {
+        if (currentWhiteGun)
+        {
+            return currentWhiteGun.name;
+        }
+
+        return "";
+    }
+
+    public string GetCurrentFireGunName()
+    {
+        if (currentFireGun)
+        {
+            return currentFireGun.name;
+        }
+
+        return "";
+    }
+
+    public string GetCurrentSecondaryGunName()
+    {
+        if (currentSecondaryFireGun)
+        {
+            return currentSecondaryFireGun.name;
+        }
+
+        return "";
+    }
+
+    public void AddOneBulletOnSecondaryGun()
+    {
+        if (currentSecondaryFireGun)
+        {
+            currentSecondaryFireGun.AddOneBullet();
         }
     }
 }

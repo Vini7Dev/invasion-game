@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7984005689140173696}
   - component: {fileID: 5998997114146688168}
   - component: {fileID: 3426322768926842185}
-  - component: {fileID: 4554130157692622450}
+  - component: {fileID: 4446196878821508633}
   m_Layer: 0
   m_Name: PickupPistol
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.25, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: -0.035, z: -0.05}
---- !u!114 &4554130157692622450
+--- !u!114 &4446196878821508633
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5060227389077571784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3990a010c903c4296192eb407a8a46, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e323ee3eb2c9e947a36ad1ed356c04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: 1
+  weaponName: 2
+  secondaryWeaponName: 0

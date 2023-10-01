@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickupGun : MonoBehaviour
+public class PickupWeapon : MonoBehaviour
 {
-    public WeaponName weaponName = WeaponName.Sword;
+    public WeaponName weaponName = WeaponName.NULL;
+    public SecondaryWeaponName secondaryWeaponName = SecondaryWeaponName.NULL;
 
     bool availableToCollect = false;
     float timeToMakeAvailable = 0.5f;
@@ -28,7 +29,14 @@ public class PickupGun : MonoBehaviour
             return;
         }
 
-        player.GetComponent<GunsController>().SwitchCurrentGun(weaponName);
+        if (weaponName != WeaponName.NULL)
+        {
+            player.GetComponent<GunsController>().SwitchCurrentGun(weaponName);
+        }
+        else
+        {
+            player.GetComponent<GunsController>().SwitchSecondaryGun(secondaryWeaponName);
+        }
 
         Destroy(gameObject);
     }
