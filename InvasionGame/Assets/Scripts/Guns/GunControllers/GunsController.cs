@@ -30,7 +30,7 @@ public class GunsController : MonoBehaviour
     protected WhiteGun currentWhiteGun;
     protected SecondaryGun currentSecondaryFireGun;
 
-    void Start()
+    protected void Start()
     {
         GetGunObjects();
         GetSecondaryGunObjects();

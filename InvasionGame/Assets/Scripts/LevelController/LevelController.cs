@@ -18,13 +18,19 @@ public class LevelController : MonoBehaviour
 
     int totalOfFloorEnemies, totalOfKilledEnemies = 0;
     float startLevelDelay = 0.2f;
-    GameObject playerObject, floorKey;
+    GameObject floorKey;
+
+    Transform playerTransform;
+    CharacterController playerCharacterController;
 
     void Start()
     {
         floorMaterial.color = floorColor;
         wallMaterial.color = wallColor;
-        playerObject = GameObject.FindGameObjectWithTag("Player");
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = playerObject.transform;
+        playerCharacterController = playerObject.GetComponent<CharacterController>();
 
         StartCoroutine(StartNextLevel());
     }
@@ -55,7 +61,7 @@ public class LevelController : MonoBehaviour
             floorNumber = 0;
         }
 
-        playerObject.SetActive(false);
+        playerCharacterController.enabled = false;
 
         DestroyObjectsWithTag("Scenary");
         DestroyObjectsWithTag("ProjectileContainer");
@@ -83,8 +89,8 @@ public class LevelController : MonoBehaviour
             playerSpawnTransform.position.z
         );
 
-        playerObject.transform.position = playerSpawnTransform.position;
-        playerObject.SetActive(true);
+        playerTransform.transform.position = playerSpawnTransform.position;
+        playerCharacterController.enabled = true;
     }
 
     void DestroyObjectsWithTag(string tag)

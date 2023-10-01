@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyGunsController : GunsController
 {
-    public WeaponName weaponName = WeaponName.Sword;
-    
     float pointGunToPlayerSpeed = 5f;
 
     EnemyController enemyController;
@@ -13,17 +11,14 @@ public class EnemyGunsController : GunsController
 
     void Start()
     {
-        enemyController = GetComponent<EnemyController>();
+        base.Start();
 
-        GetGunObjects();
-        GetSecondaryGunObjects();
-        SwitchCurrentGun(weaponName);
-        
         if (currentFireGun)
         {
             currentFireGun.UpdateAutoShot(true);
         }
 
+        enemyController = GetComponent<EnemyController>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

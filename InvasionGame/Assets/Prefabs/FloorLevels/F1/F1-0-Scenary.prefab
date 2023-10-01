@@ -1328,6 +1328,7 @@ MonoBehaviour:
   shotButton: 0
   bulletSpawn: {fileID: 5883183501200699817}
   projectileContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
+  gunReloadingBar: {fileID: 0}
 --- !u!1 &3283521653995161405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2373,6 +2374,7 @@ MonoBehaviour:
   shotButton: 0
   bulletSpawn: {fileID: 8139001759357580147}
   projectileContainerObject: {fileID: 8378179612230115990, guid: 9ed2fc6aaf89c6f4db626896f2d75469, type: 3}
+  gunReloadingBar: {fileID: 0}
 --- !u!1 &5207305902771672250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3330,10 +3332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413fc1633e3863b46ab66dddd4e1fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCurrentGun: 1
+  startCurrentGun: 2
   gunsWrapper: {fileID: 5859822554793238437}
   secondaryGunsWrapper: {fileID: 0}
-  weaponName: 1
+  weaponName: 2
 --- !u!1 &6168199425364428439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,10 +3493,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413fc1633e3863b46ab66dddd4e1fa15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCurrentGun: 1
+  startCurrentGun: 2
   gunsWrapper: {fileID: 9088066871270276961}
   secondaryGunsWrapper: {fileID: 0}
-  weaponName: 1
+  weaponName: 2
 --- !u!1 &6479124228080483655
 GameObject:
   m_ObjectHideFlags: 0

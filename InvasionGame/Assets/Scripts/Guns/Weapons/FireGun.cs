@@ -15,6 +15,7 @@ public class FireGun : Weapon
     public ShotButton shotButton = ShotButton.Fire1;
     public Transform bulletSpawn;
     public GameObject projectileContainerObject;
+    public GunReloadingBar gunReloadingBar;
 
     protected bool autoShot = false, reloading, inDelayShot;
 
@@ -27,6 +28,7 @@ public class FireGun : Weapon
     protected void Update()
     {
         Shot();
+        ForceReload();
     }
 
     public void Shot()
@@ -79,6 +81,12 @@ public class FireGun : Weapon
         }
     }
 
+    void ForceReload() {
+        if (Input.GetButtonDown("Reload") && bullets < maxBullets) {
+            bullets = 0;
+        }
+    }
+
     void Reload()
     {
         if (!reloading && timeToReload >= 0)
@@ -110,6 +118,7 @@ public class FireGun : Weapon
     IEnumerator ReloadTime()
     {
         reloading = true;
+        if (gunReloadingBar) gunReloadingBar.StartBar(timeToReload);
         yield return new WaitForSeconds(timeToReload);
         bullets = maxBullets;
         reloading = false;
