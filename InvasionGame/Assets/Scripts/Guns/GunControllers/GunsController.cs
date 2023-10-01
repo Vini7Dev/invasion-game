@@ -18,6 +18,7 @@ public enum SecondaryWeaponName
 
 public class GunsController : MonoBehaviour
 {
+    public WeaponName startCurrentGun = WeaponName.Sword;
     public Transform gunsWrapper;
     public Transform secondaryGunsWrapper;
 
@@ -33,7 +34,7 @@ public class GunsController : MonoBehaviour
     {
         GetGunObjects();
         GetSecondaryGunObjects();
-        SwitchCurrentGun(WeaponName.Sword);
+        SwitchCurrentGun(startCurrentGun);
     }
 
     protected void GetGunObjects()

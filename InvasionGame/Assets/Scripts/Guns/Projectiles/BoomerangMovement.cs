@@ -6,12 +6,14 @@ public class BoomerangMovement : ProjectileMovement
 {
     public Transform boomerangTransform;
 
+    bool availableToCatch;
     Vector3 moveDirection;
     Quaternion reflectRotation;
-    bool availableToCatch;
+    Rigidbody rigidbody;
 
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         projectileSpeed = 20;
         PointToMouse();
         StartCoroutine(SetAvailableToCatch());
@@ -123,17 +125,23 @@ public class BoomerangMovement : ProjectileMovement
 
     void OnCollideInItemBox(GameObject itemBox)
     {
+        if (OnAttack())
+        {
+            int damageToApply = Random.Range(minDamage, maxDamage + 1);
+            itemBox.GetComponent<ItemBox>().HaveHitADamage(damageToApply);
+        }
+    }
+
+    void OnStayInScenaryHole() {
         if (!OnAttack())
         {
-            return;
+            rigidbody.useGravity = true;
+            Destroy(gameObject, 3);
         }
-
-        int damageToApply = Random.Range(minDamage, maxDamage + 1);
-        itemBox.GetComponent<ItemBox>().HaveHitADamage(damageToApply);
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Scenary")
+        if (collision.gameObject.tag == "ScenaryWall")
         {
             OnCollideInScenary(collision);
         }
@@ -151,6 +159,13 @@ public class BoomerangMovement : ProjectileMovement
         else if (other.tag == "ItemBox")
         {
             OnCollideInItemBox(other.gameObject);
+        }
+    }
+
+    void OnCollisionStay(Collision other) {
+        if (other.gameObject.tag == "ScenaryHole")
+        {
+            OnStayInScenaryHole();
         }
     }
 

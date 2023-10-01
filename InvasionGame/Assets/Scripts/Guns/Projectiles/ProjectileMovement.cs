@@ -20,7 +20,7 @@ public class ProjectileMovement : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == "Scenary")
+        if (other.tag == "ScenaryWall")
         {
             Destroy(gameObject);
         }

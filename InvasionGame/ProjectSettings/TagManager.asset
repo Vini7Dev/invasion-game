@@ -4,11 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Scenary
   - Enemy
   - FloorKey
   - ItemBox
   - ProjectileContainer
+  - ScenaryHole
+  - ScenaryFloor
+  - ScenaryWall
   layers:
   - Default
   - TransparentFX

@@ -1160,7 +1160,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!143 &834912065
 CharacterController:
@@ -1216,6 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3d92921351a1341a51f3f58a732c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startCurrentGun: 3
   gunsWrapper: {fileID: 959533490}
   secondaryGunsWrapper: {fileID: 1040232661}
   bulletsInfoHud: {fileID: 865714588}
@@ -1534,7 +1535,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 57feab97ece617d4daf2fc30be44dab7, type: 3}
