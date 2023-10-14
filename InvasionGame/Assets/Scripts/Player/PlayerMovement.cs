@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public SpriteRenderer playerSprite;
-    public float walkSpeed = 5;
+    public float walkSpeed = 4;
 
     float fixedYPosition = 1;
     CharacterController characterController;
