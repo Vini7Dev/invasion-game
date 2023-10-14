@@ -629,6 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e773ec2bf3dd054f916417b72523e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entitySprite: {fileID: 969674757}
   life: 100
   maxPlayerDistance: 10
   minPlayerDistance: 0.5
@@ -936,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dd10e6093d07a4789ba19b3d77f659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entitySprite: {fileID: 776584482}
   life: 100
 --- !u!114 &973816895
 MonoBehaviour:
@@ -1047,11 +1049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5df88e6234225ec47bd1912547589b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerAttack: 1
+  maxDamage: 10
+  minDamage: 5
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1
-  isPlayerAttack: 1
-  detectionIntervalPerSecond: 0.5
+  detectionIntervalPerSecond: 0.3
 --- !u!1 &1421308097
 GameObject:
   m_ObjectHideFlags: 0

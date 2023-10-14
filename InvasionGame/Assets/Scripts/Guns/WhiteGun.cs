@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhiteGun : MonoBehaviour
+public class WhiteGun : Gun
 {
-    const string ENEMY_TAG = "Enemy";
-    const string PLAYER_TAG = "Player";
-
     public LayerMask collisionLayer;
-    public bool isPlayerAttack;
-    public float detectionIntervalPerSecond = 0.5f;
+    public float detectionIntervalPerSecond = 0.3f;
 
     float distanceToCreateCollision = 0.2f;
     Vector3 previousPosition;
@@ -46,7 +42,7 @@ public class WhiteGun : MonoBehaviour
                 {
                     if (collider.CompareTag(isPlayerAttack ? ENEMY_TAG : PLAYER_TAG))
                     {
-                        Debug.Log("Detected: " + collider.gameObject.name);
+                        ApplyDamage(collider.gameObject);
                     }
                 }
             }

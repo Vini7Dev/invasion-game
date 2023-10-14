@@ -9,9 +9,8 @@ public enum PlayerDistanceAction
     retreating,
 }
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EntityController
 {
-    public int life = 100;
     public float maxPlayerDistance = 10, minPlayerDistance = 1;
 
     bool attackStarted;
