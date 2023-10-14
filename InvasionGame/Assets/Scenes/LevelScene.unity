@@ -632,7 +632,7 @@ MonoBehaviour:
   entitySprite: {fileID: 969674757}
   life: 100
   maxPlayerDistance: 10
-  minPlayerDistance: 0.5
+  minPlayerDistance: 0
 --- !u!114 &918258430
 MonoBehaviour:
   m_ObjectHideFlags: 0

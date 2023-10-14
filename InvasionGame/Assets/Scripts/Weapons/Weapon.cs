@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     protected const string ENEMY_TAG = "Enemy";
     protected const string PLAYER_TAG = "Player";

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WhiteGun : Gun
+public class WhiteGun : Weapon
 {
     public LayerMask collisionLayer;
     public float detectionIntervalPerSecond = 0.3f;
