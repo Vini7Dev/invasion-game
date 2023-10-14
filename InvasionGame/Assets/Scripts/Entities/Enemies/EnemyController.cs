@@ -25,6 +25,11 @@ public class EnemyController : EntityController
         playerController = playerObject.GetComponent<PlayerController>();
     }
 
+    void Update()
+    {
+        base.Update();
+    }
+
     bool VerifyIfPlayerIsAlive()
     {
         return playerController.IsAlive();

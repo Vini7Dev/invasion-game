@@ -10,6 +10,21 @@ public class EntityController : MonoBehaviour
     bool onDamage;
     float damageTime = 0.2f;
 
+    protected void Update()
+    {
+        YPositionCorrection();
+    }
+
+    private void YPositionCorrection() {
+        Vector3 positionCorrect = new Vector3(
+            transform.position.x,
+            0.1f,
+            transform.position.z
+        );
+
+        transform.position = positionCorrect;
+    }
+
     public bool IsAlive()
     {
         return life > 0;

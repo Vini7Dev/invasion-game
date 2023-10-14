@@ -7,17 +7,20 @@ public class WhiteGun : Weapon
     public LayerMask collisionLayer;
     public float detectionIntervalPerSecond = 0.3f;
 
-    float distanceToCreateCollision = 0.2f;
+    bool causedDamage;
+    float damageDalay = 0.5f, distanceToCreateCollision = 0.2f;
     Vector3 previousPosition;
 
     void Start()
     {
-        previousPosition = transform.position;
-
-        StartCoroutine(CollisionDetectionRoutine());
+        if (isPlayerAttack)
+        {
+            previousPosition = transform.position;
+            StartCoroutine(PlayerAttackCollisionDetectionRoutine());
+        }
     }
 
-    IEnumerator CollisionDetectionRoutine()
+    IEnumerator PlayerAttackCollisionDetectionRoutine()
     {
         while (true)
         {
@@ -40,7 +43,7 @@ public class WhiteGun : Weapon
 
                 foreach (var collider in colliders)
                 {
-                    if (collider.CompareTag(isPlayerAttack ? ENEMY_TAG : PLAYER_TAG))
+                    if (collider.tag == ENEMY_TAG)
                     {
                         ApplyDamage(collider.gameObject);
                     }
@@ -49,5 +52,23 @@ public class WhiteGun : Weapon
 
             previousPosition = currentPosition;
         }
+    }
+
+    IEnumerator PlayerDamageDelay()
+    {
+        causedDamage = true;
+        yield return new WaitForSeconds(damageDalay);
+        causedDamage = false;
+    }
+
+    void OnTriggerStay(Collider other) {
+        if (other.tag != PLAYER_TAG || causedDamage)
+        {
+            return;
+        }
+
+        StartCoroutine(PlayerDamageDelay());
+
+        ApplyDamage(other.gameObject);
     }
 }

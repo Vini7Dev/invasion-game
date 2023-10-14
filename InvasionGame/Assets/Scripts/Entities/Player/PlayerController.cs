@@ -5,4 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : EntityController
 {
+    void Update()
+    {
+        base.Update();
+    }
 }
