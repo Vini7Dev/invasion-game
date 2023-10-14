@@ -568,6 +568,8 @@ GameObject:
   - component: {fileID: 918258426}
   - component: {fileID: 918258429}
   - component: {fileID: 918258430}
+  - component: {fileID: 918258431}
+  - component: {fileID: 918258432}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -594,13 +596,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
-  m_Radius: 0.29
+  m_Height: 2
+  m_Radius: 0.15
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &918258427
 Transform:
   m_ObjectHideFlags: 0
@@ -649,6 +651,43 @@ MonoBehaviour:
   defaultWalkSpeed: 2
   retreatingSpeed: 0
   timeToJump: 0.2
+--- !u!114 &918258431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918258425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf732f9cb24f654e8a1ea49a0125f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToCauseDamage:
+  - Player
+  maxDamage: 10
+  minDamage: 5
+--- !u!65 &918258432
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918258425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 2, z: 0.5}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,13 +943,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1
-  m_Radius: 0.29
+  m_Height: 2
+  m_Radius: 0.15
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &973816893
 MonoBehaviour:
   m_ObjectHideFlags: 0
