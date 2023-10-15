@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerFireGunHands : MonoBehaviour
 {
+    public GameObject fireGunHands;
     public GameObject fireGunLeftHand;
     public GameObject fireGunRightHand;
 
@@ -19,7 +21,7 @@ public class PlayerFireGunHands : MonoBehaviour
 
     float CalculeRotation(float directionX, float directionZ)
     {
-        return Mathf.Atan2(directionX, directionZ) * Mathf.Rad2Deg - 70;
+        return Mathf.Atan2(directionX, directionZ) * Mathf.Rad2Deg;
     }
 
     Quaternion CalculeQuaternionEuler(float rotation)
@@ -31,6 +33,17 @@ public class PlayerFireGunHands : MonoBehaviour
         );
     }
 
+    void UpdateFireGunHandsScale(int rotationMultiplier)
+    {
+        Vector3 fuireGunHandsScale = new Vector3(
+            Math.Abs(transform.localScale.x) * rotationMultiplier,
+            transform.localScale.y,
+            transform.localScale.z
+        );
+
+        fireGunHands.transform.localScale = fuireGunHandsScale;
+    }
+
     void PointToMouse()
     {
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -40,14 +53,20 @@ public class PlayerFireGunHands : MonoBehaviour
         if (plane.Raycast(cameraRay, out distance))
         {
             Vector3 target = cameraRay.GetPoint(distance);
+            Vector3 fireGunHandsDirection = CalculeDirection(target, fireGunHands.transform.position);
             Vector3 leftHandDirection = CalculeDirection(target, fireGunLeftHand.transform.position);
             Vector3 rightHandDirection = CalculeDirection(target, fireGunRightHand.transform.position);
 
+            float fireGunHandsRotation = CalculeRotation(fireGunHandsDirection.x, fireGunHandsDirection.z);
             float leftHandRotation = CalculeRotation(leftHandDirection.x, leftHandDirection.z);
             float rightHandRotation = CalculeRotation(rightHandDirection.x, rightHandDirection.z);
 
             fireGunLeftHand.transform.rotation = CalculeQuaternionEuler(leftHandRotation);
             fireGunRightHand.transform.rotation = CalculeQuaternionEuler(rightHandRotation);
+
+            int fireGunHandsRotationMultiplier = fireGunHandsRotation < 0 ? -1 : 1;
+
+            UpdateFireGunHandsScale(fireGunHandsRotationMultiplier);
         }
     }
 }
