@@ -1242,7 +1242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 776584482}
-  life: 2147483647
+  life: 100
 --- !u!114 &973816895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   minDamage: 5
   bulletSpawnTransform: {fileID: 466415208}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
-  triggerTime: 0.8
+  triggerTime: 1
 --- !u!212 &2012547192
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2193,7 +2193,7 @@ MonoBehaviour:
   minDamage: 5
   bulletSpawnTransform: {fileID: 1939077324}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
-  triggerTime: 0.8
+  triggerTime: 1
 --- !u!212 &2139154315
 SpriteRenderer:
   m_ObjectHideFlags: 0
