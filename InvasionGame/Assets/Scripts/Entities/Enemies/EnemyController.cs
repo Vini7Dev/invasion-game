@@ -15,24 +15,17 @@ public class EnemyController : EntityController
 
     bool attackStarted;
     Animator enemyAnimator;
-    PlayerController playerController;
     Transform playerTransform;
 
     void Start()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerObject.transform;
-        playerController = playerObject.GetComponent<PlayerController>();
     }
 
     void Update()
     {
         base.Update();
-    }
-
-    bool VerifyIfPlayerIsAlive()
-    {
-        return playerController.IsAlive();
     }
 
     public float GetPlayerDistance()
@@ -42,7 +35,7 @@ public class EnemyController : EntityController
 
     public PlayerDistanceAction GetPlayerDistanceAction()
     {
-        if (!VerifyIfPlayerIsAlive())
+        if (!PlayerController.IsAlive())
         {
             return PlayerDistanceAction.stopped;
         }

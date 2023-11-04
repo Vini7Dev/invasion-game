@@ -26,7 +26,7 @@ public class FireGun : Weapon
             {
                 Shot();
             }
-        } else
+        } else if (PlayerController.IsAlive())
         {
             Shot();
         }

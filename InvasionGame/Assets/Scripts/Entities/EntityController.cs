@@ -25,9 +25,9 @@ public class EntityController : MonoBehaviour
         transform.position = positionCorrect;
     }
 
-    public bool IsAlive()
+    protected virtual void WhenDying()
     {
-        return life > 0;
+        gameObject.SetActive(false);
     }
 
     public void HaveHitADamage(int damageReceived)
@@ -43,7 +43,7 @@ public class EntityController : MonoBehaviour
 
         if (life <= 0)
         {
-            gameObject.SetActive(false);
+            WhenDying();
         }
     }
 
