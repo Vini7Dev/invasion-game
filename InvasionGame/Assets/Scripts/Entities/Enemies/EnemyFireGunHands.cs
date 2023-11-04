@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFireGunHands : MonoBehaviour
+public class EnemyFireGunHands : EntityFireGunHands
 {
-    public GameObject fireGunHands;
-    public GameObject fireGunLeftHand;
-    public GameObject fireGunRightHand;
-
     float rotateGunSpeed = 3f;
     Transform playerTransform;
 

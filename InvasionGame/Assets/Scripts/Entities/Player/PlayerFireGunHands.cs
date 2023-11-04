@@ -3,12 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFireGunHands : MonoBehaviour
+public class PlayerFireGunHands : EntityFireGunHands
 {
-    public GameObject fireGunHands;
-    public GameObject fireGunLeftHand;
-    public GameObject fireGunRightHand;
-
     void Update()
     {
         PointToMouse();

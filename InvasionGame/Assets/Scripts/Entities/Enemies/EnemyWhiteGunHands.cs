@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWhiteGunHands : MonoBehaviour
+public class EnemyWhiteGunHands : EntityWhiteGunHands
 {
-    public GameObject whiteGunHands;
-
     Transform playerTransform;
 
     void Start()
