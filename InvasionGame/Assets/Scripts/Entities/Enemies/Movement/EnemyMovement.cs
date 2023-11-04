@@ -36,7 +36,8 @@ public class EnemyMovement : MonoBehaviour
         if (playerDistanceAction == PlayerDistanceAction.stopped)
         {
             StoppedDelegate();
-        } else if (playerDistanceAction == PlayerDistanceAction.advancing)
+        }
+        else if (playerDistanceAction == PlayerDistanceAction.advancing)
         {
             WalkToPlayerDelegate();
         }
