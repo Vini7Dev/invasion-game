@@ -6,7 +6,7 @@ public class ProjectileMovement : MonoBehaviour
 {
     protected const string ENEMY_TAG = "Enemy";
     protected const string PLAYER_TAG = "Player";
-    protected const string SCENARY_TAG = "Scenary";
+    protected const string OUT_OF_WALL_TAG = "OutOfWall";
 
     bool isPlayerAttack = false;
     float projectileSpeed;
@@ -52,7 +52,7 @@ public class ProjectileMovement : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag == SCENARY_TAG)
+        if (other.tag == OUT_OF_WALL_TAG)
         {
             Destroy(gameObject);
         }
