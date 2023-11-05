@@ -43,7 +43,22 @@ public class BreakableSceneryController : EntityController
         Destroy(gameObject);
     }
 
-    protected override void YPositionCorrection() {}
+    protected override void WhenTakingDamage(GameObject causerObject)
+    {
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+
+        if (!rigidbody) return;
+
+        Vector3 direction = transform.position - causerObject.transform.position;
+        direction.y = 0;
+        direction.Normalize();
+
+        rigidbody.AddForceAtPosition(
+            direction * 2,
+            transform.position,
+            ForceMode.VelocityChange
+        );
+    }
 
     protected override IEnumerator DamageTimer()
     {
@@ -53,4 +68,6 @@ public class BreakableSceneryController : EntityController
 
         onDamage = false;
     }
+
+    protected override void YPositionCorrection() {}
 }

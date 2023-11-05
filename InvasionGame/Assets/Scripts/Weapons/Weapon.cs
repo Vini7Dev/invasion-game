@@ -17,6 +17,6 @@ public class Weapon : MonoBehaviour
 
     public void ApplyDamage(GameObject other) {
         EntityController entityController = other.GetComponent<EntityController>();
-        entityController.HaveHitADamage(GetRandomDamage());
+        entityController.HaveHitADamage(GetRandomDamage(), gameObject);
     }
 }

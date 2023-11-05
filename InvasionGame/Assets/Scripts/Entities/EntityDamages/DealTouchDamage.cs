@@ -30,7 +30,7 @@ public class DealTouchDamage : MonoBehaviour
         StartCoroutine(DamageDelay());
 
         EntityController entityController = other.GetComponent<EntityController>();
-        entityController.HaveHitADamage(GetRandomDamage());
+        entityController.HaveHitADamage(GetRandomDamage(), gameObject);
     }
 
     IEnumerator DamageDelay()

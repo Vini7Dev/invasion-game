@@ -58,7 +58,7 @@ public class ProjectileMovement : MonoBehaviour
 
         EntityController entityController = other.GetComponent<EntityController>();
 
-        entityController.HaveHitADamage(damageToApply);
+        entityController.HaveHitADamage(damageToApply, gameObject);
 
         Destroy(gameObject);
     }

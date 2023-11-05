@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 12093
+  controlID: 25371
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 12094
+  controlID: 25372
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 12057
+  controlID: 25335
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 12048
+  controlID: 25313
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -645,9 +645,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.000000029802322, y: 0.31340122, z: 0.000000059604645}
+    m_Target: {x: -0.1869626, y: 0.110666275, z: 1.6669631}
     speed: 2
-    m_Value: {x: -0.000000029802322, y: 0.31340122, z: 0.000000059604645}
+    m_Value: {x: -0.1869626, y: 0.110666275, z: 1.6669631}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -693,13 +693,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.23993145, y: 0.5702132, z: -0.17882572, w: 0.76505643}
+    m_Target: {x: 0.4021872, y: 0.31440172, z: -0.1493216, w: 0.8468185}
     speed: 2
-    m_Value: {x: 0.23993142, y: 0.57021314, z: -0.1788257, w: 0.7650563}
+    m_Value: {x: 0.4021869, y: 0.31440148, z: -0.1493215, w: 0.8468179}
   m_Size:
-    m_Target: 1.3826231
+    m_Target: 3.9649625
     speed: 2
-    m_Value: 1.3826231
+    m_Value: 3.9649625
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -975,7 +975,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/BreakableSceneries/Boxes
+    - Assets/Textures/BreakableScenaries/WoodBox
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -983,15 +983,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/BreakableSceneries/Boxes
+  - Assets/Textures/BreakableScenaries/WoodBox
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Public\Documents\Projetos Pessoais\unity\invasion-game\InvasionGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 112}
-    m_SelectedIDs: 72c20000
-    m_LastClickedID: 49778
+    scrollPos: {x: 0, y: 308}
+    m_SelectedIDs: 7ac20000
+    m_LastClickedID: 49786
     m_ExpandedIDs: 00000000845c0000865c0000885c00008a5c00008c5c00008e5c0000925c0000945c0000965c0000985c000088b800006ec2000076c2000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1045,8 +1045,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: def1feff
-    m_LastClickedInstanceID: -69154
+    m_SelectedInstanceIDs: 78faffff
+    m_LastClickedInstanceID: -1416
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000305d000090110100be5c0000066300009a5c0000fc5c000076640100d0700000d05d0000c85d00004ea40000129100006c590000d05900006a640000f08a000000000000
     m_RenameOverlay:
@@ -1095,8 +1095,8 @@ MonoBehaviour:
     y: 0
     width: 357
     height: 627
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -1142,7 +1142,7 @@ MonoBehaviour:
     m_CachedPref: 151
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -1
+  m_LastInspectedObjectInstanceID: 23188
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

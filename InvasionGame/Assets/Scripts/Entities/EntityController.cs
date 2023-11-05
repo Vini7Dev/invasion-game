@@ -33,7 +33,7 @@ public class EntityController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void HaveHitADamage(int damageReceived)
+    public void HaveHitADamage(int damageReceived, GameObject causerObject)
     {
         if (onDamage)
         {
@@ -42,6 +42,7 @@ public class EntityController : MonoBehaviour
 
         life -= damageReceived;
 
+        WhenTakingDamage(causerObject);
         StartCoroutine(DamageTimer());
 
         if (life <= 0)
@@ -49,6 +50,8 @@ public class EntityController : MonoBehaviour
             WhenDying();
         }
     }
+
+    protected virtual void WhenTakingDamage(GameObject causerObject) {}
 
     protected virtual IEnumerator DamageTimer()
     {
@@ -61,20 +64,22 @@ public class EntityController : MonoBehaviour
         onDamage = false;
     }
 
+    void PushScenery(GameObject scenery)
+    {
+        Rigidbody sceneryRigidbody = scenery.gameObject.GetComponent<Rigidbody>();
+
+        Vector3 direction = scenery.gameObject.transform.position - transform.position;
+        direction.y = 0;
+        direction.Normalize();
+
+        sceneryRigidbody.AddForceAtPosition(
+            direction * rigidbodyPower,
+            transform.position,
+            ForceMode.Impulse
+        );
+    }
+
     void OnControllerColliderHit(ControllerColliderHit hit) {
-        if (hit.gameObject.tag == BREAKABLE_SCENERY_TAG)
-        {
-            Rigidbody rigidbody = hit.gameObject.GetComponent<Rigidbody>();
-
-            Vector3 direction = hit.gameObject.transform.position - transform.position;
-            direction.y = 0;
-            direction.Normalize();
-
-            rigidbody.AddForceAtPosition(
-                direction * rigidbodyPower,
-                transform.position,
-                ForceMode.Impulse
-            );
-        }
+        if (hit.gameObject.tag == BREAKABLE_SCENERY_TAG) PushScenery(hit.gameObject);
     }
 }
