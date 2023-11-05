@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
+    protected const string BREAKABLE_SCENERY_TAG = "BreakableScenery";
+    const int rigidbodyPower = 5;
+
     public SpriteRenderer entitySprite;
     public int life = 100;
 
@@ -15,7 +18,7 @@ public class EntityController : MonoBehaviour
         YPositionCorrection();
     }
 
-    private void YPositionCorrection() {
+    protected virtual void YPositionCorrection() {
         Vector3 positionCorrect = new Vector3(
             transform.position.x,
             0.1f,
@@ -56,5 +59,22 @@ public class EntityController : MonoBehaviour
 
         entitySprite.color = new Color(1f, 1f, 1f, 1f);
         onDamage = false;
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit) {
+        if (hit.gameObject.tag == BREAKABLE_SCENERY_TAG)
+        {
+            Rigidbody rigidbody = hit.gameObject.GetComponent<Rigidbody>();
+
+            Vector3 direction = hit.gameObject.transform.position - transform.position;
+            direction.y = 0;
+            direction.Normalize();
+
+            rigidbody.AddForceAtPosition(
+                direction * rigidbodyPower,
+                transform.position,
+                ForceMode.Impulse
+            );
+        }
     }
 }

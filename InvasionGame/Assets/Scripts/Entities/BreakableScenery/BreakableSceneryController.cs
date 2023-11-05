@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BreakableSceneryController : EntityController
 {
+    protected override void YPositionCorrection() {}
+
     protected override IEnumerator DamageTimer()
     {
         onDamage = true;
