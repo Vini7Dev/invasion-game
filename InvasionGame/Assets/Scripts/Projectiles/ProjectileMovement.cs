@@ -6,6 +6,7 @@ public class ProjectileMovement : MonoBehaviour
 {
     protected const string ENEMY_TAG = "Enemy";
     protected const string PLAYER_TAG = "Player";
+    protected const string BREAKABLE_SCENERY_TAG = "BreakableScenery";
     protected const string OUT_OF_WALL_TAG = "OutOfWall";
 
     bool isPlayerAttack = false;
@@ -51,6 +52,17 @@ public class ProjectileMovement : MonoBehaviour
         return Random.Range(minDamage, maxDamage + 1);
     }
 
+    void ApplyDamage(Collider other)
+    {
+        int damageToApply = GetRandomDamage();
+
+        EntityController entityController = other.GetComponent<EntityController>();
+
+        entityController.HaveHitADamage(damageToApply);
+
+        Destroy(gameObject);
+    }
+
     void OnTriggerEnter(Collider other) {
         if (other.tag == OUT_OF_WALL_TAG)
         {
@@ -58,20 +70,9 @@ public class ProjectileMovement : MonoBehaviour
         }
         else
         {
-            int damageToApply = GetRandomDamage();
-
-            EntityController entityController = other.GetComponent<EntityController>();
-
-            if (isPlayerAttack && other.tag == ENEMY_TAG)
-            {
-                entityController.HaveHitADamage(damageToApply);
-                Destroy(gameObject);
-            }
-            else if (!isPlayerAttack && other.tag == PLAYER_TAG)
-            {
-                entityController.HaveHitADamage(damageToApply);
-                Destroy(gameObject);
-			}
+            if (isPlayerAttack && other.tag == ENEMY_TAG) ApplyDamage(other);
+            else if (!isPlayerAttack && other.tag == PLAYER_TAG) ApplyDamage(other);
+            else if (other.tag == BREAKABLE_SCENERY_TAG) ApplyDamage(other);
         }
     }
 }

@@ -43,7 +43,7 @@ public class WhiteGun : Weapon
 
                 foreach (var collider in colliders)
                 {
-                    if (collider.tag == ENEMY_TAG)
+                    if (collider.tag == ENEMY_TAG || collider.tag == BREAKABLE_SCENERY_TAG)
                     {
                         ApplyDamage(collider.gameObject);
                     }

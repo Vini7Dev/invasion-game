@@ -7,8 +7,8 @@ public class EntityController : MonoBehaviour
     public SpriteRenderer entitySprite;
     public int life = 100;
 
-    bool onDamage;
-    float damageTime = 0.2f;
+    protected bool onDamage;
+    protected float damageTime = 0.2f;
 
     protected void Update()
     {
@@ -47,7 +47,7 @@ public class EntityController : MonoBehaviour
         }
     }
 
-    IEnumerator DamageTimer()
+    protected virtual IEnumerator DamageTimer()
     {
         onDamage = true;
         entitySprite.color = new Color(0.5f, 0.5f, 0.5f, 1f);

@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Collectable
   - OutOfWall
+  - BreakableScenery
   layers:
   - Default
   - TransparentFX

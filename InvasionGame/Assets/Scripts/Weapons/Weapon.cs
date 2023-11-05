@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     protected const string ENEMY_TAG = "Enemy";
     protected const string PLAYER_TAG = "Player";
+    protected const string BREAKABLE_SCENERY_TAG = "BreakableScenery";
 
     public bool isPlayerAttack;
     public int maxDamage = 10, minDamage = 5;
