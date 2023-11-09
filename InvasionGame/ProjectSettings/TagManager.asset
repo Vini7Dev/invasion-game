@@ -9,6 +9,8 @@ TagManager:
   - Collectable
   - OutOfWall
   - BreakableScenery
+  - Scenary
+  - RoomPassage
   layers:
   - Default
   - TransparentFX
