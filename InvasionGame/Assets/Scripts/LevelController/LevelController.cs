@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    public GameObject[] roomPrefabs;
+    public GameObject[] roomPrefabs, roomPassagePrefabs;
 
     int roomPerLevel = 5;
     List<GameObject> levelRooms = new List<GameObject>();
@@ -47,6 +47,23 @@ public class LevelController : MonoBehaviour
 
             Vector3 newCurrentSpawnerPosition = new Vector3(
                 spawnDirection.position.x, 0, spawnDirection.position.y
+            );
+
+            GameObject roomPassage = roomPassagePrefabs[0];
+
+            Vector3 roomPassagePosition = new Vector3(
+                spawnDirection.roomPassagePosition.x, -2, spawnDirection.roomPassagePosition.y
+            );
+
+            Vector3 roomPassageRotation = roomPassage.transform.rotation.eulerAngles;
+
+            if (spawnDirection.direction == Direction.Left) roomPassageRotation.y -= 90;
+            else if (spawnDirection.direction == Direction.Right) roomPassageRotation.y += 90;
+
+            Instantiate(
+                roomPassage,
+                currentSpawnerPosition + roomPassagePosition,
+                Quaternion.Euler(roomPassageRotation)
             );
 
             currentSpawnerPosition += newCurrentSpawnerPosition;

@@ -15,7 +15,7 @@ public enum Direction
 public class NextRoomPositions
 {
     public Direction direction = Direction.Up;
-    public Vector2 position = new Vector2(0, 0);
+    public Vector2 position, roomPassagePosition = new Vector2(0, 0);
 }
 
 public class RoomController : MonoBehaviour
