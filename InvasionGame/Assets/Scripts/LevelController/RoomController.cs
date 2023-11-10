@@ -12,15 +12,30 @@ public enum Direction
 }
 
 [Serializable]
-public class NextRoomPositions
+public class NextRoomPosition
 {
     public Direction direction = Direction.Up;
     public Vector2 position, roomPassagePosition = new Vector2(0, 0);
+
+    public bool IsDirection(Direction directionToCheck)
+    {
+        return direction == directionToCheck;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return new Vector3(position.x, 0, position.y);
+    }
+
+    public Vector3 GetPassagePosition()
+    {
+        return new Vector3(roomPassagePosition.x, 0, roomPassagePosition.y);
+    }
 }
 
 public class RoomController : MonoBehaviour
 {
-    public NextRoomPositions[] nextRoomPositions;
+    public NextRoomPosition[] nextRoomPositions;
 
     int totalOfEnemiesOnRoom;
 
