@@ -36,6 +36,7 @@ public class NextRoomPosition
 public class RoomController : MonoBehaviour
 {
     public NextRoomPosition[] nextRoomPositions;
+    public int roomIndex;
 
     int totalOfEnemiesOnRoom;
 

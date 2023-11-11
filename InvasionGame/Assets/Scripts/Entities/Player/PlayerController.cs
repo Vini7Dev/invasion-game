@@ -6,13 +6,7 @@ public class PlayerController : EntityController
 {
     static bool alive = true;
 
-    HUDController hudController;
-
-    void Start()
-    {
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        hudController = gameController.GetComponent<HUDController>();
-    }
+    public HUDController hudController;
 
     void Update()
     {

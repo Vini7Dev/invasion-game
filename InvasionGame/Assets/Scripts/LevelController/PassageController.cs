@@ -6,6 +6,7 @@ public class PassageController : MonoBehaviour
 {
     public GameObject passageConnection;
 
+    bool waitForPlayerMove;
     RoomController roomController;
     CharacterController playerCharacterController;
 
@@ -27,23 +28,35 @@ public class PassageController : MonoBehaviour
         passageConnection = passageToConnect;
     }
 
-    void TeleportPlayer(GameObject player)
+    void GoToOtherRoom(GameObject player)
     {
         if (!passageConnection) return;
+
+        waitForPlayerMove = true;
 
         CharacterController playerCharacterController = player.GetComponent<CharacterController>();
 
         playerCharacterController.enabled = false;
         player.transform.position = passageConnection.transform.position;
         playerCharacterController.enabled = true;
+
+        Transform nextRoom = passageConnection.transform.parent;
+        int roomIndex = nextRoom.GetComponent<RoomController>().roomIndex;
+
+        GameObject levelController = GameObject.FindGameObjectWithTag("GameController");
+        levelController.GetComponent<LevelController>().UpdateCurrentRoom(roomIndex);
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") waitForPlayerMove = false;
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag != "Player" || !roomController.IsAllEnemiesDied())
+        if (other.tag != "Player" || waitForPlayerMove || !roomController.IsAllEnemiesDied())
         {
             return;
         }
 
-        TeleportPlayer(other.gameObject);
+        GoToOtherRoom(other.gameObject);
     }
 }

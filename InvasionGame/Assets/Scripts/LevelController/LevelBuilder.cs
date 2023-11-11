@@ -10,6 +10,11 @@ public class LevelBuilder : MonoBehaviour
     int passagesCount;
     GameObject[] levelRooms, levelPassages;
 
+    public GameObject GetLevelRoom(int roomIndex)
+    {
+        return levelRooms[roomIndex];
+    }
+
     public void CreateLevelRooms()
     {
         levelRooms = new GameObject[roomPerLevel];
@@ -28,6 +33,8 @@ public class LevelBuilder : MonoBehaviour
                 spawnerPosition,
                 Quaternion.identity
             );
+
+            roomInstance.GetComponent<RoomController>().roomIndex = roomIndex;
 
             levelRooms[roomIndex] = roomInstance;
 
