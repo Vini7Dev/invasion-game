@@ -28,6 +28,16 @@ public class EnemyController : EntityController
         base.Update();
     }
 
+    protected override void WhenDying()
+    {
+        GameObject roomObject = transform.parent.gameObject;
+
+        RoomController roomController = roomObject.GetComponent<RoomController>();
+        roomController.OnEnemyDies();
+
+        Destroy(gameObject);
+    }
+
     public float GetPlayerDistance()
     {
         return Vector3.Distance(transform.position, playerTransform.position);

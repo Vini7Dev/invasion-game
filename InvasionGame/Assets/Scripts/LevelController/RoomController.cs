@@ -46,7 +46,11 @@ public class RoomController : MonoBehaviour
 
     void ProcessCurrentRoom()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = transform
+            .Cast<Transform>()
+            .Where(child => child.gameObject.activeSelf && child.CompareTag("Enemy"))
+            .Select(child => child.gameObject)
+            .ToArray();
 
         totalOfEnemiesOnRoom = enemies.Count(enemy => enemy.activeSelf);
     }
@@ -54,5 +58,10 @@ public class RoomController : MonoBehaviour
     public void OnEnemyDies()
     {
         totalOfEnemiesOnRoom -= 1;
+    }
+
+    public bool IsAllEnemiesDied()
+    {
+        return totalOfEnemiesOnRoom <= 0;
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - BreakableScenery
   - Scenary
   - RoomPassage
+  - RoomController
   layers:
   - Default
   - TransparentFX

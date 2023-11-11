@@ -5,16 +5,11 @@ using UnityEngine;
 public class LevelBuilder : MonoBehaviour
 {
     public GameObject[] roomPrefabs, roomPassagePrefabs;
+    public int roomPerLevel = 2;
 
-    int roomPerLevel = 5;
-    List<GameObject> levelRooms = new List<GameObject>();
+    public readonly List<GameObject> levelRooms = new List<GameObject>();
 
-    void Start()
-    {
-        CreateLevelRooms();
-    }
-
-    void CreateLevelRooms()
+    public void CreateLevelRooms()
     {
         NextRoomPosition previousRoomPosition = null;
 

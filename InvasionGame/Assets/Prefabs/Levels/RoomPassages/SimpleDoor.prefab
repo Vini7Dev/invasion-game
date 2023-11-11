@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 463968513984999680}
   - component: {fileID: 7761963354314582150}
   - component: {fileID: 7250068468090724847}
+  - component: {fileID: 6205222871439325843}
   m_Layer: 0
   m_Name: SimpleDoor
   m_TagString: RoomPassage
@@ -107,3 +108,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05, y: 0.082334384, z: 0.12950625}
   m_Center: {x: 0, y: -0.000000013038516, z: 0.052985735}
+--- !u!114 &6205222871439325843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203010469103265168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9eddbd931d3af48bd634391bfafbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
