@@ -7,10 +7,14 @@ public class LevelBuilder : MonoBehaviour
     public GameObject[] roomPrefabs, roomPassagePrefabs;
     public int roomPerLevel = 2;
 
-    public readonly List<GameObject> levelRooms = new List<GameObject>();
+    int passagesCount;
+    GameObject[] levelRooms, levelPassages;
 
     public void CreateLevelRooms()
     {
+        levelRooms = new GameObject[roomPerLevel];
+        levelPassages = new GameObject[roomPerLevel * 2];
+
         NextRoomPosition previousRoomPosition = null;
 
         Vector3 spawnerPosition = new Vector3(0, 2, 0);
@@ -25,24 +29,24 @@ public class LevelBuilder : MonoBehaviour
                 Quaternion.identity
             );
 
-            levelRooms.Add(roomInstance);
+            levelRooms[roomIndex] = roomInstance;
 
             NextRoomPosition nextRoomPosition = GetRamdomDirection(
                 roomInstance,
                 previousRoomPosition
             );
 
-            CreateRoomPassage(roomInstance, nextRoomPosition, spawnerPosition);
-
             if (previousRoomPosition != null)
             {
                 CreateRoomPassage(
-                    levelRooms[roomIndex-1],
+                    levelRooms[roomIndex],
                     previousRoomPosition,
                     spawnerPosition,
                     true
                 );
             }
+
+            CreateRoomPassage(roomInstance, nextRoomPosition, spawnerPosition);
 
             previousRoomPosition = nextRoomPosition;
             spawnerPosition += nextRoomPosition.GetPosition();
@@ -75,7 +79,7 @@ public class LevelBuilder : MonoBehaviour
         GameObject roomParent,
         NextRoomPosition nextRoomPosition,
         Vector3 spawnerPosition,
-        bool previousPassage = false
+        bool isPreviousPassage = false
     )
     {
         GameObject roomPassage = roomPassagePrefabs[0];
@@ -84,7 +88,7 @@ public class LevelBuilder : MonoBehaviour
             nextRoomPosition.GetPassagePosition().x, -2, nextRoomPosition.GetPassagePosition().z
         );
 
-        if (previousPassage)
+        if (isPreviousPassage)
         {
             roomPassagePosition *= -1;
             roomPassagePosition.y = -2;
@@ -106,5 +110,22 @@ public class LevelBuilder : MonoBehaviour
         );
 
         roomPassageInstance.transform.parent = roomParent.transform;
+
+        if (isPreviousPassage && levelPassages.Length > 1)
+        {
+            GameObject previousPassageObject = levelPassages[passagesCount-1];
+
+            roomPassageInstance
+                .GetComponent<PassageController>()
+                .passageConnection = previousPassageObject;
+
+            previousPassageObject
+                .GetComponent<PassageController>()
+                .passageConnection = roomPassageInstance;
+        }
+
+        levelPassages[passagesCount] = roomPassageInstance;
+
+        passagesCount += 1;
     }
 }

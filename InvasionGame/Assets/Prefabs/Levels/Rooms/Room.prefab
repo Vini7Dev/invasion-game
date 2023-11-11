@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 7861829692958739748}
-  life: 100
+  life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
 --- !u!114 &4898644058976352742
@@ -2636,7 +2636,6 @@ MonoBehaviour:
   - direction: 2
     position: {x: 12, y: 0}
     roomPassagePosition: {x: 5, y: 0}
-  totalOfEnemiesOnRoom: 0
 --- !u!1 &6266147069312508467
 GameObject:
   m_ObjectHideFlags: 0
