@@ -32,6 +32,11 @@ public class PassageController : MonoBehaviour
     {
         if (!passageConnection) return;
 
+        GameObject levelControllerObj = GameObject.FindGameObjectWithTag("GameController");
+        LevelController levelController = levelControllerObj.GetComponent<LevelController>();
+
+        if (levelController.GetIsInRoomTransition()) return;
+
         waitForPlayerMove = true;
 
         CharacterController playerCharacterController = player.GetComponent<CharacterController>();
@@ -43,8 +48,7 @@ public class PassageController : MonoBehaviour
         Transform nextRoom = passageConnection.transform.parent;
         int roomIndex = nextRoom.GetComponent<RoomController>().roomIndex;
 
-        GameObject levelController = GameObject.FindGameObjectWithTag("GameController");
-        levelController.GetComponent<LevelController>().UpdateCurrentRoom(roomIndex);
+        levelController.UpdateCurrentRoom(roomIndex);
     }
 
     void OnTriggerExit(Collider other) {

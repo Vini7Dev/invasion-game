@@ -30,10 +30,9 @@ public class EnemyController : EntityController
 
     protected override void WhenDying()
     {
-        GameObject roomObject = transform.parent.gameObject;
-
-        RoomController roomController = roomObject.GetComponent<RoomController>();
-        roomController.OnEnemyDies();
+        GameObject levelControllerObj = GameObject.FindGameObjectWithTag("GameController");
+        LevelController levelController = levelControllerObj.GetComponent<LevelController>();
+        levelController.OnEnemyDies();
 
         Destroy(gameObject);
     }

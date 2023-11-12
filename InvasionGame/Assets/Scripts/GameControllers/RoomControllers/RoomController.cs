@@ -36,14 +36,14 @@ public class NextRoomPosition
 public class RoomController : MonoBehaviour
 {
     public MeshRenderer roomCover;
+    public Transform enemiesContainer;
     public NextRoomPosition[] nextRoomPositions;
     public int roomIndex;
 
-    bool isActive;
+    bool isRoomActive;
     int totalOfEnemiesOnRoom;
     float roomCoverAnimationSpeed;
     Material roomCoverMaterial;
-
 
     void Start()
     {
@@ -59,9 +59,8 @@ public class RoomController : MonoBehaviour
 
     void ProcessCurrentRoom()
     {
-        GameObject[] enemies = transform
+        GameObject[] enemies = enemiesContainer
             .Cast<Transform>()
-            .Where(child => child.gameObject.activeSelf && child.CompareTag("Enemy"))
             .Select(child => child.gameObject)
             .ToArray();
 
@@ -70,22 +69,32 @@ public class RoomController : MonoBehaviour
 
     void OpenOrCloseRoomCover()
     {
-        if ((isActive && roomCoverMaterial.color.a > 0)
-            || (!isActive && roomCoverMaterial.color.a < 1)
+        if ((isRoomActive && roomCoverMaterial.color.a > 0)
+            || (!isRoomActive && roomCoverMaterial.color.a < 1)
         )
         {
             float currentAlpha = roomCoverMaterial.color.a;
+
             roomCoverMaterial.color = new Color(0, 0, 0, currentAlpha + roomCoverAnimationSpeed);
-        }
-        else {
-            roomCoverMaterial.color = new Color(0, 0, 0, isActive ? 0 : 1);
+
+            currentAlpha = roomCoverMaterial.color.a;
+
+            if (isRoomActive && currentAlpha < 0)
+                roomCoverMaterial.color = new Color(0, 0, 0, 0);
+            else if (!isRoomActive && currentAlpha > 1)
+                roomCoverMaterial.color = new Color(0, 0, 0, 1);
         }
     }
 
-    public void SetIsActive(bool newIsActive)
+    public void SetIsRoomActive(bool newIsActive)
     {
-        isActive = newIsActive;
-        roomCoverAnimationSpeed = (isActive ? -1 : 1) * Time.deltaTime * 0.5f;
+        isRoomActive = newIsActive;
+        roomCoverAnimationSpeed = (isRoomActive ? -1 : 1) * Time.deltaTime * 0.5f;
+    }
+
+    public bool GetIsRoomActive()
+    {
+        return isRoomActive;
     }
 
     public void OnEnemyDies()
