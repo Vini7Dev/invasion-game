@@ -12,14 +12,26 @@ public class LevelController : MonoBehaviour
     {
         levelBuilder = GetComponent<LevelBuilder>();
         levelBuilder.CreateLevelRooms();
+        currentRoom = levelBuilder.GetLevelRoom(0);
+
+        UpdateRoomIsActive(true);
 
         GameObject mainCamera = Camera.main.gameObject;
         cameraController = mainCamera.GetComponent<CameraController>();
     }
 
+    void UpdateRoomIsActive(bool newIsActive)
+    {
+        currentRoom.GetComponent<RoomController>().SetIsActive(newIsActive);
+    }
+
     public void UpdateCurrentRoom(int roomIndex)
     {
+        UpdateRoomIsActive(false);
+
         currentRoom = levelBuilder.GetLevelRoom(roomIndex);
+
+        UpdateRoomIsActive(true);
 
         Vector2 cameraPosition = new Vector2(
             currentRoom.transform.position.x,
