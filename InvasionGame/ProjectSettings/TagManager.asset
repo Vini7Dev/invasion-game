@@ -13,6 +13,7 @@ TagManager:
   - RoomPassage
   - RoomController
   - Room
+  - RoomFloor
   layers:
   - Default
   - TransparentFX
