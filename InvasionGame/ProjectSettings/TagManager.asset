@@ -12,6 +12,7 @@ TagManager:
   - Scenary
   - RoomPassage
   - RoomController
+  - Room
   layers:
   - Default
   - TransparentFX
