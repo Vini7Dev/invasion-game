@@ -7,6 +7,8 @@ public class PlayerFireGunHands : EntityFireGunHands
 {
     void Update()
     {
+        fireGunRightHand.SetActive(entitySkills.twoFireGunHands);
+
         PointToMouse();
     }
 
@@ -29,17 +31,6 @@ public class PlayerFireGunHands : EntityFireGunHands
         );
     }
 
-    void UpdateFireGunHandsScale(int rotationMultiplier)
-    {
-        Vector3 fuireGunHandsScale = new Vector3(
-            Math.Abs(transform.localScale.x) * rotationMultiplier,
-            transform.localScale.y,
-            transform.localScale.z
-        );
-
-        fireGunHands.transform.localScale = fuireGunHandsScale;
-    }
-
     void PointToMouse()
     {
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -49,20 +40,36 @@ public class PlayerFireGunHands : EntityFireGunHands
         if (plane.Raycast(cameraRay, out distance))
         {
             Vector3 target = cameraRay.GetPoint(distance);
-            Vector3 fireGunHandsDirection = CalculeDirection(target, fireGunHands.transform.position);
-            Vector3 leftHandDirection = CalculeDirection(target, fireGunLeftHand.transform.position);
-            Vector3 rightHandDirection = CalculeDirection(target, fireGunRightHand.transform.position);
 
-            float fireGunHandsRotation = CalculeRotation(fireGunHandsDirection.x, fireGunHandsDirection.z);
-            float leftHandRotation = CalculeRotation(leftHandDirection.x, leftHandDirection.z);
-            float rightHandRotation = CalculeRotation(rightHandDirection.x, rightHandDirection.z);
-
-            fireGunLeftHand.transform.rotation = CalculeQuaternionEuler(leftHandRotation);
-            fireGunRightHand.transform.rotation = CalculeQuaternionEuler(rightHandRotation);
-
-            int fireGunHandsRotationMultiplier = fireGunHandsRotation < 0 ? -1 : 1;
-
-            UpdateFireGunHandsScale(fireGunHandsRotationMultiplier);
+            PointFireGunHandToMouse(fireGunLeftHand, target);
+            PointFireGunHandToMouse(fireGunRightHand, target);
+            UpdateFireGunHandsScale(fireGunHands, target);
         }
+    }
+
+    void PointFireGunHandToMouse(GameObject handToPoint, Vector3 target)
+    {
+        Vector3 handDirection = CalculeDirection(target, handToPoint.transform.position);
+
+        float handRotation = CalculeRotation(handDirection.x, handDirection.z);
+
+        handToPoint.transform.rotation = CalculeQuaternionEuler(handRotation);
+    }
+
+    void UpdateFireGunHandsScale(GameObject fireGunHands, Vector3 target)
+    {
+        Vector3 fireGunHandsDirection = CalculeDirection(target, fireGunHands.transform.position);
+
+        float fireGunHandsRotation = CalculeRotation(fireGunHandsDirection.x, fireGunHandsDirection.z);
+
+        int fireGunHandsRotationMultiplier = fireGunHandsRotation < 0 ? -1 : 1;
+
+        Vector3 fuireGunHandsScale = new Vector3(
+            Math.Abs(transform.localScale.x) * fireGunHandsRotationMultiplier,
+            transform.localScale.y,
+            transform.localScale.z
+        );
+
+        fireGunHands.transform.localScale = fuireGunHandsScale;
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3237187761191177655}
   - component: {fileID: 5721815900878904007}
   - component: {fileID: 5257544655279417018}
+  - component: {fileID: 8087711406495046943}
   - component: {fileID: 3751210469110880375}
   - component: {fileID: 7323746921669798916}
   m_Layer: 0
@@ -100,6 +101,22 @@ MonoBehaviour:
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
+--- !u!114 &8087711406495046943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5485330213435652041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29b4c811573e4c419ea40346aea202d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 25
+  moveSpeed: 2
+  twoFireGunHands: 0
+  canWalkInTrap: 1
 --- !u!114 &3751210469110880375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 1395968270164840287}
-  defaultWalkSpeed: 2
   retreatingSpeed: 0
   timeToJump: 0.2
 --- !u!114 &7323746921669798916

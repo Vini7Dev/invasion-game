@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Animator enemyAnimator;
-    public float defaultWalkSpeed = 4, retreatingSpeed = 2;
+    public float retreatingSpeed;
 
-    protected float walkSpeed;
     protected CharacterController characterController;
     protected EnemyController enemyController;
     protected Transform playerTransform;
+    protected EntitySkills enemySkills;
     protected delegate void MovementDelegate();
 
     protected void Start()
@@ -18,7 +18,8 @@ public class EnemyMovement : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         enemyController = GetComponent<EnemyController>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        walkSpeed = defaultWalkSpeed;
+        enemySkills = GetComponent<EntitySkills>();
+        retreatingSpeed = enemySkills.moveSpeed - 2;
     }
 
     void Update()
@@ -51,7 +52,7 @@ public class EnemyMovement : MonoBehaviour
 
     protected void WalkToPlayer()
     {
-        MoveWithPlayerDirectionBySpeed(walkSpeed);
+        MoveWithPlayerDirectionBySpeed(enemySkills.moveSpeed);
     }
 
     protected void MoveAwaiFromPlayer()

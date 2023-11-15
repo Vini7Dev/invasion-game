@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public SpriteRenderer playerSprite;
-    public float walkSpeed = 4;
 
     float fixedYPosition = 1;
     CharacterController characterController;
+    EntitySkills playerSkills;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+
+        playerSkills = GetComponent<EntitySkills>();
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 inputsValue = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        characterController.Move(inputsValue * walkSpeed * Time.deltaTime);
+        characterController.Move(inputsValue * playerSkills.moveSpeed * Time.deltaTime);
         transform.position = new Vector3(
             transform.position.x,
             fixedYPosition,

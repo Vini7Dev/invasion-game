@@ -25,7 +25,7 @@ public class SlimeJumpMovement : EnemyMovement
         }
         else if (jump && !stopped)
         {
-            MoveWithPlayerDirectionBySpeed(walkSpeed);
+            MoveWithPlayerDirectionBySpeed(enemySkills.moveSpeed);
             StartCoroutine(StoppedDelay());
         }
 

@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 8784111616905393386}
   - component: {fileID: 6809207394582981058}
   - component: {fileID: 3461362461151315518}
+  - component: {fileID: 169701445648327130}
   - component: {fileID: 7997159921341461644}
   - component: {fileID: 6078912513917935786}
   - component: {fileID: 957802898697503014}
@@ -302,6 +303,19 @@ MonoBehaviour:
   life: 40
   maxPlayerDistance: 10
   minPlayerDistance: 1
+--- !u!114 &169701445648327130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322585975344601441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29b4c811573e4c419ea40346aea202d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  twoFireGunHands: 0
 --- !u!114 &7997159921341461644
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ public class EnemyController : EntityController
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerObject.transform;
+
+        base.Start();
     }
 
     void Update()

@@ -12,6 +12,16 @@ public class EntityController : MonoBehaviour
 
     protected bool onDamage;
     protected float damageTime = 0.2f;
+    protected EntitySkills entitySkills;
+
+    protected void Start()
+    {
+        entitySkills = GetComponent<EntitySkills>();
+
+        if (!entitySkills) return;
+
+        life = entitySkills.maxLife;
+    }
 
     protected void Update()
     {
