@@ -36,8 +36,8 @@ public class NextRoomPosition
 public class RoomController : MonoBehaviour
 {
     public MeshRenderer roomCover;
-    public Transform enemiesContainer;
     public NextRoomPosition[] nextRoomPositions;
+    public GameObject[] roomVariations;
     public int roomIndex;
 
     bool isRoomActive;
@@ -48,7 +48,6 @@ public class RoomController : MonoBehaviour
     void Start()
     {
         roomCoverMaterial = roomCover.materials[0];
-
         ProcessCurrentRoom();
     }
 
@@ -59,12 +58,27 @@ public class RoomController : MonoBehaviour
 
     void ProcessCurrentRoom()
     {
-        GameObject[] enemies = enemiesContainer
+        int roomVariationIndex = UnityEngine.Random.Range(0, roomVariations.Length);
+
+        GameObject currentRoomVariation = roomVariations[roomVariationIndex];
+
+        GameObject roomVariationInstance = Instantiate(
+            currentRoomVariation,
+            transform.position,
+            currentRoomVariation.transform.rotation
+        );
+
+        RoomVariation roomVariation = roomVariationInstance.GetComponent<RoomVariation>();
+
+        roomVariation.roomController = GetComponent<RoomController>();
+
+        GameObject[] enemies = roomVariationInstance.transform
+            .Find("Enemies")
             .Cast<Transform>()
             .Select(child => child.gameObject)
             .ToArray();
 
-        totalOfEnemiesOnRoom = enemies.Count(enemy => enemy.activeSelf);
+        totalOfEnemiesOnRoom = enemies.Length;
     }
 
     void OpenOrCloseRoomCover()

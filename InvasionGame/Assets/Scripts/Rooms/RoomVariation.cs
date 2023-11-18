@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomObjectsContainer : MonoBehaviour
+public class RoomVariation : MonoBehaviour
 {
-    bool isChildrenActive = true;
-    RoomController roomController;
+    public RoomController roomController;
 
-    void Start()
-    {
-        GameObject roomObject = transform.parent.gameObject;
-        roomController = roomObject.GetComponent<RoomController>();
-    }
+    bool isChildrenActive = true;
 
     void Update()
     {
+        if (!roomController) return;
+
         if (roomController.GetIsRoomActive() != isChildrenActive)
         {
             ActiveOrDeactiveChildren(roomController.GetIsRoomActive());
