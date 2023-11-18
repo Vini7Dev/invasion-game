@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Projectile
-  - Collectable
   - OutOfWall
   - BreakableScenery
   - Scenary
@@ -14,6 +13,8 @@ TagManager:
   - RoomController
   - Room
   - RoomFloor
+  - CollectableItem
+  - CollectableWeapon
   layers:
   - Default
   - TransparentFX

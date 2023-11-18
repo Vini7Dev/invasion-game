@@ -43,6 +43,18 @@ public class EntityController : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public virtual void AddLife(int lifeToAdd)
+    {
+        if (life + lifeToAdd > entitySkills.maxLife)
+        {
+            life = entitySkills.maxLife;
+        }
+        else
+        {
+            life += lifeToAdd;
+        }
+    }
+
     public void HaveHitADamage(int damageReceived, GameObject causerObject)
     {
         if (onDamage)

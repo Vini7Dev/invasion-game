@@ -4,14 +4,11 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Item,
-    FireGun,
-    WhiteGun
+    Health
 }
 
 public class CollectableItem : MonoBehaviour
 {
-    public GameObject collectableObject;
-    public ItemType itemType = ItemType.Item;
-    public float zPositionRelative = 0;
+    public ItemType itemType = ItemType.Health;
+    public int buffValue;
 }

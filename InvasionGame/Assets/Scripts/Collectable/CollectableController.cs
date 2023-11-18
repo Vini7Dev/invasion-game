@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class CollectableController : MonoBehaviour
 {
-    const string COLLECTABLE_TAG = "Collectable";
+    const string COLLECTABLE_WEAPON_TAG = "CollectableWeapon";
+    const string COLLECTABLE_ITEM_TAG = "CollectableItem";
 
-    ItemType currentWeaponItemType = ItemType.WhiteGun;
+    WeaponType currentWeaponType = WeaponType.WhiteGun;
 
+    EntityController entityController;
     EntityWhiteGunHands entityWhiteGunHands;
     EntityFireGunHands entityFireGunHands;
     GameObject whiteGunLeftHand, fireGunLeftHand, fireGunRightHand;
 
     void Start()
     {
+        entityController = GetComponent<EntityController>();
         entityWhiteGunHands = GetComponent<EntityWhiteGunHands>();
         entityFireGunHands = GetComponent<EntityFireGunHands>();
 
@@ -26,7 +29,7 @@ public class CollectableController : MonoBehaviour
 
     void ShowOrHideHands()
     {
-        bool isWhiteGun = currentWeaponItemType == ItemType.WhiteGun;
+        bool isWhiteGun = currentWeaponType == WeaponType.WhiteGun;
 
         entityWhiteGunHands.enabled = isWhiteGun;
         whiteGunLeftHand.SetActive(isWhiteGun);
@@ -59,14 +62,11 @@ public class CollectableController : MonoBehaviour
         objectInstance.transform.localPosition = objectPosition;
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.tag != COLLECTABLE_TAG) return;
+    void CollectWeapon(Collider other)
+    {
+        CollectableWeapon collectableWeapon = other.GetComponent<CollectableWeapon>();
 
-        CollectableItem collectableItem = other.GetComponent<CollectableItem>();
-
-        if (collectableItem.itemType == ItemType.Item) return;
-
-        currentWeaponItemType = collectableItem.itemType;
+        currentWeaponType = collectableWeapon.weaponType;
 
         RemoveAllHandChildren(whiteGunLeftHand.transform);
         RemoveAllHandChildren(fireGunLeftHand.transform);
@@ -74,28 +74,45 @@ public class CollectableController : MonoBehaviour
 
         ShowOrHideHands();
 
-        if (currentWeaponItemType == ItemType.WhiteGun)
+        if (currentWeaponType == WeaponType.WhiteGun)
         {
             InstantiateWeaponOnHand(
                 whiteGunLeftHand.transform,
-                collectableItem.collectableObject,
-                collectableItem.zPositionRelative
+                collectableWeapon.weapon,
+                collectableWeapon.zPositionRelative
             );
         }
         else
         {
             InstantiateWeaponOnHand(
                 fireGunLeftHand.transform,
-                collectableItem.collectableObject,
-                collectableItem.zPositionRelative
+                collectableWeapon.weapon,
+                collectableWeapon.zPositionRelative
             );
             InstantiateWeaponOnHand(
                 fireGunRightHand.transform,
-                collectableItem.collectableObject,
-                collectableItem.zPositionRelative
+                collectableWeapon.weapon,
+                collectableWeapon.zPositionRelative
             );
         }
 
         Destroy(other.gameObject);
+    }
+
+    void CollectItem(Collider other)
+    {
+        CollectableItem collectableItem = other.GetComponent<CollectableItem>();
+
+        if (collectableItem.itemType == ItemType.Health)
+        {
+            entityController.AddLife(collectableItem.buffValue);
+        }
+
+        Destroy(other.gameObject);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == COLLECTABLE_WEAPON_TAG) CollectWeapon(other);
+        else if (other.tag == COLLECTABLE_ITEM_TAG) CollectItem(other);
     }
 }

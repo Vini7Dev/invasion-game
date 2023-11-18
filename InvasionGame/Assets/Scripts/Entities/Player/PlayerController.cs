@@ -18,6 +18,20 @@ public class PlayerController : EntityController
         alive = setAlive;
     }
 
+    public override void AddLife(int lifeToAdd)
+    {
+        if (life + lifeToAdd > entitySkills.maxLife)
+        {
+            life = entitySkills.maxLife;
+        }
+        else
+        {
+            life += lifeToAdd;
+        }
+
+        hudController.UpdateLifeBar(life);
+    }
+
     protected override void WhenTakingDamage(GameObject _) {
         hudController.UpdateLifeBar(life);
     }
