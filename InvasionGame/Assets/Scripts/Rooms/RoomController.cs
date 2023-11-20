@@ -103,7 +103,7 @@ public class RoomController : MonoBehaviour
     public void SetIsRoomActive(bool newIsActive)
     {
         isRoomActive = newIsActive;
-        roomCoverAnimationSpeed = (isRoomActive ? -1 : 1) * Time.deltaTime * 0.5f;
+        roomCoverAnimationSpeed = (isRoomActive ? -1 : 5) * Time.deltaTime * 0.5f;
     }
 
     public bool GetIsRoomActive()

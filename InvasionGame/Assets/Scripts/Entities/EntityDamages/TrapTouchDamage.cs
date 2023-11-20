@@ -9,6 +9,13 @@ public class TrapTouchDamage : DealTouchDamage
 
     bool isActive, inTimer;
 
+    void OnEnable()
+    {
+        inTimer = false;
+        isActive = false;
+        ToggleTrapDamageObject(isActive);
+    }
+
     void Update()
     {
         if (!inTimer) {
@@ -25,8 +32,13 @@ public class TrapTouchDamage : DealTouchDamage
         isActive = !isActive;
         inTimer = false;
 
+        ToggleTrapDamageObject(isActive);
+    }
+
+    void ToggleTrapDamageObject(bool setIsActive)
+    {
         if (trapDamageObject) {
-            trapDamageObject.SetActive(isActive);
+            trapDamageObject.SetActive(setIsActive);
         }
     }
 
