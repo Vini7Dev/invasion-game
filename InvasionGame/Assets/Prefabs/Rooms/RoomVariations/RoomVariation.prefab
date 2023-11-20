@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &3138649325054791861
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &3396656855483016876
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &6428189747936725469
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &7609113339833665761
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &7913925913080053419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &8616157173825242101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,7 +1168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256778cce88aef3409c40b8ef9f5c6d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToSpawn: {fileID: 2498044313276544806, guid: 2d93cbc5036ad694c9663b27b93cff91, type: 3}
+  objectToSpawn: {fileID: 1181712565431140416, guid: 9974c1b55b173fb4a9f97ce3b6acda22, type: 3}
 --- !u!1 &8703885606566835680
 GameObject:
   m_ObjectHideFlags: 0
