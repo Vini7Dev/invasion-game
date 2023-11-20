@@ -25,11 +25,6 @@ public class EnemyController : EntityController
         base.Start();
     }
 
-    void Update()
-    {
-        base.Update();
-    }
-
     protected override void WhenDying()
     {
         GameObject levelControllerObj = GameObject.FindGameObjectWithTag("GameController");

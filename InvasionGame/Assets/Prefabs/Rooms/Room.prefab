@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2451451c7ec252a4c861e8e7d2079bab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomController: {fileID: 0}
 --- !u!1 &4979722866346537407
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +881,7 @@ MonoBehaviour:
     roomPassagePosition: {x: 5, y: 0}
   roomVariations:
   - {fileID: 8703885606566835680, guid: 51d00c76bfa4f47478167d2bc32a718b, type: 3}
+  - {fileID: 69774597820718400, guid: e4e49157138d214408a46df6b698208c, type: 3}
   roomIndex: 0
 --- !u!1 &7056014500911450121
 GameObject:

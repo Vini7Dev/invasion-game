@@ -315,7 +315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b29b4c811573e4c419ea40346aea202d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLife: 50
+  moveSpeed: 2
   twoFireGunHands: 0
+  canWalkInTrap: 0
 --- !u!114 &7997159921341461644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 6578028672295935101}
-  defaultWalkSpeed: 2.5
   retreatingSpeed: 1.5
 --- !u!114 &6078912513917935786
 MonoBehaviour:

@@ -58,7 +58,12 @@ public class RoomController : MonoBehaviour
 
     void ProcessCurrentRoom()
     {
-        int roomVariationIndex = UnityEngine.Random.Range(0, roomVariations.Length);
+        int roomVariationIndex = 0;
+
+        if (roomIndex != 0)
+        {
+            roomVariationIndex = UnityEngine.Random.Range(0, roomVariations.Length);
+        }
 
         GameObject currentRoomVariation = roomVariations[roomVariationIndex];
 
