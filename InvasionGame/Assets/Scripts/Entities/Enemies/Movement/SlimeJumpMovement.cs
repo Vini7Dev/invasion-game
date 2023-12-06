@@ -29,7 +29,7 @@ public class SlimeJumpMovement : EnemyMovement
             StartCoroutine(StoppedDelay());
         }
 
-        enemyAnimator.SetFloat("Speed", timeToJump * 2);
+        enemyAnimator.SetBool("IsJumping", jump && !stopped);
     }
 
     IEnumerator JumpDelay()

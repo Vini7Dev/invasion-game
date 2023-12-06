@@ -51,11 +51,13 @@ public class PassageController : MonoBehaviour
         levelController.UpdateCurrentRoom(roomIndex);
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         if (other.tag == "Player") waitForPlayerMove = false;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (other.tag != "Player" || waitForPlayerMove || !roomController.IsAllEnemiesDied())
         {
             return;

@@ -1148,7 +1148,7 @@ GameObject:
   - component: {fileID: 2752819499574562286}
   - component: {fileID: 4547634637306632327}
   m_Layer: 0
-  m_Name: RoomVariation0
+  m_Name: 0RoomVariation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1375,7 +1375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6560169131763686016, guid: fe8bd7df4c7124940989c6b170b53594, type: 3}
       propertyPath: itemsConfig.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6560169131763686016, guid: fe8bd7df4c7124940989c6b170b53594, type: 3}
       propertyPath: itemsConfig.Array.data[0].itemObject
@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 7029282371946024329, guid: 8045119099f90a04394d0147cac9832f, type: 3}
     - target: {fileID: 6560169131763686016, guid: fe8bd7df4c7124940989c6b170b53594, type: 3}
       propertyPath: itemsConfig.Array.data[0].probability
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6560169131763686016, guid: fe8bd7df4c7124940989c6b170b53594, type: 3}
       propertyPath: itemsConfig.Array.data[1].probability

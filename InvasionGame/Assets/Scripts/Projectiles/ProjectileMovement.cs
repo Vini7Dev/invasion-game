@@ -48,7 +48,8 @@ public class ProjectileMovement : MonoBehaviour
         }
     }
 
-    int GetRandomDamage() {
+    int GetRandomDamage()
+    {
         return Random.Range(minDamage, maxDamage + 1);
     }
 
@@ -63,7 +64,8 @@ public class ProjectileMovement : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (other.tag == OUT_OF_WALL_TAG)
         {
             Destroy(gameObject);

@@ -31,7 +31,8 @@ public class EnemyMovement : MonoBehaviour
         MovementDelegate StoppedDelegate,
         MovementDelegate WalkToPlayerDelegate,
         MovementDelegate MoveAwaiFromPlayerDelegate
-    ) {
+    )
+    {
         PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
 
         if (playerDistanceAction == PlayerDistanceAction.stopped)

@@ -32,7 +32,8 @@ public class PlayerController : EntityController
         hudController.UpdateLifeBar(life);
     }
 
-    protected override void WhenTakingDamage(GameObject _) {
+    protected override void WhenTakingDamage(GameObject _)
+    {
         hudController.UpdateLifeBar(life);
     }
 

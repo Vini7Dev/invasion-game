@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrapTouchDamage : DealTouchDamage
 {
     public GameObject trapDamageObject;
+    public Animator trapAnimator;
     public float timeToActiveTrap = 1;
 
     bool isActive, inTimer;
@@ -18,7 +19,8 @@ public class TrapTouchDamage : DealTouchDamage
 
     void Update()
     {
-        if (!inTimer) {
+        if (!inTimer)
+        {
             StartCoroutine(ToggleTrapAtiveTimer());
         }
     }
@@ -37,7 +39,12 @@ public class TrapTouchDamage : DealTouchDamage
 
     void ToggleTrapDamageObject(bool setIsActive)
     {
-        if (trapDamageObject) {
+        if (trapAnimator)
+        {
+            trapAnimator.SetBool("Enabled", !setIsActive);
+        }
+        else if (trapDamageObject)
+        {
             trapDamageObject.SetActive(setIsActive);
         }
     }

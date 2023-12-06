@@ -10,11 +10,13 @@ public class DealTouchDamage : MonoBehaviour
     float damageDalay = 0.5f;
     bool causedDamage;
 
-    protected int GetRandomDamage() {
+    protected int GetRandomDamage()
+    {
         return Random.Range(minDamage, maxDamage + 1);
     }
 
-    bool IsInTagsArray(string tagToCheck) {
+    bool IsInTagsArray(string tagToCheck)
+    {
         return System.Array.Exists(
             tagsToCauseDamage,
             element => element == tagToCheck
@@ -29,7 +31,8 @@ public class DealTouchDamage : MonoBehaviour
         entityController.HaveHitADamage(GetRandomDamage(), gameObject);
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (!IsInTagsArray(other.tag) || causedDamage)
         {
             return;

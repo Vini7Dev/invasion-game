@@ -28,7 +28,8 @@ public class EntityController : MonoBehaviour
         YPositionCorrection();
     }
 
-    protected virtual void YPositionCorrection() {
+    protected virtual void YPositionCorrection()
+    {
         Vector3 positionCorrect = new Vector3(
             transform.position.x,
             0.1f,
@@ -101,7 +102,8 @@ public class EntityController : MonoBehaviour
         );
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit) {
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
         if (hit.gameObject.tag == BREAKABLE_SCENERY_TAG) PushScenery(hit.gameObject);
     }
 }

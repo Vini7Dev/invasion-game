@@ -6,7 +6,8 @@ public class TrapSpawner : MonoBehaviour
 {
     public GameObject objectToSpawn;
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (other.tag != "RoomFloor") return;
 
         if (objectToSpawn)

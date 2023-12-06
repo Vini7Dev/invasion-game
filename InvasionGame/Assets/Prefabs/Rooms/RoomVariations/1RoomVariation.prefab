@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6458731526129708569}
   - component: {fileID: 4775770386950939455}
   m_Layer: 0
-  m_Name: RoomVariation1
+  m_Name: 1RoomVariation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2451,7 +2451,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
   life: 10
-  itemsConfig: []
+  itemsConfig:
+  - itemObject: {fileID: 5533647179711656364, guid: 1ee327fa842d3534cb1596370843e5f2, type: 3}
+    probability: 30
 --- !u!1 &6835096048612462713
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,4 +14,9 @@ public class EntityFireGunHands : MonoBehaviour
     {
         entitySkills = GetComponent<EntitySkills>();
     }
+
+    protected void Update()
+    {
+        fireGunRightHand.SetActive(entitySkills.twoFireGunHands);
+    }
 }

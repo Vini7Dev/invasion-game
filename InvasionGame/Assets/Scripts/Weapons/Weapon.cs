@@ -11,11 +11,13 @@ public class Weapon : MonoBehaviour
     public bool isPlayerAttack;
     public int maxDamage = 10, minDamage = 5;
 
-    int GetRandomDamage() {
+    int GetRandomDamage()
+    {
         return Random.Range(minDamage, maxDamage + 1);
     }
 
-    public void ApplyDamage(GameObject other) {
+    public void ApplyDamage(GameObject other)
+    {
         EntityController entityController = other.GetComponent<EntityController>();
         entityController.HaveHitADamage(GetRandomDamage(), gameObject);
     }

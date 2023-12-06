@@ -111,7 +111,8 @@ public class CollectableController : MonoBehaviour
         Destroy(other.gameObject);
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (other.tag == COLLECTABLE_WEAPON_TAG) CollectWeapon(other);
         else if (other.tag == COLLECTABLE_ITEM_TAG) CollectItem(other);
     }

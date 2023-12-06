@@ -61,7 +61,8 @@ public class WhiteGun : Weapon
         causedDamage = false;
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.tag != PLAYER_TAG || causedDamage)
         {
             return;

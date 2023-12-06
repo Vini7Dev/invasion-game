@@ -7,9 +7,9 @@ public class PlayerFireGunHands : EntityFireGunHands
 {
     void Update()
     {
-        fireGunRightHand.SetActive(entitySkills.twoFireGunHands);
-
         PointToMouse();
+
+        base.Update();
     }
 
     Vector3 CalculeDirection(Vector3 target, Vector3 position)
