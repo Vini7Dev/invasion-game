@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 7029282371946024329, guid: 8045119099f90a04394d0147cac9832f, type: 3}
     - target: {fileID: 6560169131763686016, guid: fe8bd7df4c7124940989c6b170b53594, type: 3}
       propertyPath: itemsConfig.Array.data[0].probability
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6560169131763686016, guid: fe8bd7df4c7124940989c6b170b53594, type: 3}
       propertyPath: itemsConfig.Array.data[1].probability
