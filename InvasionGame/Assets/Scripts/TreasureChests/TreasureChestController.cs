@@ -20,8 +20,6 @@ public class TreasureChestController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("===> HELLO WORLD! other.tag == PLAYER_TAG " + other.tag == PLAYER_TAG);
-
         if (other.tag == PLAYER_TAG) CollectTreasureChest();
     }
 }

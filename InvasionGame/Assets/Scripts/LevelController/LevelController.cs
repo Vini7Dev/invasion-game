@@ -23,7 +23,7 @@ public class LevelController : MonoBehaviour
 
     void UpdateRoomIsActive(GameObject roomObject, bool newIsActive)
     {
-        roomObject.GetComponent<RoomController>().SetIsRoomActive(newIsActive);
+        // roomObject.GetComponent<RoomController>().SetIsRoomActive(newIsActive);
     }
 
     protected IEnumerator DelayToDeactiveRoom(GameObject roomToDeactive)

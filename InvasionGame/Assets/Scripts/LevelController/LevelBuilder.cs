@@ -4,6 +4,75 @@ using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
 {
+    public GameObject roomPrefab;
+
+    int roomCount, maxRooms = 10;
+    Vector2[] roomPositions;
+
+    void Start()
+    {
+        roomPositions = new Vector2[maxRooms];
+
+        CreateLevelRoom(new Vector2(0, 0));
+    }
+
+    GameObject CreateLevelRoom(Vector2 spawnPosition)
+    {
+        GameObject currentRoomInstance = Instantiate(
+            roomPrefab,
+            new Vector3(spawnPosition.x, 0, spawnPosition.y),
+            Quaternion.identity
+        );
+
+        roomPositions[roomCount] = spawnPosition;
+        roomCount += 1;
+
+        if (roomCount < maxRooms)
+        {
+            RoomController currentRoomController = currentRoomInstance.GetComponent<RoomController>();
+
+            NextRoomPosition nextRoomPosition = GetRamdomNextRoomPosition(
+                currentRoomController,
+                spawnPosition
+            );
+
+            Vector2 newSpawnerPosition = spawnPosition + nextRoomPosition.position;
+
+            CreateLevelRoom(newSpawnerPosition);
+        }
+
+        return currentRoomInstance;
+    }
+
+    NextRoomPosition GetRamdomNextRoomPosition(
+        RoomController currentRoomController,
+        Vector2 spawnPosition
+    )
+    {
+        while (true)
+        {
+            int directionIndex = UnityEngine.Random.Range(0, 3);
+
+            NextRoomPosition nextRoomPosition = currentRoomController.nextRoomPositions[directionIndex];
+
+            if (FindRoomPosition(spawnPosition + nextRoomPosition.position)) continue;
+
+            return nextRoomPosition;
+        }
+    }
+
+    bool FindRoomPosition(Vector2 targetPosition)
+    {
+        return System.Array.Exists(
+            roomPositions,
+            position => position == targetPosition
+        );
+    }
+
+    public void CreateLevelRooms() {}
+    public GameObject GetLevelRoom(int roomIndex) { return gameObject; }
+
+    /*
     public GameObject[] roomPrefabs, roomPassagePrefabs;
     public int roomPerLevel = 2;
 
@@ -135,4 +204,5 @@ public class LevelBuilder : MonoBehaviour
 
         passagesCount += 1;
     }
+    */
 }
