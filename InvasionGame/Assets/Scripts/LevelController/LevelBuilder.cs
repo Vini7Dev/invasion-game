@@ -5,18 +5,23 @@ using UnityEngine;
 public class LevelBuilder : MonoBehaviour
 {
     public GameObject roomPrefab;
+    public int levelRoomsCount = 10;
 
-    int roomCount, maxRooms = 10;
+    int roomCount, bifurcationsCount, maxBifurcations = 2;
     Vector2[] roomPositions;
 
     void Start()
     {
-        roomPositions = new Vector2[maxRooms];
+        roomPositions = new Vector2[levelRoomsCount];
 
-        CreateLevelRoom(new Vector2(0, 0));
+        CreateLevelRoom(new Vector2(0, 0), levelRoomsCount - 1, "ROOT");
     }
 
-    GameObject CreateLevelRoom(Vector2 spawnPosition)
+    GameObject CreateLevelRoom(
+        Vector2 spawnPosition,
+        int childCount,
+        string objectTreeName
+    )
     {
         GameObject currentRoomInstance = Instantiate(
             roomPrefab,
@@ -24,21 +29,54 @@ public class LevelBuilder : MonoBehaviour
             Quaternion.identity
         );
 
+        currentRoomInstance.name = objectTreeName;
+
         roomPositions[roomCount] = spawnPosition;
         roomCount += 1;
 
-        if (roomCount < maxRooms)
+        RoomController currentRoomController = currentRoomInstance.GetComponent<RoomController>();
+
+        bool canCreateBifurcation =
+            bifurcationsCount < maxBifurcations
+            && roomCount > 1
+            && roomCount < (levelRoomsCount - 1);
+
+        bool willCreateBifurcation = canCreateBifurcation && UnityEngine.Random.Range(0, 10) > 6;
+
+        int roomChildCount = willCreateBifurcation ? 1 : 2;
+
+        int maxSecondWayChildCount = childCount - 3 > 0 ? childCount : 0;
+
+        int secondWayChildCount = willCreateBifurcation ? 0 : UnityEngine.Random.Range(0, maxSecondWayChildCount);
+
+        int firstWayCildCount = childCount - secondWayChildCount;
+
+        for (int childIndex = 0; childIndex < roomChildCount; childIndex++)
         {
-            RoomController currentRoomController = currentRoomInstance.GetComponent<RoomController>();
+            if (childIndex > 0) bifurcationsCount += 1;
+
+            int wayChildCount = childIndex == 0 ? firstWayCildCount : secondWayChildCount;
+
+            if (wayChildCount <= 0) continue;
 
             NextRoomPosition nextRoomPosition = GetRamdomNextRoomPosition(
                 currentRoomController,
                 spawnPosition
             );
 
+            if (nextRoomPosition == null) continue;
+
             Vector2 newSpawnerPosition = spawnPosition + nextRoomPosition.position;
 
-            CreateLevelRoom(newSpawnerPosition);
+            string childObjectTreeName = objectTreeName + " - " + childIndex;
+
+            GameObject nextRoomInstance = CreateLevelRoom(
+                newSpawnerPosition,
+                wayChildCount - 1,
+                childObjectTreeName
+            );
+
+            // nextRoomInstance
         }
 
         return currentRoomInstance;
@@ -49,7 +87,9 @@ public class LevelBuilder : MonoBehaviour
         Vector2 spawnPosition
     )
     {
-        while (true)
+        int maxAttempts = 100;
+
+        for (int attempts = 0; attempts < maxAttempts; attempts++)
         {
             int directionIndex = UnityEngine.Random.Range(0, 3);
 
@@ -59,6 +99,8 @@ public class LevelBuilder : MonoBehaviour
 
             return nextRoomPosition;
         }
+
+        return null;
     }
 
     bool FindRoomPosition(Vector2 targetPosition)
