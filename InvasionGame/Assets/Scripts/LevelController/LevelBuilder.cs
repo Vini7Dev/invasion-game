@@ -9,9 +9,10 @@ public class LevelBuilder : MonoBehaviour
 
     int roomCount, bifurcationsCount, maxBifurcations = 2;
     Vector2[] roomPositions;
+    GameObject[] levelRooms;
 
-    void Start()
-    {
+    public void CreateLevelRooms() {
+        levelRooms = new GameObject[levelRoomsCount];
         roomPositions = new Vector2[levelRoomsCount];
 
         CreateLevelRoom(new Vector2(0, 0), levelRoomsCount - 1, "ROOT");
@@ -30,11 +31,13 @@ public class LevelBuilder : MonoBehaviour
         );
 
         currentRoomInstance.name = objectTreeName;
-
+        levelRooms[roomCount] = currentRoomInstance;
         roomPositions[roomCount] = spawnPosition;
-        roomCount += 1;
 
         RoomController currentRoomController = currentRoomInstance.GetComponent<RoomController>();
+        currentRoomController.roomIndex = roomCount;
+
+        roomCount += 1;
 
         bool canCreateBifurcation =
             bifurcationsCount < maxBifurcations
@@ -167,6 +170,7 @@ public class LevelBuilder : MonoBehaviour
         );
     }
 
-    public void CreateLevelRooms() {}
-    public GameObject GetLevelRoom(int roomIndex) { return gameObject; }
+    public GameObject GetLevelRoom(int roomIndex) {
+        return levelRooms[roomIndex];
+    }
 }
