@@ -4,135 +4,173 @@ using UnityEngine;
 
 public class LevelBuilder : MonoBehaviour
 {
-    public GameObject[] roomPrefabs, roomPassagePrefabs;
-    public int roomPerLevel = 2;
+    public GameObject roomPrefab, roomPassagePrefab;
+    public int levelRoomsCount = 10;
 
-    int passagesCount;
-    GameObject[] levelRooms, levelPassages;
+    int roomCount, bifurcationsCount, maxBifurcations = 2;
+    Vector2[] roomPositions;
+    GameObject[] levelRooms;
 
-    public GameObject GetLevelRoom(int roomIndex)
-    {
-        return levelRooms[roomIndex];
+    public void CreateLevelRooms() {
+        levelRooms = new GameObject[levelRoomsCount];
+        roomPositions = new Vector2[levelRoomsCount];
+
+        CreateLevelRoom(new Vector2(0, 0), levelRoomsCount - 1, "ROOT");
     }
 
-    public void CreateLevelRooms()
-    {
-        levelRooms = new GameObject[roomPerLevel];
-        levelPassages = new GameObject[roomPerLevel * 2];
-
-        NextRoomPosition previousRoomPosition = null;
-
-        Vector3 spawnerPosition = new Vector3(0, 2, 0);
-
-        for (int roomIndex = 0; roomIndex < roomPerLevel; roomIndex++)
-        {
-            GameObject roomObject = roomPrefabs[0];
-
-            GameObject roomInstance = Instantiate(
-                roomObject,
-                spawnerPosition,
-                Quaternion.identity
-            );
-
-            roomInstance.GetComponent<RoomController>().roomIndex = roomIndex;
-
-            levelRooms[roomIndex] = roomInstance;
-
-            NextRoomPosition nextRoomPosition = GetRamdomDirection(
-                roomInstance,
-                previousRoomPosition
-            );
-
-            if (previousRoomPosition != null)
-            {
-                CreateRoomPassage(
-                    levelRooms[roomIndex],
-                    previousRoomPosition,
-                    spawnerPosition,
-                    true
-                );
-            }
-
-            CreateRoomPassage(roomInstance, nextRoomPosition, spawnerPosition);
-
-            previousRoomPosition = nextRoomPosition;
-            spawnerPosition += nextRoomPosition.GetPosition();
-        }
-    }
-
-    NextRoomPosition GetRamdomDirection(
-        GameObject currentRoom,
-        NextRoomPosition previousRoomPosition
+    GameObject CreateLevelRoom(
+        Vector2 spawnPosition,
+        int childCount,
+        string objectTreeName
     )
     {
-        RoomController roomController = currentRoom.GetComponent<RoomController>();
-
-        while (true)
-        {
-            int directionIndex = UnityEngine.Random.Range(0, 3);
-            NextRoomPosition nextRoomPosition = roomController.nextRoomPositions[directionIndex];
-
-            if (previousRoomPosition == null ||
-                nextRoomPosition.IsDirection(Direction.Up) ||
-                (nextRoomPosition.IsDirection(Direction.Left) && !previousRoomPosition.IsDirection(Direction.Right)) ||
-                (nextRoomPosition.IsDirection(Direction.Right) && !previousRoomPosition.IsDirection(Direction.Left)))
-            {
-                return nextRoomPosition;
-            }
-        }
-    }
-
-    void CreateRoomPassage(
-        GameObject roomParent,
-        NextRoomPosition nextRoomPosition,
-        Vector3 spawnerPosition,
-        bool isPreviousPassage = false
-    )
-    {
-        GameObject roomPassage = roomPassagePrefabs[0];
-
-        Vector3 roomPassagePosition = new Vector3(
-            nextRoomPosition.GetPassagePosition().x, -2, nextRoomPosition.GetPassagePosition().z
+        GameObject currentRoomInstance = Instantiate(
+            roomPrefab,
+            new Vector3(spawnPosition.x, 2, spawnPosition.y),
+            Quaternion.identity
         );
 
-        if (isPreviousPassage)
+        currentRoomInstance.name = objectTreeName;
+        levelRooms[roomCount] = currentRoomInstance;
+        roomPositions[roomCount] = spawnPosition;
+
+        RoomController currentRoomController = currentRoomInstance.GetComponent<RoomController>();
+        currentRoomController.roomIndex = roomCount;
+
+        roomCount += 1;
+
+        bool canCreateBifurcation =
+            bifurcationsCount < maxBifurcations
+            && roomCount > 1
+            && roomCount < (levelRoomsCount - 1);
+
+        bool willCreateBifurcation = canCreateBifurcation && UnityEngine.Random.Range(0, 10) > 6;
+
+        int roomChildCount = willCreateBifurcation ? 1 : 2;
+
+        int maxSecondWayChildCount = childCount - 3 > 0 ? childCount : 0;
+
+        int secondWayChildCount = willCreateBifurcation ? 0 : UnityEngine.Random.Range(0, maxSecondWayChildCount);
+
+        int firstWayCildCount = childCount - secondWayChildCount;
+
+        for (int childIndex = 0; childIndex < roomChildCount; childIndex++)
         {
-            roomPassagePosition *= -1;
-            roomPassagePosition.y = -2;
+            if (childIndex > 0) bifurcationsCount += 1;
+
+            int wayChildCount = childIndex == 0 ? firstWayCildCount : secondWayChildCount;
+
+            if (wayChildCount <= 0) continue;
+
+            NextRoomPosition nextRoomPosition = GetRamdomNextRoomPosition(
+                currentRoomController,
+                spawnPosition
+            );
+
+            if (nextRoomPosition == null) continue;
+
+            Vector2 newSpawnerPosition = spawnPosition + nextRoomPosition.position;
+
+            string childObjectTreeName = objectTreeName + " - " + childIndex;
+
+            GameObject nextRoomInstance = CreateLevelRoom(
+                newSpawnerPosition,
+                wayChildCount - 1,
+                childObjectTreeName
+            );
+
+            GameObject currentRoomPassage = CreateRoomPassage(
+                nextRoomPosition,
+                currentRoomInstance
+            );
+
+            GameObject nextRoomPassage = CreateRoomPassage(
+                nextRoomPosition,
+                nextRoomInstance,
+                true
+            );
+
+            ConnectPassages(currentRoomPassage, nextRoomPassage);
         }
 
-        Vector3 roomPassageRotation = roomPassage.transform.rotation.eulerAngles;
+        return currentRoomInstance;
+    }
 
-        if (nextRoomPosition.IsDirection(Direction.Left)
-            || nextRoomPosition.IsDirection(Direction.Right)
-        )
+    GameObject CreateRoomPassage(
+        NextRoomPosition nextRoomPosition,
+        GameObject roomParent,
+        bool reversePosition = false
+    )
+    {
+        Vector2 nextRoomPassagePosition = reversePosition
+            ? nextRoomPosition.roomPassagePosition * -1
+            : nextRoomPosition.roomPassagePosition;
+
+        Vector3 roomParentPosition = roomParent.transform.position;
+
+        Vector3 roomPassagePosition = new Vector3(
+            roomParentPosition.x + nextRoomPassagePosition.x,
+            0,
+            roomParentPosition.z + nextRoomPassagePosition.y
+        );
+
+        Vector3 roomPassageRotation = roomPassagePrefab.transform.rotation.eulerAngles;
+
+        if (!nextRoomPosition.IsDirection(Direction.Up))
         {
             roomPassageRotation.y += 90;
         }
 
         GameObject roomPassageInstance = Instantiate(
-            roomPassage,
-            spawnerPosition + roomPassagePosition,
+            roomPassagePrefab,
+            roomPassagePosition,
             Quaternion.Euler(roomPassageRotation)
         );
 
         roomPassageInstance.transform.parent = roomParent.transform;
 
-        if (isPreviousPassage && levelPassages.Length > 1)
+        return roomPassageInstance;
+    }
+
+    void ConnectPassages(
+        GameObject firstPassage,
+        GameObject secondPassage
+    )
+    {
+        firstPassage.GetComponent<PassageController>().passageConnection = secondPassage;
+        secondPassage.GetComponent<PassageController>().passageConnection = firstPassage;
+    }
+
+    NextRoomPosition GetRamdomNextRoomPosition(
+        RoomController currentRoomController,
+        Vector2 spawnPosition
+    )
+    {
+        int maxAttempts = 100;
+
+        for (int attempts = 0; attempts < maxAttempts; attempts++)
         {
-            GameObject previousPassageObject = levelPassages[passagesCount-1];
+            int directionIndex = UnityEngine.Random.Range(0, 3);
 
-            roomPassageInstance
-                .GetComponent<PassageController>()
-                .passageConnection = previousPassageObject;
+            NextRoomPosition nextRoomPosition = currentRoomController.nextRoomPositions[directionIndex];
 
-            previousPassageObject
-                .GetComponent<PassageController>()
-                .passageConnection = roomPassageInstance;
+            if (FindRoomPosition(spawnPosition + nextRoomPosition.position)) continue;
+
+            return nextRoomPosition;
         }
 
-        levelPassages[passagesCount] = roomPassageInstance;
+        return null;
+    }
 
-        passagesCount += 1;
+    bool FindRoomPosition(Vector2 targetPosition)
+    {
+        return System.Array.Exists(
+            roomPositions,
+            position => position == targetPosition
+        );
+    }
+
+    public GameObject GetLevelRoom(int roomIndex) {
+        return levelRooms[roomIndex];
     }
 }

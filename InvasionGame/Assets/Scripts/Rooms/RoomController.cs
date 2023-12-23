@@ -21,16 +21,6 @@ public class NextRoomPosition
     {
         return direction == directionToCheck;
     }
-
-    public Vector3 GetPosition()
-    {
-        return new Vector3(position.x, 0, position.y);
-    }
-
-    public Vector3 GetPassagePosition()
-    {
-        return new Vector3(roomPassagePosition.x, 0, roomPassagePosition.y);
-    }
 }
 
 public class RoomController : MonoBehaviour
