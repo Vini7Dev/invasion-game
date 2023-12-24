@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class PlayerController : EntityController
 {
+    const string HUD_CONTROLLER_TAG = "HUDController";
+
     static bool alive = true;
 
-    public HUDController hudController;
+    HUDController hudController;
+
+    void Start()
+    {
+        GameObject hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
+        hudController = hudControllerObject.GetComponent<HUDController>();
+    }
 
     void Update()
     {

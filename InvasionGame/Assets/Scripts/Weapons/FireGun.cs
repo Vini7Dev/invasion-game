@@ -17,8 +17,12 @@ public class FireGun : Weapon
 
     void Start()
     {
+        base.Start();
+
         fireGunsHandTransform = transform.parent.parent;
         currentBullets = maxBullets;
+
+        if (isPlayerAttack) UpdateAmmoInfoHUD();
     }
 
     void Update()
@@ -63,6 +67,13 @@ public class FireGun : Weapon
         );
 
         currentBullets -= 1;
+
+        if (isPlayerAttack) UpdateAmmoInfoHUD();
+    }
+
+    void UpdateAmmoInfoHUD()
+    {
+        hudController.ammoInfo.UpdateAmmoInfo(currentBullets, maxBullets);
     }
 
     IEnumerator ShotTime()
@@ -75,8 +86,12 @@ public class FireGun : Weapon
     IEnumerator ReloadTime()
     {
         inDelayReload = true;
+        hudController.ammoInfo.ReloadingText();
+
         yield return new WaitForSeconds(reloadTime);
+
         currentBullets = maxBullets;
+        UpdateAmmoInfoHUD();
         inDelayReload = false;
     }
 }

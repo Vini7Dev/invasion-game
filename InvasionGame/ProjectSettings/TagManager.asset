@@ -17,6 +17,7 @@ TagManager:
   - CollectableWeapon
   - Weapon
   - Trap
+  - HUDController
   layers:
   - Default
   - TransparentFX

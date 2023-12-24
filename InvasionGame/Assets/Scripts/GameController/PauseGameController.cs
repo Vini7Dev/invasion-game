@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseGameController : MonoBehaviour
 {
+    const string HUD_CONTROLLER_TAG = "HUDController";
     const string PAUSE_GAME_BUTTON = "PauseGame";
     const string PLAYER_TAG = "Player";
     const string ENEMY_TAG = "Enemy";
@@ -11,13 +12,19 @@ public class PauseGameController : MonoBehaviour
     const string PROJECTILE_TAG = "Projectile";
     const string TRAP_TAG = "Trap";
 
-    public GameObject pauseMenuUI, hudController;
+    public GameObject pauseMenuUI;
 
     bool isPaused;
     List<GameObject> entitiesInGame = new List<GameObject>();
     List<GameObject> weaponsInGame = new List<GameObject>();
     List<GameObject> projectilesInGame = new List<GameObject>();
     List<GameObject> trapsInGame = new List<GameObject>();
+    GameObject hudControllerObject;
+
+    void Start()
+    {
+        hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
+    }
 
     void Update()
     {
@@ -29,7 +36,7 @@ public class PauseGameController : MonoBehaviour
         isPaused = !isPaused;
 
         pauseMenuUI.SetActive(isPaused);
-        PauseScript<HUDController>(hudController);
+        PauseScript<HUDController>(hudControllerObject);
 
         if (isPaused) UpdateObjectsInGameList();
 

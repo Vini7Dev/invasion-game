@@ -13,8 +13,11 @@ public class WhiteGun : Weapon
 
     void Start()
     {
+        base.Start();
+
         if (isPlayerAttack)
         {
+            hudController.ammoInfo.ClearAmmoInfo();
             previousPosition = transform.position;
             StartCoroutine(PlayerAttackCollisionDetectionRoutine());
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [Serializable]
 public class LifeBarController
@@ -132,11 +133,35 @@ public class MinimapController
     }
 }
 
+[Serializable]
+public class AmmoInfo
+{
+    public TextMeshProUGUI hudAmmoText;
+
+    public void UpdateAmmoInfo(int currentAmmo, int maxAmmo)
+    {
+        hudAmmoText.fontSize = 75;
+        hudAmmoText.text = $"{currentAmmo}/{maxAmmo}";
+    }
+
+    public void ClearAmmoInfo()
+    {
+        hudAmmoText.text = "";
+    }
+
+    public void ReloadingText()
+    {
+        hudAmmoText.fontSize = 60;
+        hudAmmoText.text = "Reloading...";
+    }
+}
+
 public class HUDController : MonoBehaviour
 {
     const string GAME_CONTROLLER_TAG = "GameController";
 
     public LifeBarController lifeBarController;
+    public AmmoInfo ammoInfo;
     public MinimapController minimapController;
 
     GameObject gameController;
@@ -159,5 +184,10 @@ public class HUDController : MonoBehaviour
     public void UpdateLifeBar(int updatedLife)
     {
         lifeBarController.UpdateLifeBar(updatedLife);
+    }
+
+    public void UpdateAmmoInfo(int currentAmmo, int maxAmmo)
+    {
+        ammoInfo.UpdateAmmoInfo(currentAmmo, maxAmmo);
     }
 }

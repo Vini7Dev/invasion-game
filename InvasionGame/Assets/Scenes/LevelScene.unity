@@ -818,7 +818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999/999
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1240,7 +1240,7 @@ GameObject:
   - component: {fileID: 787497138}
   m_Layer: 5
   m_Name: HUDController
-  m_TagString: Untagged
+  m_TagString: HUDController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1283,6 +1283,8 @@ MonoBehaviour:
   lifeBarController:
     lifeBarSlider: {fileID: 1292727822}
     lifeBarSliderFill: {fileID: 405876720}
+  ammoInfo:
+    hudAmmoText: {fileID: 496617461}
   minimapController:
     minimapRectTransform: {fileID: 119859063}
     minimapCameraTransform: {fileID: 785724709}
@@ -1383,8 +1385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 2.5, y: 0.00012207031}
-  m_SizeDelta: {x: -5, y: 19.076}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
+  m_SizeDelta: {x: 0, y: 19.076}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &881621787
 GameObject:
@@ -1724,7 +1726,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 776584482}
   life: 100
-  hudController: {fileID: 787497138}
 --- !u!65 &973816896
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1904,7 +1905,7 @@ RectTransform:
   m_GameObject: {fileID: 1292727820}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 881621788}
@@ -2132,7 +2133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1150374930}
-  hudController: {fileID: 787497136}
 --- !u!1 &1333995610
 GameObject:
   m_ObjectHideFlags: 0
