@@ -72,14 +72,6 @@ public class RoomController : MonoBehaviour
         RoomVariation roomVariation = roomVariationObject.GetComponent<RoomVariation>();
 
         roomVariation.roomController = GetComponent<RoomController>();
-
-        GameObject[] enemies = roomVariationObject.transform
-            .Find("Enemies")
-            .Cast<Transform>()
-            .Select(child => child.gameObject)
-            .ToArray();
-
-        totalOfEnemiesOnRoom = enemies.Length;
     }
 
     void OpenOrCloseRoomCover()
@@ -123,6 +115,11 @@ public class RoomController : MonoBehaviour
     void OnAllEnemiesAreKilled()
     {
         roomMinimapAnimator.SetTrigger("RoomCompleted");
+    }
+
+    public void IncrementTotalOfEnemiesOnRoom()
+    {
+        totalOfEnemiesOnRoom += 1;
     }
 
     public void OnEnemyDies()

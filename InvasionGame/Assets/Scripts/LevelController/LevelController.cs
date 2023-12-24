@@ -55,6 +55,12 @@ public class LevelController : MonoBehaviour
         StartCoroutine(DelayToDeactiveRoom(previousRoom));
     }
 
+    public void IncrementTotalOfEnemiesOnRoom()
+    {
+        RoomController currentRoomController = currentRoom.GetComponent<RoomController>();
+        currentRoomController.IncrementTotalOfEnemiesOnRoom();
+    }
+
     public void OnEnemyDies()
     {
         RoomController currentRoomController = currentRoom.GetComponent<RoomController>();

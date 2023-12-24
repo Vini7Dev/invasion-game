@@ -20,9 +20,11 @@ public class PauseGameController : MonoBehaviour
     List<GameObject> projectilesInGame = new List<GameObject>();
     List<GameObject> trapsInGame = new List<GameObject>();
     GameObject hudControllerObject;
+    AudioSource gameMusiceSource;
 
     void Start()
     {
+        gameMusiceSource = GetComponent<AudioSource>();
         hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
     }
 
@@ -36,6 +38,13 @@ public class PauseGameController : MonoBehaviour
         isPaused = !isPaused;
 
         pauseMenuUI.SetActive(isPaused);
+        gameMusiceSource.volume = isPaused ? 0.2f : 0.5f;
+
+        TogglePausedObjectScripts();
+    }
+
+    void TogglePausedObjectScripts()
+    {
         PauseScript<HUDController>(hudControllerObject);
 
         if (isPaused) UpdateObjectsInGameList();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum PlayerDistanceAction
 {
@@ -9,26 +10,37 @@ public enum PlayerDistanceAction
     retreating,
 }
 
+[System.Serializable]
+public class ExecuteOnDeath : UnityEvent
+{
+}
+
 public class EnemyController : EntityController
 {
     public float maxPlayerDistance = 10, minPlayerDistance = 1;
+    public ExecuteOnDeath executeOnDeath;
 
     bool attackStarted;
     Animator enemyAnimator;
     Transform playerTransform;
+    LevelController levelController;
 
     void Start()
     {
+        base.Start();
+
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerObject.transform;
 
-        base.Start();
+        GameObject levelControllerObj = GameObject.FindGameObjectWithTag("GameController");
+        levelController = levelControllerObj.GetComponent<LevelController>();
+        levelController.IncrementTotalOfEnemiesOnRoom();
     }
 
     protected override void WhenDying()
     {
-        GameObject levelControllerObj = GameObject.FindGameObjectWithTag("GameController");
-        LevelController levelController = levelControllerObj.GetComponent<LevelController>();
+        executeOnDeath.Invoke();
+
         levelController.OnEnemyDies();
 
         Destroy(gameObject);
