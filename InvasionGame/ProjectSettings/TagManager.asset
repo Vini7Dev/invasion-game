@@ -15,6 +15,7 @@ TagManager:
   - RoomFloor
   - CollectableItem
   - CollectableWeapon
+  - Weapon
   layers:
   - Default
   - TransparentFX

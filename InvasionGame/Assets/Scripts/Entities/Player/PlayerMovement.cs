@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public SpriteRenderer playerSprite;
 
-    float fixedYPosition = 1;
+    float fixedYPosition = 0.1f;
     CharacterController characterController;
     EntitySkills playerSkills;
 
