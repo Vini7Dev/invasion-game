@@ -44,7 +44,11 @@ public class PauseGameController : MonoBehaviour
         }
 
         foreach (GameObject weapon in weaponsInGame) PauseScript<Weapon>(weapon);
-        foreach (GameObject projectile in projectilesInGame) PauseScript<ProjectileMovement>(projectile);
+
+        foreach (GameObject projectile in projectilesInGame) {
+            PauseScript<ProjectileContainer>(projectile);
+            PauseScript<ProjectileMovement>(projectile);
+        }
 
         foreach (GameObject trap in trapsInGame)
         {

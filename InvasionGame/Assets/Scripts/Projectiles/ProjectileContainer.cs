@@ -8,10 +8,12 @@ public class ProjectileContainer : MonoBehaviour
     public int maxDamage, minDamage;
 
     int projectileSpeed = 20;
+    float timeToDestroy = 3, destroyTimer;
 
-    void Start()
+    void Update()
     {
-        Destroy(gameObject, 3);
+        if (destroyTimer < timeToDestroy) destroyTimer += Time.deltaTime;
+        else Destroy(gameObject);
     }
 
     public void DefineProjectileProps(
