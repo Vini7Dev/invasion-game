@@ -9,11 +9,15 @@ public class PauseGameController : MonoBehaviour
     const string ENEMY_TAG = "Enemy";
     const string WEAPON_TAG = "Weapon";
     const string PROJECTILE_TAG = "Projectile";
+    const string TRAP_TAG = "Trap";
 
-    bool unpausedGame = true;
+    public GameObject pauseMenuUI, hudController;
+
+    bool isPaused;
     List<GameObject> entitiesInGame = new List<GameObject>();
     List<GameObject> weaponsInGame = new List<GameObject>();
     List<GameObject> projectilesInGame = new List<GameObject>();
+    List<GameObject> trapsInGame = new List<GameObject>();
 
     void Update()
     {
@@ -22,21 +26,27 @@ public class PauseGameController : MonoBehaviour
 
     void TogglePauseGame()
     {
-        unpausedGame = !unpausedGame;
+        isPaused = !isPaused;
 
-        if (!unpausedGame) UpdateObjectsInGameList();
+        pauseMenuUI.SetActive(isPaused);
+        PauseScript<HUDController>(hudController);
+
+        if (isPaused) UpdateObjectsInGameList();
 
         foreach (GameObject entity in entitiesInGame)
         {
             if (!entity) continue;
 
-            PauseEntityMovement(entity);
-            PauseEntityWhiteGunHands(entity);
-            PauseEntityFireGunHands(entity);
+            PauseScript<PlayerMovement>(entity);
+            PauseScript<EnemyMovement>(entity);
+            PauseScript<EntityWhiteGunHands>(entity);
+            PauseScript<EntityFireGunHands>(entity);
+            PauseScript<DealTouchDamage>(entity);
         }
 
-        foreach (GameObject weapon in weaponsInGame) PauseWeapon(weapon);
-        foreach (GameObject projectile in projectilesInGame) PauseProjectileMovement(projectile);
+        foreach (GameObject weapon in weaponsInGame) PauseScript<Weapon>(weapon);
+        foreach (GameObject projectile in projectilesInGame) PauseScript<ProjectileMovement>(projectile);
+        foreach (GameObject trap in trapsInGame) PauseScript<DealTouchDamage>(trap);
     }
 
     void UpdateObjectsInGameList()
@@ -45,58 +55,22 @@ public class PauseGameController : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(ENEMY_TAG);
         GameObject[] weapons = GameObject.FindGameObjectsWithTag(WEAPON_TAG);
         GameObject[] projectiles = GameObject.FindGameObjectsWithTag(PROJECTILE_TAG);
+        GameObject[] traps = GameObject.FindGameObjectsWithTag(TRAP_TAG);
 
         entitiesInGame = new List<GameObject>(enemies);
         entitiesInGame.Add(player);
         weaponsInGame = new List<GameObject>(weapons);
         projectilesInGame = new List<GameObject>(projectiles);
+        trapsInGame = new List<GameObject>(traps);
     }
 
-    void PauseEntityMovement(GameObject entity)
+    void PauseScript<T>(GameObject objectToPauseScript) where T : MonoBehaviour
     {
-        EnemyMovement enemyMovement = entity.GetComponent<EnemyMovement>();
+        T scriptToPause = objectToPauseScript.GetComponent<T>();
 
-        if (enemyMovement)
-        {
-            PauseScript(enemyMovement);
-            return;
+        if (scriptToPause != null) {
+            scriptToPause.enabled = !isPaused;
         }
-
-        PlayerMovement playerMovement = entity.GetComponent<PlayerMovement>();
-
-        PauseScript(playerMovement);
     }
 
-    void PauseEntityWhiteGunHands(GameObject entity)
-    {
-        EntityWhiteGunHands entityWhiteGunHands = entity.GetComponent<EntityWhiteGunHands>();
-
-        PauseScript(entityWhiteGunHands);
-    }
-
-    void PauseEntityFireGunHands(GameObject entity)
-    {
-        EntityFireGunHands entityFireGunHands = entity.GetComponent<EntityFireGunHands>();
-
-        PauseScript(entityFireGunHands);
-    }
-
-    void PauseWeapon(GameObject weaponObject)
-    {
-        Weapon weapon = weaponObject.GetComponent<Weapon>();
-
-        PauseScript(weapon);
-    }
-
-    void PauseProjectileMovement(GameObject projectile)
-    {
-        ProjectileMovement projectileMovement = projectile.GetComponent<ProjectileMovement>();
-
-        PauseScript(projectileMovement);
-    }
-
-    void PauseScript(MonoBehaviour script)
-    {
-        if (script) script.enabled = unpausedGame;
-    }
 }

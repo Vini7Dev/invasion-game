@@ -16,6 +16,7 @@ TagManager:
   - CollectableItem
   - CollectableWeapon
   - Weapon
+  - Trap
   layers:
   - Default
   - TransparentFX
