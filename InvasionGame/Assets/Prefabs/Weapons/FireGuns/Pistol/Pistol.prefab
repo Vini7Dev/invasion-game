@@ -104,6 +104,8 @@ MonoBehaviour:
   bulletSpawnTransform: {fileID: 3715057960264699828}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
   triggerTime: 0.3
+  reloadTime: 0.7
+  maxBullets: 10
 --- !u!1 &1866541126285403665
 GameObject:
   m_ObjectHideFlags: 0

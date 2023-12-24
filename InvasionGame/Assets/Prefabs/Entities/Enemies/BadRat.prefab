@@ -103,7 +103,9 @@ MonoBehaviour:
   minDamage: 5
   bulletSpawnTransform: {fileID: 2631520344162757925}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
-  triggerTime: 1
+  triggerTime: 0.75
+  reloadTime: 1
+  maxBullets: 10
 --- !u!1 &1724559096579309907
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +731,9 @@ MonoBehaviour:
   minDamage: 5
   bulletSpawnTransform: {fileID: 476622119626202168}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
-  triggerTime: 1
+  triggerTime: 0.75
+  reloadTime: 1
+  maxBullets: 10
 --- !u!1 &7628989738414892111
 GameObject:
   m_ObjectHideFlags: 0

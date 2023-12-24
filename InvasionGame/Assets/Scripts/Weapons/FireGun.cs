@@ -8,18 +8,23 @@ public class FireGun : Weapon
 
     public Transform bulletSpawnTransform;
     public GameObject projectileObject;
-    public float triggerTime = 0.3f;
+    public float triggerTime = 0.3f, reloadTime;
+    public int maxBullets;
 
-    bool inDelayShot;
+    int currentBullets;
+    bool inDelayShot, inDelayReload;
     Transform fireGunsHandTransform;
 
     void Start()
     {
         fireGunsHandTransform = transform.parent.parent;
+        currentBullets = maxBullets;
     }
 
     void Update()
     {
+        if (currentBullets <= 0 && !inDelayReload) StartCoroutine(ReloadTime());
+
         if (isPlayerAttack)
         {
             if (Input.GetButton(SHOT_INPUT_BUTTON))
@@ -40,10 +45,7 @@ public class FireGun : Weapon
 
     public void Shot()
     {
-        if (inDelayShot)
-        {
-            return;
-        }
+        if (inDelayShot || inDelayReload) return;
 
         StartCoroutine(ShotTime());
 
@@ -59,6 +61,8 @@ public class FireGun : Weapon
             maxDamage,
             CalculeGunsRotationMultiplier()
         );
+
+        currentBullets -= 1;
     }
 
     IEnumerator ShotTime()
@@ -66,5 +70,13 @@ public class FireGun : Weapon
         inDelayShot = true;
         yield return new WaitForSeconds(triggerTime);
         inDelayShot = false;
+    }
+
+    IEnumerator ReloadTime()
+    {
+        inDelayReload = true;
+        yield return new WaitForSeconds(reloadTime);
+        currentBullets = maxBullets;
+        inDelayReload = false;
     }
 }
