@@ -48,6 +48,7 @@ public class MinimapController
     Vector3 DEFAULT_MINIMAP_CAM_POSITION = new Vector3(0, 20, 0);
 
     public RectTransform minimapRectTransform;
+    public Image minimapBorderImage;
     public Transform minimapCameraTransform;
     public bool isFullScreen;
 
@@ -57,6 +58,8 @@ public class MinimapController
     Vector3 minimapCameraPosition;
     LevelBuilder levelBuilder;
     Camera minimapCamera;
+    Color minimapCameraBackground = new Color(0, 0, 0, 1);
+    Color minimapBorderColor = new Color(0.264f, 0.264f, 0.264f, 1);
 
     public void Start()
     {
@@ -82,6 +85,24 @@ public class MinimapController
 
         UpdateCameraPosition();
         UpdateMinimapCanvasPosition();
+        UpdateMinimapColor();
+    }
+
+    void UpdateMinimapColor()
+    {
+        float minimapCameraAlpha = 1, minimapBorderAlpha = 1;
+
+        if (isFullScreen)
+        {
+            minimapCameraAlpha = 0.25f;
+            minimapBorderAlpha = 0;
+        }
+
+        minimapCameraBackground.a = minimapCameraAlpha;
+        minimapBorderColor.a = minimapBorderAlpha;
+
+        minimapCamera.backgroundColor = minimapCameraBackground;
+        minimapBorderImage.color = minimapBorderColor;
     }
 
     void UpdateCameraPosition()
@@ -116,7 +137,6 @@ public class MinimapController
         minimapCameraPosition = levelCenterPosition;
         minimapCamera.orthographicSize = cameraHeight + 12;
     }
-
 
     void UpdateMinimapCanvasPosition()
     {

@@ -1287,6 +1287,8 @@ MonoBehaviour:
     hudAmmoText: {fileID: 496617461}
   minimapController:
     minimapRectTransform: {fileID: 119859063}
+    minimapBorderImage: {fileID: 894004340}
+    minimapRenderImage: {fileID: 1817736}
     minimapCameraTransform: {fileID: 785724709}
     isFullScreen: 0
 --- !u!114 &787497139
@@ -1513,7 +1515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  m_Color: {r: 0.264, g: 0.264, b: 0.264, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2162,7 +2164,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

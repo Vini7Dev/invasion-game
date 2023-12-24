@@ -34,7 +34,9 @@ public class FireGun : Weapon
         {
             if (Input.GetButton(SHOT_INPUT_BUTTON)) Shot();
 
-            if (Input.GetButtonDown(RELOAD_INPUT_BUTTON)) Reload();
+            if (
+                Input.GetButtonDown(RELOAD_INPUT_BUTTON) && currentBullets < maxBullets
+            ) Reload();
         }
         else if (PlayerController.IsAlive())
         {
