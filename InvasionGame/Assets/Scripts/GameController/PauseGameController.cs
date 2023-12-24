@@ -35,10 +35,9 @@ public class PauseGameController : MonoBehaviour
 
         foreach (GameObject entity in entitiesInGame)
         {
-            if (!entity) continue;
-
             PauseScript<PlayerMovement>(entity);
             PauseScript<EnemyMovement>(entity);
+            PauseScript<EntityController>(entity);
             PauseScript<EntityWhiteGunHands>(entity);
             PauseScript<EntityFireGunHands>(entity);
             PauseScript<DealTouchDamage>(entity);
@@ -46,7 +45,12 @@ public class PauseGameController : MonoBehaviour
 
         foreach (GameObject weapon in weaponsInGame) PauseScript<Weapon>(weapon);
         foreach (GameObject projectile in projectilesInGame) PauseScript<ProjectileMovement>(projectile);
-        foreach (GameObject trap in trapsInGame) PauseScript<DealTouchDamage>(trap);
+
+        foreach (GameObject trap in trapsInGame)
+        {
+            PauseScript<DealTouchDamage>(trap);
+            PauseScript<Animator>(trap);
+        }
     }
 
     void UpdateObjectsInGameList()
@@ -64,13 +68,14 @@ public class PauseGameController : MonoBehaviour
         trapsInGame = new List<GameObject>(traps);
     }
 
-    void PauseScript<T>(GameObject objectToPauseScript) where T : MonoBehaviour
+    void PauseScript<Script>(GameObject objectToPause) where Script : Behaviour
     {
-        T scriptToPause = objectToPauseScript.GetComponent<T>();
+        if (!objectToPause) return;
+
+        Script scriptToPause = objectToPause.GetComponent<Script>();
 
         if (scriptToPause != null) {
             scriptToPause.enabled = !isPaused;
         }
     }
-
 }

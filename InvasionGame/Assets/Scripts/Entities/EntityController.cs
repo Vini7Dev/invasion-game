@@ -58,7 +58,7 @@ public class EntityController : MonoBehaviour
 
     public void HaveHitADamage(int damageReceived, GameObject causerObject)
     {
-        if (onDamage)
+        if (onDamage || !enabled)
         {
             return;
         }
