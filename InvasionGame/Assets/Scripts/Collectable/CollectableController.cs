@@ -50,12 +50,10 @@ public class CollectableController : MonoBehaviour
     void InstantiateWeaponOnHand(
         Transform handTransform,
         GameObject objectToInstantiate,
-        float zPositionRelative
+        float zPositionRelative = 0
     )
     {
         GameObject objectInstance = Instantiate(objectToInstantiate, handTransform);
-
-        if (zPositionRelative == 0) return;
 
         Vector3 objectPosition = new Vector3(0, 0, zPositionRelative);
 
