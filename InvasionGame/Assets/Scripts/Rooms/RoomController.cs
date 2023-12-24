@@ -113,7 +113,11 @@ public class RoomController : MonoBehaviour
     void ToggleActiveOfScenaryAndVariation()
     {
         sceneryObjects.SetActive(isRoomActive);
-        roomVariationObject.SetActive(isRoomActive);
+
+        if (roomVariationObject != null)
+        {
+            roomVariationObject.SetActive(isRoomActive);
+        }
     }
 
     void OnAllEnemiesAreKilled()

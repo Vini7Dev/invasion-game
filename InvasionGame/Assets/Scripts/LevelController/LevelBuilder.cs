@@ -62,7 +62,7 @@ public class LevelBuilder : MonoBehaviour
 
             if (wayChildCount <= 0) continue;
 
-            NextRoomPosition nextRoomPosition = GetRamdomNextRoomPosition(
+            NextRoomPosition nextRoomPosition = GetRandomNextRoomPosition(
                 currentRoomController,
                 spawnPosition
             );
@@ -141,7 +141,7 @@ public class LevelBuilder : MonoBehaviour
         secondPassage.GetComponent<PassageController>().passageConnection = firstPassage;
     }
 
-    NextRoomPosition GetRamdomNextRoomPosition(
+    NextRoomPosition GetRandomNextRoomPosition(
         RoomController currentRoomController,
         Vector2 spawnPosition
     )
