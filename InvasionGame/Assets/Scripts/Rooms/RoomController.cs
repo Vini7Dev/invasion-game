@@ -29,6 +29,7 @@ public class RoomController : MonoBehaviour
     public NextRoomPosition[] nextRoomPositions;
     public GameObject[] roomVariations;
     public GameObject sceneryObjects;
+    public Animator roomMinimapAnimator;
     public int roomIndex;
 
     bool isRoomActive;
@@ -115,19 +116,26 @@ public class RoomController : MonoBehaviour
         roomVariationObject.SetActive(isRoomActive);
     }
 
-    public bool GetIsRoomActive()
+    void OnAllEnemiesAreKilled()
     {
-        return isRoomActive;
+        roomMinimapAnimator.SetTrigger("RoomCompleted");
     }
 
     public void OnEnemyDies()
     {
         totalOfEnemiesOnRoom -= 1;
+
+        if (IsAllEnemiesDied()) OnAllEnemiesAreKilled();
     }
 
     public bool IsAllEnemiesDied()
     {
         return totalOfEnemiesOnRoom <= 0;
+    }
+
+    public bool GetIsRoomActive()
+    {
+        return isRoomActive;
     }
 
     IEnumerator HideSceneryObjects()

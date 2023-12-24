@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 3201309247597026491}
   - component: {fileID: 1536625465752878695}
   - component: {fileID: 8719267390946181281}
+  - component: {fileID: 4828223827361676607}
   m_Layer: 6
   m_Name: RoomMinimap
   m_TagString: Untagged
@@ -345,6 +346,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &4828223827361676607
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3913768869893210452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10bfa8e72ffd4ca42b0d669896da0dfd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3949856482331599268
 GameObject:
   m_ObjectHideFlags: 0
@@ -968,6 +990,7 @@ MonoBehaviour:
   - {fileID: 69774597820718400, guid: e4e49157138d214408a46df6b698208c, type: 3}
   - {fileID: 7681445258908533852, guid: b4b173d98bd5b4e41bcc7ca3d91f7f12, type: 3}
   sceneryObjects: {fileID: 4666543730807120061}
+  roomMinimapAnimator: {fileID: 4828223827361676607}
   roomIndex: 0
 --- !u!1 &7056014500911450121
 GameObject:
