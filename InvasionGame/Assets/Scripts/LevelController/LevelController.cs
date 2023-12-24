@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    public CameraController cameraController;
+
     bool isInRoomTransition;
     GameObject currentRoom;
     LevelBuilder levelBuilder;
-    CameraController cameraController;
 
     void Start()
     {
@@ -18,7 +19,6 @@ public class LevelController : MonoBehaviour
         UpdateRoomIsActive(currentRoom, true);
 
         GameObject mainCamera = Camera.main.gameObject;
-        cameraController = mainCamera.GetComponent<CameraController>();
     }
 
     void UpdateRoomIsActive(GameObject roomObject, bool newIsActive)

@@ -173,4 +173,9 @@ public class LevelBuilder : MonoBehaviour
     public GameObject GetLevelRoom(int roomIndex) {
         return levelRooms[roomIndex];
     }
+
+    public Vector2[] GetRoomPositions()
+    {
+        return roomPositions;
+    }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    float moveSpeed = 50f, yPosition = 9.5f, zPosition = -2.5f;
+    float moveSpeed = 50f, yPosition = 9.5f;
     Vector3 cameraPosition;
 
     void Start()
     {
-        cameraPosition = new Vector3(0, yPosition, zPosition);
+        cameraPosition = new Vector3(0, yPosition, 0);
     }
 
     void Update()
@@ -23,6 +23,6 @@ public class CameraController : MonoBehaviour
 
     public void UpdateCameraPosition(Vector2 newCameraPosition)
     {
-        cameraPosition = new Vector3(newCameraPosition.x, yPosition, newCameraPosition.y + zPosition);
+        cameraPosition = new Vector3(newCameraPosition.x, yPosition, newCameraPosition.y);
     }
 }
