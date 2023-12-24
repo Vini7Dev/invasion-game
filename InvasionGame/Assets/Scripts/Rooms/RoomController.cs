@@ -28,17 +28,20 @@ public class RoomController : MonoBehaviour
     public MeshRenderer roomCover;
     public NextRoomPosition[] nextRoomPositions;
     public GameObject[] roomVariations;
+    public GameObject sceneryObjects;
     public int roomIndex;
 
     bool isRoomActive;
     int totalOfEnemiesOnRoom;
-    float roomCoverAnimationSpeed;
+    float roomCoverAnimationSpeed, roomCoverTransitionSpeed = 0.5f;
     Material roomCoverMaterial;
+    GameObject roomVariationObject;
 
     void Start()
     {
         roomCoverMaterial = roomCover.materials[0];
         ProcessCurrentRoom();
+        ToggleActiveOfScenaryAndVariation();
     }
 
     void Update()
@@ -63,11 +66,13 @@ public class RoomController : MonoBehaviour
             currentRoomVariation.transform.rotation
         );
 
-        RoomVariation roomVariation = roomVariationInstance.GetComponent<RoomVariation>();
+        roomVariationObject = roomVariationInstance;
+
+        RoomVariation roomVariation = roomVariationObject.GetComponent<RoomVariation>();
 
         roomVariation.roomController = GetComponent<RoomController>();
 
-        GameObject[] enemies = roomVariationInstance.transform
+        GameObject[] enemies = roomVariationObject.transform
             .Find("Enemies")
             .Cast<Transform>()
             .Select(child => child.gameObject)
@@ -98,7 +103,16 @@ public class RoomController : MonoBehaviour
     public void SetIsRoomActive(bool newIsActive)
     {
         isRoomActive = newIsActive;
-        roomCoverAnimationSpeed = (isRoomActive ? -1 : 5) * Time.deltaTime * 0.5f;
+        roomCoverAnimationSpeed = (isRoomActive ? -1 : 5) * Time.deltaTime * roomCoverTransitionSpeed;
+
+        if (isRoomActive) ToggleActiveOfScenaryAndVariation();
+        else StartCoroutine(HideSceneryObjects());
+    }
+
+    void ToggleActiveOfScenaryAndVariation()
+    {
+        sceneryObjects.SetActive(isRoomActive);
+        roomVariationObject.SetActive(isRoomActive);
     }
 
     public bool GetIsRoomActive()
@@ -114,5 +128,12 @@ public class RoomController : MonoBehaviour
     public bool IsAllEnemiesDied()
     {
         return totalOfEnemiesOnRoom <= 0;
+    }
+
+    IEnumerator HideSceneryObjects()
+    {
+        yield return new WaitForSeconds(roomCoverTransitionSpeed + 0.1f);
+
+        ToggleActiveOfScenaryAndVariation();
     }
 }

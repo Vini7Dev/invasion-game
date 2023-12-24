@@ -967,6 +967,7 @@ MonoBehaviour:
   - {fileID: 8703885606566835680, guid: 51d00c76bfa4f47478167d2bc32a718b, type: 3}
   - {fileID: 69774597820718400, guid: e4e49157138d214408a46df6b698208c, type: 3}
   - {fileID: 7681445258908533852, guid: b4b173d98bd5b4e41bcc7ca3d91f7f12, type: 3}
+  sceneryObjects: {fileID: 4666543730807120061}
   roomIndex: 0
 --- !u!1 &7056014500911450121
 GameObject:
