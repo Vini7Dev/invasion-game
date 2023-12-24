@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireGun : Weapon
 {
     const string SHOT_INPUT_BUTTON = "Fire1";
+    const string RELOAD_INPUT_BUTTON = "Reload";
 
     public Transform bulletSpawnTransform;
     public GameObject projectileObject;
@@ -27,14 +28,13 @@ public class FireGun : Weapon
 
     void Update()
     {
-        if (currentBullets <= 0 && !inDelayReload) StartCoroutine(ReloadTime());
+        if (currentBullets <= 0 && !inDelayReload) Reload();
 
         if (isPlayerAttack)
         {
-            if (Input.GetButton(SHOT_INPUT_BUTTON))
-            {
-                Shot();
-            }
+            if (Input.GetButton(SHOT_INPUT_BUTTON)) Shot();
+
+            if (Input.GetButtonDown(RELOAD_INPUT_BUTTON)) Reload();
         }
         else if (PlayerController.IsAlive())
         {
@@ -69,6 +69,11 @@ public class FireGun : Weapon
         currentBullets -= 1;
 
         if (isPlayerAttack) UpdateAmmoInfoHUD();
+    }
+
+    void Reload()
+    {
+        StartCoroutine(ReloadTime());
     }
 
     void UpdateAmmoInfoHUD()

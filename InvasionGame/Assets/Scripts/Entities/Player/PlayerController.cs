@@ -12,6 +12,8 @@ public class PlayerController : EntityController
 
     void Start()
     {
+        base.Start();
+
         GameObject hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
         hudController = hudControllerObject.GetComponent<HUDController>();
     }
