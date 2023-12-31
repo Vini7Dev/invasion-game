@@ -7,6 +7,7 @@ public class ItemForSale
 {
     public Sprite itemSprite;
     public Vector2 itemSpritePosition, itemSpriteSize;
+    public int minPriceToBuy, maxPriceToBuy;
 }
 
 public class SellingItemsController : MonoBehaviour
@@ -20,7 +21,7 @@ public class SellingItemsController : MonoBehaviour
         {
             ItemForSale randomItemToSale = GetRandomItemForSale();
 
-            if (randomItemToSale == null) continue;
+            if (randomItemToSale == null || itemSellingAltar == null) continue;
 
             itemsForSale = RemoveItemAtRandomIndex(itemsForSale, randomItemToSale);
 

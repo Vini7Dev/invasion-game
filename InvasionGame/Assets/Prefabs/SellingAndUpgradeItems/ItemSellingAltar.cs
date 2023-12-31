@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class ItemSellingAltar : MonoBehaviour
 {
+    const string PLAYER_TAG = "Player";
     const int SPRITE_Y_POSITION = 0;
     const int SPRITE_Z_SIZE = 1;
 
+    public GameObject itemPriceObject;
     public GameObject spriteOfItemForSale;
 
     ItemForSale itemForSale;
+
+    void UpdateItemForSalePrice()
+    {
+        int price = Random.Range(itemForSale.minPriceToBuy, itemForSale.maxPriceToBuy);
+
+        TextMesh priceText = itemPriceObject.GetComponent<TextMesh>();
+
+        priceText.text = $"${price}";
+    }
 
     void UpdateItemForSaleSprite()
     {
@@ -34,15 +45,28 @@ public class ItemSellingAltar : MonoBehaviour
         );
     }
 
+    void ChangeViewOfItemForSaleInfo(bool viewItemForSaleInfo)
+    {
+        itemPriceObject.SetActive(viewItemForSaleInfo);
+    }
+
     public void SetItemForSale(ItemForSale itemForSaleToSet)
     {
         itemForSale = itemForSaleToSet;
 
         UpdateItemForSaleSprite();
+        UpdateItemForSalePrice();
     }
 
-    public ItemForSale GetItemForSale()
-    {
-        return itemForSale;
+    void OnTriggerExit(Collider other) {
+        if (other.tag != PLAYER_TAG) return;
+
+        ChangeViewOfItemForSaleInfo(false);
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag != PLAYER_TAG) return;
+
+        ChangeViewOfItemForSaleInfo(true);
     }
 }
