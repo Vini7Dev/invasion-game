@@ -18,6 +18,7 @@ TagManager:
   - Weapon
   - Trap
   - HUDController
+  - InteractiveObject
   layers:
   - Default
   - TransparentFX
