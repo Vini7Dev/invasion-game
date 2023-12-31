@@ -149,6 +149,9 @@ MonoBehaviour:
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
+  executeOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5201508545682122582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,6 +1141,9 @@ MonoBehaviour:
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
+  executeOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1517577730891377074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2465,6 +2471,10 @@ PrefabInstance:
     - target: {fileID: 169701445648327130, guid: c3d8c43c9d7b14340aabeda4bdcdbdc5, type: 3}
       propertyPath: maxLife
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4140512082625484136, guid: c3d8c43c9d7b14340aabeda4bdcdbdc5, type: 3}
+      propertyPath: reloadTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5662535806379612597, guid: c3d8c43c9d7b14340aabeda4bdcdbdc5, type: 3}
       propertyPath: m_LocalPosition.x

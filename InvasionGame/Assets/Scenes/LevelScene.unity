@@ -1945,7 +1945,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7b656dbe6a2a40a46b8fd7f64aac2f3d, type: 3}
   - {fileID: 8300000, guid: f655f8ed96bae9f47a2df1b376ac806c, type: 3}
   - {fileID: 8300000, guid: d0eccd85d57085946a68ffac733c8f91, type: 3}
-  musicIndex: -1
+  musicIndex: 2
 --- !u!82 &1321747293
 AudioSource:
   m_ObjectHideFlags: 0
