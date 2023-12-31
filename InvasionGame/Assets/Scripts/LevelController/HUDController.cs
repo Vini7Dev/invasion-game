@@ -176,6 +176,17 @@ public class AmmoInfo
     }
 }
 
+[Serializable]
+public class MoneyInfo
+{
+    public TextMeshProUGUI hudMoneyText;
+
+    public void UpdateMoneyInfo(int moneyValue)
+    {
+        hudMoneyText.text = $"${moneyValue}";
+    }
+}
+
 public class HUDController : MonoBehaviour
 {
     const string GAME_CONTROLLER_TAG = "GameController";
@@ -183,6 +194,7 @@ public class HUDController : MonoBehaviour
     public LifeBarController lifeBarController;
     public AmmoInfo ammoInfo;
     public MinimapController minimapController;
+    public MoneyInfo moneyInfo;
 
     GameObject gameController;
 
@@ -209,5 +221,10 @@ public class HUDController : MonoBehaviour
     public void UpdateAmmoInfo(int currentAmmo, int maxAmmo)
     {
         ammoInfo.UpdateAmmoInfo(currentAmmo, maxAmmo);
+    }
+
+    public void UpdateMoneyInfo(int moneyValue)
+    {
+        moneyInfo.UpdateMoneyInfo(moneyValue);
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     public CameraController cameraController;
+    public HUDController hudController;
 
+    int money;
     bool isInRoomTransition;
     GameObject currentRoom;
     LevelBuilder levelBuilder;
@@ -70,5 +72,12 @@ public class LevelController : MonoBehaviour
     public bool GetIsInRoomTransition()
     {
         return isInRoomTransition;
+    }
+
+    public void IncrementMoneyValue(int moneyToAdd)
+    {
+        money += moneyToAdd;
+
+        hudController.UpdateMoneyInfo(money);
     }
 }

@@ -19,6 +19,7 @@ TagManager:
   - Trap
   - HUDController
   - InteractiveObject
+  - Money
   layers:
   - Default
   - TransparentFX
