@@ -52,6 +52,8 @@ public class ItemSellingAltar : MonoBehaviour
 
     public void SetItemForSale(ItemForSale itemForSaleToSet)
     {
+        if (itemForSaleToSet == null) return;
+
         itemForSale = itemForSaleToSet;
 
         UpdateItemForSaleSprite();
