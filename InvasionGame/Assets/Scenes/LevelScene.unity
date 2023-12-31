@@ -1898,7 +1898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomPrefab: {fileID: 6243461425288469014, guid: 4d65618977f6ae147a815600c6eb5838, type: 3}
   roomPassagePrefab: {fileID: 1203010469103265168, guid: c0d7f41df2d364d4a9dc1f1728e7f698, type: 3}
-  levelRoomsCount: 10
+  levelRoomsCount: 8
 --- !u!114 &1321747290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1945,7 +1945,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7b656dbe6a2a40a46b8fd7f64aac2f3d, type: 3}
   - {fileID: 8300000, guid: f655f8ed96bae9f47a2df1b376ac806c, type: 3}
   - {fileID: 8300000, guid: d0eccd85d57085946a68ffac733c8f91, type: 3}
-  musicIndex: 2
+  musicIndex: 4
 --- !u!82 &1321747293
 AudioSource:
   m_ObjectHideFlags: 0

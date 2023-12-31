@@ -7,25 +7,21 @@ public class SlimeJumpMovement : EnemyMovement
 
     bool jump, stopped = true;
 
-    void Update()
+    protected override void Stopped()
     {
-        CheckDistanceToMove(Stopped, WalkToPlayer, MoveAwaiFromPlayer);
+        speed = 0;
     }
 
-    void Stopped()
-    {
-        enemyAnimator.SetFloat("Speed", 0);
-    }
-
-    void WalkToPlayer()
+    protected override void WalkToPlayer()
     {
         if (!jump && stopped)
         {
+            speed = 0;
             StartCoroutine(JumpDelay());
         }
         else if (jump && !stopped)
         {
-            MoveWithPlayerDirectionBySpeed(enemySkills.moveSpeed);
+            speed = enemySkills.moveSpeed;
             StartCoroutine(StoppedDelay());
         }
 

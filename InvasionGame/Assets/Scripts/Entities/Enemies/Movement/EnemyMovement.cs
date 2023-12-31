@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     protected Transform playerTransform;
     protected EntitySkills enemySkills;
     protected delegate void MovementDelegate();
+    protected float speed;
 
     protected void Start()
     {
@@ -24,44 +25,34 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        CheckDistanceToMove(Stopped, WalkToPlayer, MoveAwaiFromPlayer);
+        CheckDistanceToMove();
+        MoveWithPlayerDirectionBySpeed();
     }
 
-    protected void CheckDistanceToMove(
-        MovementDelegate StoppedDelegate,
-        MovementDelegate WalkToPlayerDelegate,
-        MovementDelegate MoveAwaiFromPlayerDelegate
-    )
+    protected virtual void CheckDistanceToMove()
     {
         PlayerDistanceAction playerDistanceAction = enemyController.GetPlayerDistanceAction();
 
-        if (playerDistanceAction == PlayerDistanceAction.stopped)
-        {
-            StoppedDelegate();
-        }
-        else if (playerDistanceAction == PlayerDistanceAction.advancing)
-        {
-            WalkToPlayerDelegate();
-        }
-        else
-        {
-            MoveAwaiFromPlayerDelegate();
-        }
+        if (playerDistanceAction == PlayerDistanceAction.stopped) Stopped();
+        else if (playerDistanceAction == PlayerDistanceAction.advancing) WalkToPlayer();
+        else MoveAwaiFromPlayer();
     }
 
-    protected void Stopped() {}
+    protected virtual void Stopped() {
+        speed = 0;
+    }
 
-    protected void WalkToPlayer()
+    protected virtual void WalkToPlayer()
     {
-        MoveWithPlayerDirectionBySpeed(enemySkills.moveSpeed);
+        speed = enemySkills.moveSpeed;
     }
 
-    protected void MoveAwaiFromPlayer()
+    protected virtual void MoveAwaiFromPlayer()
     {
-        MoveWithPlayerDirectionBySpeed(-retreatingSpeed);
+        speed = -retreatingSpeed;
     }
 
-    protected void MoveWithPlayerDirectionBySpeed(float speed)
+    protected void MoveWithPlayerDirectionBySpeed()
     {
         Vector3 playerPosition = playerTransform.position;
         Vector3 moveDirection = playerPosition - transform.position;

@@ -101,6 +101,9 @@ MonoBehaviour:
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
+  executeOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8087711406495046943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 25
-  moveSpeed: 2
+  moveSpeed: 2.5
   twoFireGunHands: 0
   canWalkInTrap: 1
 --- !u!114 &3751210469110880375
@@ -132,7 +135,6 @@ MonoBehaviour:
   enemyAnimator: {fileID: 1395968270164840287}
   retreatingSpeed: 0
   timeToJump: 0.2
-  stoppedTime: 0.2
 --- !u!114 &7323746921669798916
 MonoBehaviour:
   m_ObjectHideFlags: 0

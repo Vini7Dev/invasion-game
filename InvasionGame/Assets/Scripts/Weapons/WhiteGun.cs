@@ -66,10 +66,7 @@ public class WhiteGun : Weapon
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag != PLAYER_TAG || causedDamage)
-        {
-            return;
-        }
+        if (other.tag != PLAYER_TAG || causedDamage) return;
 
         StartCoroutine(PlayerDamageDelay());
 

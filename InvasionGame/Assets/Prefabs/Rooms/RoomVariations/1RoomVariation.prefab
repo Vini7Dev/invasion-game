@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 25
-  moveSpeed: 2
+  moveSpeed: 2.5
   twoFireGunHands: 0
   canWalkInTrap: 1
 --- !u!114 &8403589926170207806
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 25
-  moveSpeed: 2
+  moveSpeed: 2.5
   twoFireGunHands: 0
   canWalkInTrap: 1
 --- !u!114 &4641505109003161354

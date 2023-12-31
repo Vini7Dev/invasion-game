@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class EnemyWhiteGunHands : EntityWhiteGunHands
 {
+    public bool isSpinHandsAttack;
+
+    bool handsSpinning;
+    float spinHandsSmoothSpeed = 0;
     Transform playerTransform;
+    Vector3 yRotateDirection = new Vector3(0, 1, 0);
 
     void Start()
     {
@@ -14,7 +19,23 @@ public class EnemyWhiteGunHands : EntityWhiteGunHands
 
     void Update()
     {
-        PointToPlayer();
+        if (isSpinHandsAttack) SpinHands();
+        else PointToPlayer();
+    }
+
+    public void ToggleHandsSpin()
+    {
+        handsSpinning = !handsSpinning;
+    }
+
+    void SpinHands()
+    {
+        if (handsSpinning && spinHandsSmoothSpeed < 3)
+            spinHandsSmoothSpeed += Time.deltaTime * 1.5f;
+        else if (!handsSpinning && spinHandsSmoothSpeed > 0)
+            spinHandsSmoothSpeed -= Time.deltaTime * 1.5f;
+
+        whiteGunHands.transform.Rotate(yRotateDirection * spinHandsSmoothSpeed);
     }
 
     void PointToPlayer()

@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLife: 50
-  moveSpeed: 1.5
+  moveSpeed: 2
   twoFireGunHands: 0
   canWalkInTrap: 1
 --- !u!114 &4967464129237311156
