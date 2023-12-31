@@ -7,7 +7,7 @@ public class LevelBuilder : MonoBehaviour
     public GameObject roomPrefab, roomPassagePrefab;
     public int levelRoomsCount = 10;
 
-    int roomCount, bifurcationsCount, maxBifurcations = 2;
+    int roomCount, bifurcationsCount, maxBifurcations = 2, bonusRoomCount, maxBonusRoom = 1;
     Vector2[] roomPositions;
     GameObject[] levelRooms;
 
@@ -15,13 +15,14 @@ public class LevelBuilder : MonoBehaviour
         levelRooms = new GameObject[levelRoomsCount];
         roomPositions = new Vector2[levelRoomsCount];
 
-        CreateLevelRoom(new Vector2(0, 0), levelRoomsCount - 1, "ROOT");
+        CreateLevelRoom(new Vector2(0, 0), levelRoomsCount - 1, "ROOT", false);
     }
 
     GameObject CreateLevelRoom(
         Vector2 spawnPosition,
         int childCount,
-        string objectTreeName
+        string objectTreeName,
+        bool isBifurcation
     )
     {
         GameObject currentRoomInstance = Instantiate(
@@ -37,6 +38,12 @@ public class LevelBuilder : MonoBehaviour
         RoomController currentRoomController = currentRoomInstance.GetComponent<RoomController>();
         currentRoomController.roomIndex = roomCount;
 
+        if (isBifurcation && childCount == 0 && objectTreeName != "ROOT - 1" && bonusRoomCount < maxBonusRoom)
+        {
+            currentRoomController.isBonusRoom = true;
+            bonusRoomCount += 1;
+        }
+
         roomCount += 1;
 
         bool canCreateBifurcation =
@@ -44,13 +51,13 @@ public class LevelBuilder : MonoBehaviour
             && roomCount > 1
             && roomCount < (levelRoomsCount - 1);
 
-        bool willCreateBifurcation = canCreateBifurcation && UnityEngine.Random.Range(0, 10) > 6;
+        bool willNotCreateBifurcation = canCreateBifurcation && UnityEngine.Random.Range(0, 10) > 6;
 
-        int roomChildCount = willCreateBifurcation ? 1 : 2;
+        int roomChildCount = willNotCreateBifurcation ? 1 : 2;
 
         int maxSecondWayChildCount = childCount - 3 > 0 ? childCount : 0;
 
-        int secondWayChildCount = willCreateBifurcation ? 0 : UnityEngine.Random.Range(0, maxSecondWayChildCount);
+        int secondWayChildCount = willNotCreateBifurcation ? 0 : UnityEngine.Random.Range(0, maxSecondWayChildCount);
 
         int firstWayCildCount = childCount - secondWayChildCount;
 
@@ -76,7 +83,8 @@ public class LevelBuilder : MonoBehaviour
             GameObject nextRoomInstance = CreateLevelRoom(
                 newSpawnerPosition,
                 wayChildCount - 1,
-                childObjectTreeName
+                childObjectTreeName,
+                isBifurcation || (!willNotCreateBifurcation && childIndex == 1)
             );
 
             GameObject currentRoomPassage = CreateRoomPassage(

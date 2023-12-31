@@ -27,10 +27,11 @@ public class RoomController : MonoBehaviour
 {
     public MeshRenderer roomCover;
     public NextRoomPosition[] nextRoomPositions;
-    public GameObject[] roomVariations;
-    public GameObject sceneryObjects;
+    public GameObject[] roomVariations, bonusRoomVariations;
+    public GameObject sceneryObjects, treasureChestMinimap;
     public Animator roomMinimapAnimator;
     public int roomIndex;
+    public bool isBonusRoom;
 
     bool isRoomActive;
     int totalOfEnemiesOnRoom;
@@ -43,6 +44,8 @@ public class RoomController : MonoBehaviour
         roomCoverMaterial = roomCover.materials[0];
         ProcessCurrentRoom();
         ToggleActiveOfScenaryAndVariation();
+
+        if (isBonusRoom) treasureChestMinimap.SetActive(true);
     }
 
     void Update()
@@ -50,16 +53,23 @@ public class RoomController : MonoBehaviour
         OpenOrCloseRoomCover();
     }
 
-    void ProcessCurrentRoom()
+    GameObject GetRoomVariant()
     {
+        GameObject[] variantsArray = !isBonusRoom ? roomVariations : bonusRoomVariations;
+
         int roomVariationIndex = 0;
 
         if (roomIndex != 0)
         {
-            roomVariationIndex = UnityEngine.Random.Range(0, roomVariations.Length);
+            roomVariationIndex = UnityEngine.Random.Range(0, variantsArray.Length);
         }
 
-        GameObject currentRoomVariation = roomVariations[roomVariationIndex];
+        return variantsArray[roomVariationIndex];
+    }
+
+    void ProcessCurrentRoom()
+    {
+        GameObject currentRoomVariation = GetRoomVariant();
 
         GameObject roomVariationInstance = Instantiate(
             currentRoomVariation,
@@ -98,8 +108,15 @@ public class RoomController : MonoBehaviour
         isRoomActive = newIsActive;
         roomCoverAnimationSpeed = (isRoomActive ? -1 : 5) * Time.deltaTime * roomCoverTransitionSpeed;
 
-        if (isRoomActive) ToggleActiveOfScenaryAndVariation();
-        else StartCoroutine(HideSceneryObjects());
+        if (isRoomActive)
+        {
+            ToggleActiveOfScenaryAndVariation();
+            if (isBonusRoom) OnAllEnemiesAreKilled();
+        }
+        else
+        {
+            StartCoroutine(HideSceneryObjects());
+        }
     }
 
     void ToggleActiveOfScenaryAndVariation()

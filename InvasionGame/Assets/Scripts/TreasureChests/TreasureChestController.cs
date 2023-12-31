@@ -16,6 +16,7 @@ public class TreasureChestController : MonoBehaviour
     void CollectTreasureChest()
     {
         animator.SetTrigger("OpenTreasureChest");
+        Destroy(gameObject, 1.5f);
     }
 
     void OnTriggerEnter(Collider other)
