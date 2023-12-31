@@ -1071,9 +1071,9 @@ MonoBehaviour:
     position: {x: 12, y: 0}
     roomPassagePosition: {x: 5, y: 0}
   roomVariations:
-  - {fileID: 7681445258908533852, guid: b4b173d98bd5b4e41bcc7ca3d91f7f12, type: 3}
   - {fileID: 8703885606566835680, guid: 51d00c76bfa4f47478167d2bc32a718b, type: 3}
   - {fileID: 69774597820718400, guid: e4e49157138d214408a46df6b698208c, type: 3}
+  - {fileID: 7681445258908533852, guid: b4b173d98bd5b4e41bcc7ca3d91f7f12, type: 3}
   bonusRoomVariations:
   - {fileID: 7835646169936832861, guid: 29337b1a6589ba84a8f451e560323635, type: 3}
   sceneryObjects: {fileID: 4666543730807120061}

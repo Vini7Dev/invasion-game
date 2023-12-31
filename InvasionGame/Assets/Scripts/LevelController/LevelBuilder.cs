@@ -61,11 +61,15 @@ public class LevelBuilder : MonoBehaviour
 
         int firstWayCildCount = childCount - secondWayChildCount;
 
+        int[] waysChildCount = firstWayCildCount > secondWayChildCount
+            ? new int[] { firstWayCildCount, secondWayChildCount }
+            : new int[] { secondWayChildCount, firstWayCildCount };
+
         for (int childIndex = 0; childIndex < roomChildCount; childIndex++)
         {
             if (childIndex > 0) bifurcationsCount += 1;
 
-            int wayChildCount = childIndex == 0 ? firstWayCildCount : secondWayChildCount;
+            int wayChildCount = waysChildCount[childIndex];
 
             if (wayChildCount <= 0) continue;
 
