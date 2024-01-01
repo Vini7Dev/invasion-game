@@ -17,10 +17,23 @@ public class Money : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnTriggerEnter(Collider other)
+    void MoveToPlayerPosition(Vector3 playerPosition)
     {
+        Vector3 moveDirection = playerPosition - transform.position;
+
+        if (moveDirection.magnitude <= 0.1f) return;
+
+        moveDirection.Normalize();
+
+        transform.position += moveDirection * Time.deltaTime * 8;
+    }
+
+    void OnTriggerStay(Collider other) {
         if (other.tag != GlobalTags.PLAYER) return;
 
-        CollectMoney();
+        float distanceFromPlayer = Vector3.Distance(transform.position, other.transform.position);
+
+        if (distanceFromPlayer < 0.5f) CollectMoney();
+        else MoveToPlayerPosition(other.transform.position);
     }
 }

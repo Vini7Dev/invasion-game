@@ -57,10 +57,7 @@ public class EnemyMovement : MonoBehaviour
         Vector3 playerPosition = playerTransform.position;
         Vector3 moveDirection = playerPosition - transform.position;
 
-        if (moveDirection.magnitude <= 0.1f)
-        {
-            return;
-        }
+        if (moveDirection.magnitude <= 0.1f) return;
 
         moveDirection.Normalize();
 
