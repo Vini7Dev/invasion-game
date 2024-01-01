@@ -46,7 +46,7 @@ public class WhiteGun : Weapon
 
                 foreach (var collider in colliders)
                 {
-                    if (collider.tag == ENEMY_TAG || collider.tag == BREAKABLE_SCENERY_TAG)
+                    if (collider.tag == GlobalTags.ENEMY || collider.tag == GlobalTags.BREAKABLE_SCENERY)
                     {
                         ApplyDamage(collider.gameObject);
                     }
@@ -66,7 +66,7 @@ public class WhiteGun : Weapon
 
     void OnTriggerStay(Collider other)
     {
-        if (other.tag != PLAYER_TAG || causedDamage) return;
+        if (other.tag != GlobalTags.PLAYER || causedDamage) return;
 
         StartCoroutine(PlayerDamageDelay());
 

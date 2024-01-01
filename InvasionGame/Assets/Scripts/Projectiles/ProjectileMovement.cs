@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    protected const string ENEMY_TAG = "Enemy";
-    protected const string PLAYER_TAG = "Player";
-    protected const string BREAKABLE_SCENERY_TAG = "BreakableScenery";
-    protected const string OUT_OF_WALL_TAG = "OutOfWall";
-    protected const string INTERACTIVE_OBJECT_TAG = "InteractiveObject";
-
     bool isPlayerAttack = false;
     float projectileSpeed;
     int maxDamage, minDamage;
@@ -67,15 +61,23 @@ public class ProjectileMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == OUT_OF_WALL_TAG || other.tag == INTERACTIVE_OBJECT_TAG)
+        if (other.tag == GlobalTags.OUT_OF_WALL)
         {
             Destroy(gameObject);
         }
         else
         {
-            if (isPlayerAttack && other.tag == ENEMY_TAG) ApplyDamage(other);
-            else if (!isPlayerAttack && other.tag == PLAYER_TAG) ApplyDamage(other);
-            else if (other.tag == BREAKABLE_SCENERY_TAG) ApplyDamage(other);
+            if (isPlayerAttack && other.tag == GlobalTags.ENEMY) ApplyDamage(other);
+            else if (!isPlayerAttack && other.tag == GlobalTags.PLAYER) ApplyDamage(other);
+            else if (other.tag == GlobalTags.BREAKABLE_SCENERY) ApplyDamage(other);
         }
+    }
+
+    void OnTriggerStay(Collider other) {
+        if (other.tag != GlobalTags.INTERACTIVE_OBJECT) return;
+
+        float distance = Vector3.Distance(transform.position, other.transform.position);
+
+        if (distance < 0.5f) Destroy(gameObject);
     }
 }

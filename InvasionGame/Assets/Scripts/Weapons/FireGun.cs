@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FireGun : Weapon
 {
-    const string SHOT_INPUT_BUTTON = "Fire1";
-    const string RELOAD_INPUT_BUTTON = "Reload";
-
     public Transform bulletSpawnTransform;
     public GameObject projectileObject;
     public float triggerTime = 0.3f, reloadTime;
@@ -32,10 +29,10 @@ public class FireGun : Weapon
 
         if (isPlayerAttack)
         {
-            if (Input.GetButton(SHOT_INPUT_BUTTON)) Shot();
+            if (Input.GetButton(GlobalButtons.SHOT)) Shot();
 
             if (
-                Input.GetButtonDown(RELOAD_INPUT_BUTTON) && currentBullets < maxBullets
+                Input.GetButtonDown(GlobalButtons.RELOAD) && currentBullets < maxBullets
             ) Reload();
         }
         else if (PlayerController.IsAlive())

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CollectableController : MonoBehaviour
 {
-    const string COLLECTABLE_WEAPON_TAG = "CollectableWeapon";
-    const string COLLECTABLE_ITEM_TAG = "CollectableItem";
-
     WeaponType currentWeaponType = WeaponType.WhiteGun;
 
     EntityController entityController;
@@ -111,7 +108,7 @@ public class CollectableController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == COLLECTABLE_WEAPON_TAG) CollectWeapon(other);
-        else if (other.tag == COLLECTABLE_ITEM_TAG) CollectItem(other);
+        if (other.tag == GlobalTags.COLLECTABLE_WEAPON) CollectWeapon(other);
+        else if (other.tag == GlobalTags.COLLECTABLE_ITEM) CollectItem(other);
     }
 }

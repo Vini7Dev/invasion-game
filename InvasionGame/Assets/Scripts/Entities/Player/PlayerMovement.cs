@@ -24,7 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        Vector3 inputsValue = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 inputsValue = new Vector3(
+            Input.GetAxis(GlobalButtons.HORIZONTAL),
+            0,
+            Input.GetAxis(GlobalButtons.VERTICAL)
+        );
 
         characterController.Move(inputsValue * playerSkills.moveSpeed * Time.deltaTime);
         transform.position = new Vector3(

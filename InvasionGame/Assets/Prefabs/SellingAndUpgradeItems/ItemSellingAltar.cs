@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemSellingAltar : MonoBehaviour
 {
-    const string PLAYER_TAG = "Player";
     const int SPRITE_Y_POSITION = 0;
     const int SPRITE_Z_SIZE = 1;
 
@@ -61,13 +60,13 @@ public class ItemSellingAltar : MonoBehaviour
     }
 
     void OnTriggerExit(Collider other) {
-        if (other.tag != PLAYER_TAG) return;
+        if (other.tag != GlobalTags.PLAYER) return;
 
         ChangeViewOfItemForSaleInfo(false);
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.tag != PLAYER_TAG) return;
+        if (other.tag != GlobalTags.PLAYER) return;
 
         ChangeViewOfItemForSaleInfo(true);
     }

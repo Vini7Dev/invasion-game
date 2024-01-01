@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    protected const string HUD_CONTROLLER_TAG = "HUDController";
-    protected const string ENEMY_TAG = "Enemy";
-    protected const string PLAYER_TAG = "Player";
-    protected const string BREAKABLE_SCENERY_TAG = "BreakableScenery";
-
     public bool isPlayerAttack;
     public int maxDamage = 10, minDamage = 5;
 
@@ -18,7 +13,7 @@ public class Weapon : MonoBehaviour
     {
         if (isPlayerAttack)
         {
-            GameObject hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
+            GameObject hudControllerObject = GameObject.FindGameObjectWithTag(GlobalTags.HUD_CONTROLLER);
             hudController = hudControllerObject.GetComponent<HUDController>();
         }
     }

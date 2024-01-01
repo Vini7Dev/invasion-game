@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Money : MonoBehaviour
 {
-    const string LEVEL_CONTROLLER_TAG = "GameController";
-    const string PLAYER_TAG = "Player";
-
     public int moneyValue = 1;
 
     void CollectMoney()
     {
-        GameObject levelControllerObject = GameObject.FindGameObjectWithTag(LEVEL_CONTROLLER_TAG);
+        GameObject levelControllerObject = GameObject.FindGameObjectWithTag(GlobalTags.LEVEL_CONTROLLER);
 
         LevelController levelController = levelControllerObject.GetComponent<LevelController>();
 
@@ -22,7 +19,7 @@ public class Money : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != PLAYER_TAG) return;
+        if (other.tag != GlobalTags.PLAYER) return;
 
         CollectMoney();
     }

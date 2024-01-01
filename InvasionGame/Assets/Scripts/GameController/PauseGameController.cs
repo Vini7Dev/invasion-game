@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class PauseGameController : MonoBehaviour
 {
-    const string HUD_CONTROLLER_TAG = "HUDController";
-    const string PAUSE_GAME_BUTTON = "PauseGame";
-    const string PLAYER_TAG = "Player";
-    const string ENEMY_TAG = "Enemy";
-    const string WEAPON_TAG = "Weapon";
-    const string PROJECTILE_TAG = "Projectile";
-    const string TRAP_TAG = "Trap";
-
     public GameObject pauseMenuUI;
 
     bool isPaused;
@@ -25,12 +17,12 @@ public class PauseGameController : MonoBehaviour
     void Start()
     {
         gameMusiceSource = GetComponent<AudioSource>();
-        hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
+        hudControllerObject = GameObject.FindGameObjectWithTag(GlobalTags.HUD_CONTROLLER);
     }
 
     void Update()
     {
-        if (Input.GetButtonDown(PAUSE_GAME_BUTTON)) TogglePauseGame();
+        if (Input.GetButtonDown(GlobalButtons.PAUSE_GAME)) TogglePauseGame();
     }
 
     void TogglePauseGame()
@@ -75,11 +67,11 @@ public class PauseGameController : MonoBehaviour
 
     void UpdateObjectsInGameList()
     {
-        GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(ENEMY_TAG);
-        GameObject[] weapons = GameObject.FindGameObjectsWithTag(WEAPON_TAG);
-        GameObject[] projectiles = GameObject.FindGameObjectsWithTag(PROJECTILE_TAG);
-        GameObject[] traps = GameObject.FindGameObjectsWithTag(TRAP_TAG);
+        GameObject player = GameObject.FindGameObjectWithTag(GlobalTags.PLAYER);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(GlobalTags.ENEMY);
+        GameObject[] weapons = GameObject.FindGameObjectsWithTag(GlobalTags.WEAPON);
+        GameObject[] projectiles = GameObject.FindGameObjectsWithTag(GlobalTags.PROJECTILE);
+        GameObject[] traps = GameObject.FindGameObjectsWithTag(GlobalTags.TRAP);
 
         entitiesInGame = new List<GameObject>(enemies);
         entitiesInGame.Add(player);

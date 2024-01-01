@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerController : EntityController
 {
-    const string HUD_CONTROLLER_TAG = "HUDController";
-
     static bool alive = true;
 
     HUDController hudController;
@@ -14,7 +12,7 @@ public class PlayerController : EntityController
     {
         base.Start();
 
-        GameObject hudControllerObject = GameObject.FindGameObjectWithTag(HUD_CONTROLLER_TAG);
+        GameObject hudControllerObject = GameObject.FindGameObjectWithTag(GlobalTags.HUD_CONTROLLER);
         hudController = hudControllerObject.GetComponent<HUDController>();
     }
 

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-    protected const string BREAKABLE_SCENERY_TAG = "BreakableScenery";
     const int rigidbodyPower = 5;
 
     public SpriteRenderer entitySprite;
@@ -101,6 +100,6 @@ public class EntityController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == BREAKABLE_SCENERY_TAG) PushScenery(hit.gameObject);
+        if (hit.gameObject.tag == GlobalTags.BREAKABLE_SCENERY) PushScenery(hit.gameObject);
     }
 }

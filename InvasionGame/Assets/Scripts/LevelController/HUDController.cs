@@ -70,7 +70,7 @@ public class MinimapController
 
     public void Update()
     {
-        if (Input.GetButtonDown(TOGGLE_MINIMAP_FULL_SCREEN_BUTTON))
+        if (Input.GetButtonDown(GlobalButtons.MINIMAP_FULL_SCREEN))
         {
             ToggleFullScreen();
         }
@@ -189,8 +189,6 @@ public class MoneyInfo
 
 public class HUDController : MonoBehaviour
 {
-    const string GAME_CONTROLLER_TAG = "GameController";
-
     public LifeBarController lifeBarController;
     public AmmoInfo ammoInfo;
     public MinimapController minimapController;
@@ -200,7 +198,7 @@ public class HUDController : MonoBehaviour
 
     void Start()
     {
-        gameController = GameObject.FindGameObjectWithTag(GAME_CONTROLLER_TAG);
+        gameController = GameObject.FindGameObjectWithTag(GlobalTags.GAME_CONTROLLER);
 
         minimapController.SetLevelBuilder(gameController.GetComponent<LevelBuilder>());
         minimapController.Start();

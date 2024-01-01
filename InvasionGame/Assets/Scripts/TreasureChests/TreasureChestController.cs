@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TreasureChestController : MonoBehaviour
 {
-    const string PLAYER_TAG = "Player";
-
     Animator animator;
 
     void Start()
@@ -21,6 +19,6 @@ public class TreasureChestController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == PLAYER_TAG) CollectTreasureChest();
+        if (other.tag == GlobalTags.PLAYER) CollectTreasureChest();
     }
 }
