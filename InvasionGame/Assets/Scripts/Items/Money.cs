@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class Money : MonoBehaviour
 {
+    public GameObject audioSourceUtil;
+    public AudioClip collectSound;
     public int moneyValue = 1;
+
+    void PlayCollectSound()
+    {
+        GameObject audioInstance = Instantiate(
+            audioSourceUtil,
+            audioSourceUtil.transform.position,
+            audioSourceUtil.transform.rotation
+        );
+
+        AudioSource audioSource = audioInstance.GetComponent<AudioSource>();
+
+        audioSource.clip = collectSound;
+        audioSource.Play();
+    }
 
     void CollectMoney()
     {
@@ -13,6 +29,8 @@ public class Money : MonoBehaviour
         LevelController levelController = levelControllerObject.GetComponent<LevelController>();
 
         levelController.IncrementMoneyValue(moneyValue);
+
+        PlayCollectSound();
 
         Destroy(gameObject);
     }

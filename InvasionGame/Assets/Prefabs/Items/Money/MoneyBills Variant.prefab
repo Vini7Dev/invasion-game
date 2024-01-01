@@ -125,4 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325ecfc744b59794cad8178958c7b37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyValue: 5
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  collectSound: {fileID: 8300000, guid: 52149398769a8b541bbbff967fda68c7, type: 3}
+  moneyValue: 1
