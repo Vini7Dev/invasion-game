@@ -101,6 +101,8 @@ MonoBehaviour:
   isPlayerAttack: 1
   maxDamage: 10
   minDamage: 5
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  shootSound: {fileID: 8300000, guid: 28e888d88e0642d499a1f466ef413cbc, type: 3}
   bulletSpawnTransform: {fileID: 6290209100040818858}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
   triggerTime: 0.15

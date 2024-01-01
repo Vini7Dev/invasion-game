@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FireGun : Weapon
 {
+    public GameObject audioSourceUtil;
+    public AudioClip shootSound;
     public Transform bulletSpawnTransform;
     public GameObject projectileObject;
     public float triggerTime = 0.3f, reloadTime;
@@ -66,6 +68,8 @@ public class FireGun : Weapon
             CalculeGunsRotationMultiplier()
         );
 
+        PlayShootSound();
+
         currentBullets -= 1;
 
         if (isPlayerAttack) UpdateAmmoInfoHUD();
@@ -79,6 +83,19 @@ public class FireGun : Weapon
     void UpdateAmmoInfoHUD()
     {
         hudController.ammoInfo.UpdateAmmoInfo(currentBullets, maxBullets);
+    }
+
+    void PlayShootSound()
+    {
+        if (!audioSourceUtil) return;
+
+        GameObject audioInstance = Instantiate(
+            audioSourceUtil,
+            audioSourceUtil.transform.position,
+            audioSourceUtil.transform.rotation
+        );
+
+        audioInstance.GetComponent<AudioSourceUtil>().PlaySound(shootSound);
     }
 
     IEnumerator ShotTime()

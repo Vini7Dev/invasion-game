@@ -16,10 +16,7 @@ public class Money : MonoBehaviour
             audioSourceUtil.transform.rotation
         );
 
-        AudioSource audioSource = audioInstance.GetComponent<AudioSource>();
-
-        audioSource.clip = collectSound;
-        audioSource.Play();
+        audioInstance.GetComponent<AudioSourceUtil>().PlaySound(collectSound);
     }
 
     void CollectMoney()
