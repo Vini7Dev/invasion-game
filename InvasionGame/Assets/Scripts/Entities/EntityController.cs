@@ -8,7 +8,7 @@ public class EntityController : MonoBehaviour
 
     public SpriteRenderer entitySprite;
     public GameObject audioSourceUtil;
-    public AudioClip entityHitSound;
+    public AudioClip entityHitSound, dieSound;
     public int life = 100;
 
     protected bool onDamage;
@@ -77,11 +77,14 @@ public class EntityController : MonoBehaviour
 
         life -= damageReceived;
 
-        PlaySound(entityHitSound);
         WhenTakingDamage(causerObject);
         StartCoroutine(DamageTimer());
 
-        if (life <= 0)
+        bool died = life <= 0;
+
+        PlaySound(died && dieSound != null ? dieSound : entityHitSound);
+
+        if (died)
         {
             WhenDying();
         }
