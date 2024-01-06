@@ -39,7 +39,7 @@ public class FireGun : Weapon
         }
         else if (PlayerController.IsAlive())
         {
-            if (currentBullets < maxBullets) Reload();
+            if (currentBullets <= 0 && !inDelayReload) Reload();
             else Shot();
         }
     }
@@ -108,9 +108,11 @@ public class FireGun : Weapon
     {
         inDelayReload = true;
 
-        PlaySound(reloadSound, reloadTime);
-
-        if (isPlayerAttack) hudController.ammoInfo.ReloadingText();
+        if (isPlayerAttack)
+        {
+            PlaySound(reloadSound, reloadTime);
+            hudController.ammoInfo.ReloadingText();
+        }
 
         yield return new WaitForSeconds(reloadTime);
 

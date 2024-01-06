@@ -11,7 +11,8 @@ public class LevelBuilder : MonoBehaviour
     Vector2[] roomPositions;
     GameObject[] levelRooms;
 
-    public void CreateLevelRooms() {
+    public void CreateLevelRooms()
+    {
         levelRooms = new GameObject[levelRoomsCount];
         roomPositions = new Vector2[levelRoomsCount];
 
@@ -182,7 +183,8 @@ public class LevelBuilder : MonoBehaviour
         );
     }
 
-    public GameObject GetLevelRoom(int roomIndex) {
+    public GameObject GetLevelRoom(int roomIndex)
+    {
         return levelRooms[roomIndex];
     }
 

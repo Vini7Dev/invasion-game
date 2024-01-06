@@ -38,7 +38,8 @@ public class EnemyMovement : MonoBehaviour
         else MoveAwaiFromPlayer();
     }
 
-    protected virtual void Stopped() {
+    protected virtual void Stopped()
+    {
         speed = 0;
     }
 

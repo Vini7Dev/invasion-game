@@ -102,12 +102,12 @@ MonoBehaviour:
   maxDamage: 10
   minDamage: 5
   audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
-  shotSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shotSound: {fileID: 8300000, guid: b26c5e05bb25af249ae4feaf15dd5662, type: 3}
+  reloadSound: {fileID: 8300000, guid: 4e71863f9c7876c47bbafc31f52ff0ed, type: 3}
   bulletSpawnTransform: {fileID: 2631520344162757925}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
   triggerTime: 0.75
-  reloadTime: 1
+  reloadTime: 1.5
   maxBullets: 10
 --- !u!1 &1724559096579309907
 GameObject:
@@ -739,12 +739,12 @@ MonoBehaviour:
   maxDamage: 10
   minDamage: 5
   audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
-  shotSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shotSound: {fileID: 8300000, guid: b26c5e05bb25af249ae4feaf15dd5662, type: 3}
+  reloadSound: {fileID: 8300000, guid: 4e71863f9c7876c47bbafc31f52ff0ed, type: 3}
   bulletSpawnTransform: {fileID: 2631520344162757925}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
   triggerTime: 0.75
-  reloadTime: 1
+  reloadTime: 1.5
   maxBullets: 10
 --- !u!1 &7628989738414892111
 GameObject:

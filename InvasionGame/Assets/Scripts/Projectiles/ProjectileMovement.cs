@@ -73,7 +73,8 @@ public class ProjectileMovement : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.tag != GlobalTags.INTERACTIVE_OBJECT) return;
 
         float distance = Vector3.Distance(transform.position, other.transform.position);

@@ -59,13 +59,15 @@ public class ItemSellingAltar : MonoBehaviour
         UpdateItemForSalePrice();
     }
 
-    void OnTriggerExit(Collider other) {
+    void OnTriggerExit(Collider other)
+    {
         if (other.tag != GlobalTags.PLAYER) return;
 
         ChangeViewOfItemForSaleInfo(false);
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
         if (other.tag != GlobalTags.PLAYER) return;
 
         ChangeViewOfItemForSaleInfo(true);

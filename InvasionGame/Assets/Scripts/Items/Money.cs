@@ -43,7 +43,8 @@ public class Money : MonoBehaviour
         transform.position += moveDirection * Time.deltaTime * 8;
     }
 
-    void OnTriggerStay(Collider other) {
+    void OnTriggerStay(Collider other)
+    {
         if (other.tag != GlobalTags.PLAYER) return;
 
         float distanceFromPlayer = Vector3.Distance(transform.position, other.transform.position);

@@ -53,7 +53,8 @@ public class PauseGameController : MonoBehaviour
 
         foreach (GameObject weapon in weaponsInGame) PauseScript<Weapon>(weapon);
 
-        foreach (GameObject projectile in projectilesInGame) {
+        foreach (GameObject projectile in projectilesInGame)
+        {
             PauseScript<ProjectileContainer>(projectile);
             PauseScript<ProjectileMovement>(projectile);
         }
@@ -86,7 +87,8 @@ public class PauseGameController : MonoBehaviour
 
         Script scriptToPause = objectToPause.GetComponent<Script>();
 
-        if (scriptToPause != null) {
+        if (scriptToPause != null)
+        {
             scriptToPause.enabled = !isPaused;
         }
     }
