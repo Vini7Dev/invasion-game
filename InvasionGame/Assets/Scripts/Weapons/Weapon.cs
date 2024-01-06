@@ -27,6 +27,8 @@ public class Weapon : MonoBehaviour
             audioSourceUtil.transform.rotation
         );
 
+        audioInstance.transform.parent = transform;
+
         AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
         audioSource.PlaySound(soundClip, timeToDestroy);
     }

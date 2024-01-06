@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyWhiteGunHands : EntityWhiteGunHands
 {
     public bool isSpinHandsAttack;
+    public AudioClip spinHandsAttackSound;
 
     bool handsSpinning;
     float spinHandsSmoothSpeed = 0;
@@ -26,6 +27,8 @@ public class EnemyWhiteGunHands : EntityWhiteGunHands
     public void ToggleHandsSpin()
     {
         handsSpinning = !handsSpinning;
+
+        if (handsSpinning) PlaySound(spinHandsAttackSound, 10);
     }
 
     void SpinHands()

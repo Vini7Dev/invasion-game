@@ -182,6 +182,7 @@ MonoBehaviour:
   entitySprite: {fileID: 4368257946237911713}
   audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
   entityHitSound: {fileID: 8300000, guid: 6532cda83ee7ec04eabf6e6985e58285, type: 3}
+  dieSound: {fileID: 0}
   life: 100
   maxPlayerDistance: 10
   minPlayerDistance: 0
@@ -233,7 +234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteGunHands: {fileID: 1127219031252614118}
   whiteGunLeftHand: {fileID: 563416128779822724}
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
   isSpinHandsAttack: 1
+  spinHandsAttackSound: {fileID: 8300000, guid: e9a353515c899a84cadd8b9bc959b490, type: 3}
 --- !u!1 &7520389225445590301
 GameObject:
   m_ObjectHideFlags: 0
