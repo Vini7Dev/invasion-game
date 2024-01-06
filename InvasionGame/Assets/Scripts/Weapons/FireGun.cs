@@ -27,7 +27,7 @@ public class FireGun : Weapon
 
     void Update()
     {
-        if (currentBullets <= 0 && !inDelayReload) Reload();
+        if (currentBullets <= 0) Reload();
 
         if (isPlayerAttack)
         {
@@ -39,7 +39,7 @@ public class FireGun : Weapon
         }
         else if (PlayerController.IsAlive())
         {
-            if (currentBullets <= 0 && !inDelayReload) Reload();
+            if (currentBullets <= 0) Reload();
             else Shot();
         }
     }
@@ -77,7 +77,7 @@ public class FireGun : Weapon
 
     void Reload()
     {
-        StartCoroutine(ReloadTime());
+        if (!inDelayReload) StartCoroutine(ReloadTime());
     }
 
     void UpdateAmmoInfoHUD()
