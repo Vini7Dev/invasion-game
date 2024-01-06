@@ -146,6 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 3104800872301977420}
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  entityHitSound: {fileID: 8300000, guid: 6532cda83ee7ec04eabf6e6985e58285, type: 3}
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
@@ -1138,6 +1140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 4994952354675566624}
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  entityHitSound: {fileID: 8300000, guid: 6532cda83ee7ec04eabf6e6985e58285, type: 3}
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
@@ -1340,6 +1344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
+  audioSourceUtil: {fileID: 0}
+  entityHitSound: {fileID: 0}
   life: 10
   itemsConfig: []
 --- !u!1 &5301485324183258067
@@ -1491,6 +1497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
+  audioSourceUtil: {fileID: 0}
+  entityHitSound: {fileID: 0}
   life: 10
   itemsConfig: []
 --- !u!1 &5470292415022591872
@@ -1676,6 +1684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
+  audioSourceUtil: {fileID: 0}
+  entityHitSound: {fileID: 0}
   life: 10
   itemsConfig: []
 --- !u!1 &5931091238419849647
@@ -2011,6 +2021,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
+  audioSourceUtil: {fileID: 0}
+  entityHitSound: {fileID: 0}
   life: 10
   itemsConfig: []
 --- !u!1 &6374739081109100934
@@ -2162,6 +2174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
+  audioSourceUtil: {fileID: 0}
+  entityHitSound: {fileID: 0}
   life: 10
   itemsConfig:
   - itemObject: {fileID: 5533647179711656364, guid: 1ee327fa842d3534cb1596370843e5f2, type: 3}
@@ -2352,6 +2366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
+  audioSourceUtil: {fileID: 0}
+  entityHitSound: {fileID: 0}
   life: 10
   itemsConfig: []
 --- !u!1 &8520493371006167210

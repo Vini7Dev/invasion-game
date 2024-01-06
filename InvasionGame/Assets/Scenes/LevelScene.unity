@@ -2068,6 +2068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 776584482}
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  entityHitSound: {fileID: 8300000, guid: f364b6170efc3b845b84a3e431becfc9, type: 3}
   life: 100
 --- !u!65 &973816896
 BoxCollider:
@@ -2449,7 +2451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 2.9953918}
+  m_AnchoredPosition: {x: 0.00012207031, y: 2.9953613}
   m_SizeDelta: {x: -1351, y: -571.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1150374932

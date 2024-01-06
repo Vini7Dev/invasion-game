@@ -7,6 +7,8 @@ public class EntityController : MonoBehaviour
     const int rigidbodyPower = 5;
 
     public SpriteRenderer entitySprite;
+    public GameObject audioSourceUtil;
+    public AudioClip entityHitSound;
     public int life = 100;
 
     protected bool onDamage;
@@ -38,6 +40,20 @@ public class EntityController : MonoBehaviour
         transform.position = positionCorrect;
     }
 
+    protected void PlaySound(AudioClip soundClip, float timeToDestroy = 5)
+    {
+        if (audioSourceUtil == null) return;
+
+        GameObject audioInstance = Instantiate(
+            audioSourceUtil,
+            audioSourceUtil.transform.position,
+            audioSourceUtil.transform.rotation
+        );
+
+        AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
+        audioSource.PlaySound(soundClip, timeToDestroy);
+    }
+
     protected virtual void WhenDying()
     {
         gameObject.SetActive(false);
@@ -61,6 +77,7 @@ public class EntityController : MonoBehaviour
 
         life -= damageReceived;
 
+        PlaySound(entityHitSound);
         WhenTakingDamage(causerObject);
         StartCoroutine(DamageTimer());
 
