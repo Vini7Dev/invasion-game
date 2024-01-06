@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     public bool isPlayerAttack;
     public int maxDamage = 10, minDamage = 5;
+    public GameObject audioSourceUtil;
 
     protected HUDController hudController;
 
@@ -16,6 +17,18 @@ public class Weapon : MonoBehaviour
             GameObject hudControllerObject = GameObject.FindGameObjectWithTag(GlobalTags.HUD_CONTROLLER);
             hudController = hudControllerObject.GetComponent<HUDController>();
         }
+    }
+
+    protected void PlaySound(AudioClip soundClip, float timeToDestroy = 5)
+    {
+        GameObject audioInstance = Instantiate(
+            audioSourceUtil,
+            audioSourceUtil.transform.position,
+            audioSourceUtil.transform.rotation
+        );
+
+        AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
+        audioSource.PlaySound(soundClip, timeToDestroy);
     }
 
     int GetRandomDamage()

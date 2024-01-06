@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WhiteGun : Weapon
 {
+    public AudioClip attackSound;
     public LayerMask collisionLayer;
-    public float detectionIntervalPerSecond = 0.3f;
 
     bool causedDamage;
-    float damageDalay = 0.5f, distanceToCreateCollision = 0.2f;
+    float damageDalay = 0.5f, detectionInterval = 0.3f, distanceToCreateCollision = 0.2f;
     Vector3 previousPosition;
 
     void Start()
@@ -27,7 +27,7 @@ public class WhiteGun : Weapon
     {
         while (true)
         {
-            yield return new WaitForSeconds(detectionIntervalPerSecond);
+            yield return new WaitForSeconds(detectionInterval);
 
             Vector3 currentPosition = transform.position;
             float distance = Vector3.Distance(previousPosition, currentPosition);
@@ -48,6 +48,7 @@ public class WhiteGun : Weapon
                 {
                     if (collider.tag == GlobalTags.ENEMY || collider.tag == GlobalTags.BREAKABLE_SCENERY)
                     {
+                        PlaySound(attackSound, damageDalay);
                         ApplyDamage(collider.gameObject);
                     }
                 }

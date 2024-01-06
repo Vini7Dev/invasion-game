@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 13319
+  controlID: 18306
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 13269
+  controlID: 18360
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 13260
+  controlID: 18262
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -757,7 +757,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sounds/BreakableSceneries/Boxes/WoodBox
+    - Assets/Prefabs/BreakableSceneries/Boxes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -765,16 +765,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sounds/BreakableSceneries/Boxes/WoodBox
+  - Assets/Prefabs/BreakableSceneries/Boxes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Public\Documents\Projetos Pessoais\unity\invasion-game\InvasionGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 681}
-    m_SelectedIDs: 10c30000
-    m_LastClickedID: 49936
-    m_ExpandedIDs: 00000000786800007a6800007c6800007e68000080680000826800008468000086680000886800008a6800008c6800008e680000926800009468000096680000d0680000de680000e6680000ec680000f668000006690000ea91000004c300000ac3000000ca9a3b
+    scrollPos: {x: 0, y: 269}
+    m_SelectedIDs: 16c30000
+    m_LastClickedID: 49942
+    m_ExpandedIDs: 00000000786800007a6800007c6800007e68000080680000826800008468000086680000886800008a6800008c6800008e680000926800009468000096680000d0680000dc680000de680000e6680000ec680000f668000006690000747c0000ea91000004c300000ac3000032cd000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -802,7 +802,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000786800007a6800007c6800007e68000080680000826800008468000086680000886800008a6800008c6800008e680000926800009468000096680000d0680000de680000e6680000ec680000f668000006690000ea91000000ca9a3b
+    m_ExpandedIDs: 00000000786800007a6800007c6800007e68000080680000826800008468000086680000886800008a6800008c6800008e680000926800009468000096680000d0680000de680000e6680000ec680000f668000006690000747c0000ea91000004c300000ac3000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -959,7 +959,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: 25492
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 216
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
