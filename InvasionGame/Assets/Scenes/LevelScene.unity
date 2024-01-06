@@ -2070,6 +2070,7 @@ MonoBehaviour:
   entitySprite: {fileID: 776584482}
   audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
   entityHitSound: {fileID: 8300000, guid: f364b6170efc3b845b84a3e431becfc9, type: 3}
+  dieSound: {fileID: 0}
   life: 100
 --- !u!65 &973816896
 BoxCollider:
@@ -2737,6 +2738,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 615687576}
   hudController: {fileID: 787497138}
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  roomTransitionSound: {fileID: 8300000, guid: 1846716b398894e4392e4f4adfb2bb7d, type: 3}
 --- !u!114 &1321747291
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -77,15 +77,13 @@ public class EntityController : MonoBehaviour
 
         life -= damageReceived;
 
+        PlaySound(entityHitSound);
         WhenTakingDamage(causerObject);
         StartCoroutine(DamageTimer());
 
-        bool died = life <= 0;
-
-        PlaySound(died && dieSound != null ? dieSound : entityHitSound);
-
-        if (died)
+        if (life <= 0)
         {
+            PlaySound(dieSound);
             WhenDying();
         }
     }

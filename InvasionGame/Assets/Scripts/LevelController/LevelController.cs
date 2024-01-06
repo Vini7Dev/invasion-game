@@ -6,6 +6,8 @@ public class LevelController : MonoBehaviour
 {
     public CameraController cameraController;
     public HUDController hudController;
+    public GameObject audioSourceUtil;
+    public AudioClip roomTransitionSound;
 
     int money;
     bool isInRoomTransition;
@@ -28,6 +30,18 @@ public class LevelController : MonoBehaviour
         roomObject.GetComponent<RoomController>().SetIsRoomActive(newIsActive);
     }
 
+    void PlaySound(AudioClip soundClip, float timeToDestroy = 5)
+    {
+        GameObject audioInstance = Instantiate(
+            audioSourceUtil,
+            audioSourceUtil.transform.position,
+            audioSourceUtil.transform.rotation
+        );
+
+        AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
+        audioSource.PlaySound(soundClip, timeToDestroy);
+    }
+
     protected IEnumerator DelayToDeactiveRoom(GameObject roomToDeactive)
     {
         yield return new WaitForSeconds(0.25f);
@@ -40,6 +54,8 @@ public class LevelController : MonoBehaviour
     public void UpdateCurrentRoom(int roomIndex)
     {
         isInRoomTransition = true;
+
+        PlaySound(roomTransitionSound);
 
         GameObject previousRoom = currentRoom;
 

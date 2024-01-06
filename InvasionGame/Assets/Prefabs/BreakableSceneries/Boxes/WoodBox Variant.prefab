@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entitySprite: {fileID: 0}
   audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
-  entityHitSound: {fileID: 0}
+  entityHitSound: {fileID: 8300000, guid: 7e0014c9f14d3aa48a3684403770730f, type: 3}
   dieSound: {fileID: 8300000, guid: f4484576e88117c428bec9abf97abb45, type: 3}
   life: 10
   itemsConfig: []
