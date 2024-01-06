@@ -101,6 +101,8 @@ MonoBehaviour:
   isPlayerAttack: 0
   maxDamage: 10
   minDamage: 5
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  shootSound: {fileID: 8300000, guid: 0f109a26df2a7974bbe3429d3257bfdf, type: 3}
   bulletSpawnTransform: {fileID: 2631520344162757925}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
   triggerTime: 0.75
@@ -305,6 +307,9 @@ MonoBehaviour:
   life: 40
   maxPlayerDistance: 10
   minPlayerDistance: 1
+  executeOnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &169701445648327130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteGunHands: {fileID: 1858681895406310566}
   whiteGunLeftHand: {fileID: 7108773940663232845}
+  isSpinHandsAttack: 0
 --- !u!1 &7088748616761055698
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +735,9 @@ MonoBehaviour:
   isPlayerAttack: 0
   maxDamage: 10
   minDamage: 5
-  bulletSpawnTransform: {fileID: 476622119626202168}
+  audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
+  shootSound: {fileID: 8300000, guid: 0f109a26df2a7974bbe3429d3257bfdf, type: 3}
+  bulletSpawnTransform: {fileID: 2631520344162757925}
   projectileObject: {fileID: 7422823730421937105, guid: 165b8d6159baf17439bb818e790d1ec1, type: 3}
   triggerTime: 0.75
   reloadTime: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireGun : Weapon
 {
     public GameObject audioSourceUtil;
-    public AudioClip shootSound;
+    public AudioClip shotSound, reloadSound;
     public Transform bulletSpawnTransform;
     public GameObject projectileObject;
     public float triggerTime = 0.3f, reloadTime;
@@ -68,7 +68,7 @@ public class FireGun : Weapon
             CalculeGunsRotationMultiplier()
         );
 
-        PlayShootSound();
+        PlaySound(shotSound);
 
         currentBullets -= 1;
 
@@ -85,17 +85,16 @@ public class FireGun : Weapon
         hudController.ammoInfo.UpdateAmmoInfo(currentBullets, maxBullets);
     }
 
-    void PlayShootSound()
+    void PlaySound(AudioClip soundClip, float timeToDestroy = 5)
     {
-        if (!audioSourceUtil) return;
-
         GameObject audioInstance = Instantiate(
             audioSourceUtil,
             audioSourceUtil.transform.position,
             audioSourceUtil.transform.rotation
         );
 
-        audioInstance.GetComponent<AudioSourceUtil>().PlaySound(shootSound);
+        AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
+        audioSource.PlaySound(soundClip, timeToDestroy);
     }
 
     IEnumerator ShotTime()
@@ -108,6 +107,9 @@ public class FireGun : Weapon
     IEnumerator ReloadTime()
     {
         inDelayReload = true;
+
+        PlaySound(reloadSound, reloadTime);
+
         if (isPlayerAttack) hudController.ammoInfo.ReloadingText();
 
         yield return new WaitForSeconds(reloadTime);
