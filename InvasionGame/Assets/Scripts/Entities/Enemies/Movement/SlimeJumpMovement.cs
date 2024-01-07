@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class SlimeJumpMovement : EnemyMovement
 {
+    public AudioClip slimeJumpSound;
     public float timeToJump = 0.1f;
 
-    bool jump, stopped = true;
+    bool jump, stopped = true, inDelay;
 
     protected override void Stopped()
     {
@@ -17,12 +18,12 @@ public class SlimeJumpMovement : EnemyMovement
         if (!jump && stopped)
         {
             speed = 0;
-            StartCoroutine(JumpDelay());
+            if (!inDelay) StartCoroutine(JumpDelay());
         }
         else if (jump && !stopped)
         {
             speed = enemySkills.moveSpeed;
-            StartCoroutine(StoppedDelay());
+            if (!inDelay) StartCoroutine(StoppedDelay());
         }
 
         enemyAnimator.SetBool("IsJumping", jump && !stopped);
@@ -30,19 +31,20 @@ public class SlimeJumpMovement : EnemyMovement
 
     IEnumerator JumpDelay()
     {
-        jump = false;
-        stopped = true;
+        inDelay = true;
         yield return new WaitForSeconds(timeToJump);
         jump = true;
         stopped = false;
+        inDelay = false;
     }
 
     IEnumerator StoppedDelay()
     {
-        stopped = false;
-        jump = true;
+        inDelay = true;
+        enemyController.PlaySound(slimeJumpSound, 0.5f);
         yield return new WaitForSeconds(timeToJump);
         stopped = true;
         jump = false;
+        inDelay = false;
     }
 }

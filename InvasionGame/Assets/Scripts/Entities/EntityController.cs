@@ -40,22 +40,6 @@ public class EntityController : MonoBehaviour
         transform.position = positionCorrect;
     }
 
-    protected void PlaySound(AudioClip soundClip, float timeToDestroy = 5)
-    {
-        if (audioSourceUtil == null) return;
-
-        GameObject audioInstance = Instantiate(
-            audioSourceUtil,
-            audioSourceUtil.transform.position,
-            audioSourceUtil.transform.rotation
-        );
-
-        audioInstance.transform.parent = transform;
-
-        AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
-        audioSource.PlaySound(soundClip, timeToDestroy);
-    }
-
     protected virtual void WhenDying()
     {
         gameObject.SetActive(false);
@@ -73,19 +57,39 @@ public class EntityController : MonoBehaviour
         }
     }
 
+    public void PlaySound(
+        AudioClip soundClip,
+        float timeToDestroy = 5,
+        bool inGlobalParent = false
+    )
+    {
+        if (audioSourceUtil == null) return;
+
+        GameObject audioInstance = Instantiate(
+            audioSourceUtil,
+            audioSourceUtil.transform.position,
+            audioSourceUtil.transform.rotation
+        );
+
+        if (!inGlobalParent) audioInstance.transform.parent = transform;
+
+        AudioSourceUtil audioSource = audioInstance.GetComponent<AudioSourceUtil>();
+        audioSource.PlaySound(soundClip, timeToDestroy);
+    }
+
     public void HaveHitADamage(int damageReceived, GameObject causerObject)
     {
         if (onDamage || !enabled) return;
 
         life -= damageReceived;
 
-        PlaySound(entityHitSound);
+        PlaySound(entityHitSound, 2, true);
         WhenTakingDamage(causerObject);
         StartCoroutine(DamageTimer());
 
         if (life <= 0)
         {
-            PlaySound(dieSound);
+            PlaySound(dieSound, 5, true);
             WhenDying();
         }
     }
@@ -103,7 +107,7 @@ public class EntityController : MonoBehaviour
         onDamage = false;
     }
 
-    void PushScenery(GameObject scenery)
+    void PushDynamicScenery(GameObject scenery)
     {
         Rigidbody sceneryRigidbody = scenery.gameObject.GetComponent<Rigidbody>();
 
@@ -120,6 +124,6 @@ public class EntityController : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.tag == GlobalTags.BREAKABLE_SCENERY) PushScenery(hit.gameObject);
+        if (hit.gameObject.tag == GlobalTags.BREAKABLE_SCENERY) PushDynamicScenery(hit.gameObject);
     }
 }

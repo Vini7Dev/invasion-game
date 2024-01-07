@@ -11,7 +11,6 @@ public class EnemyMovement : MonoBehaviour
     protected EnemyController enemyController;
     protected Transform playerTransform;
     protected EntitySkills enemySkills;
-    protected delegate void MovementDelegate();
     protected float speed;
 
     protected void Start()

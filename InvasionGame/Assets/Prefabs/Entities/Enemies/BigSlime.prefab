@@ -101,6 +101,7 @@ MonoBehaviour:
   entitySprite: {fileID: 3374633781716349650}
   audioSourceUtil: {fileID: 8855589996647654126, guid: 10fd72cda20b02c4785cad2e5341f8a7, type: 3}
   entityHitSound: {fileID: 8300000, guid: 6532cda83ee7ec04eabf6e6985e58285, type: 3}
+  dieSound: {fileID: 0}
   life: 20
   maxPlayerDistance: 10
   minPlayerDistance: 0
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAnimator: {fileID: 4709909808516161971}
   retreatingSpeed: 0
+  slimeJumpSound: {fileID: 8300000, guid: 8294965d0aa72624c9b8f4bdb6c923ce, type: 3}
   timeToJump: 0.5
 --- !u!114 &6331225218654539947
 MonoBehaviour:

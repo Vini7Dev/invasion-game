@@ -18,8 +18,10 @@ public class LifeBarController
     public void Start()
     {
         GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-
         PlayerController playerController = playerObject.GetComponent<PlayerController>();
+        EntitySkills playerEntitySkills = playerObject.GetComponent<EntitySkills>();
+
+        lifeBarSlider.maxValue = playerEntitySkills.maxLife;
 
         UpdateLifeBar(playerController.life);
     }
