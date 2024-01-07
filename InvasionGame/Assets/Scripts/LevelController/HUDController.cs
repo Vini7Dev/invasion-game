@@ -54,9 +54,9 @@ public class MinimapController
     public Transform minimapCameraTransform;
     public bool isFullScreen;
 
-    int smallSize = 400, fullScreenSize = 1000;
-    Vector2 smallPosition = new Vector2(-220, -220);
-    Vector2 fullScreenPosition = new Vector2(-960, -540);
+    int smallSize = 360, fullScreenSize = 790;
+    Vector2 smallPosition = new Vector2(-200, -200);
+    Vector2 fullScreenPosition = new Vector2(-960, -405);
     Vector3 minimapCameraPosition;
     LevelBuilder levelBuilder;
     Camera minimapCamera;
